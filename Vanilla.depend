@@ -1,0 +1,1119 @@
+# depslib dependency file v1.0
+1425378474 source:/media/F/BaiduDisk/Code/C++/Vanilla/VanillaButton.cpp
+	"stdafx.h"
+	"Include.h"
+
+1425607231 /media/F/BaiduDisk/Code/C++/Vanilla/stdafx.h
+	<stdlib.h>
+	<locale.h>
+	<stdio.h>
+	<string>
+	<vector>
+	<map>
+	<time.h>
+	"Skia.h"
+
+1423558004 /media/F/BaiduDisk/Code/C++/Vanilla/xcb/xcb.h
+	<sys/types.h>
+	<inttypes.h>
+	<stdint.h>
+	<sys/uio.h>
+	"xcb_windefs.h"
+	<pthread.h>
+	"xproto.h"
+
+1369689180 /media/F/BaiduDisk/Code/C++/Vanilla/xcb/xproto.h
+	"xcb.h"
+
+1425611754 /media/F/BaiduDisk/Code/C++/Vanilla/Skia.h
+	"SkCanvas.h"
+	"SkData.h"
+	"SkGraphics.h"
+	"SkSurface.h"
+	"SkImage.h"
+	"SkDevice.h"
+	"SkString.h"
+	"SkImageEncoder.h"
+	"SkImageDecoder.h"
+	"SkStream.h"
+	"SkTypeface.h"
+	"SkTextBox.h"
+	"SkForceLinking.h"
+	"SkBlurMaskFilter.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkCanvas.h
+	"SkTypes.h"
+	"SkBitmap.h"
+	"SkDeque.h"
+	"SkClipStack.h"
+	"SkPaint.h"
+	"SkRefCnt.h"
+	"SkPath.h"
+	"SkRegion.h"
+	"SkSurfaceProps.h"
+	"SkXfermode.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkTypes.h
+	"SkPreConfig.h"
+	"SkUserConfig.h"
+	"SkPostConfig.h"
+	<stdint.h>
+	<sys/types.h>
+	<new>
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkPreConfig.h
+	"config.h"
+	"TargetConditionals.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/config/SkUserConfig.h
+	"SkPreConfig.h"
+	"SkUserConfig.h"
+	"SkPostConfig.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkPostConfig.h
+	<windows.h>
+	<string.h>
+	<stdlib.h>
+	"cmnintrin.h"
+	<crtdbg.h>
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkBitmap.h
+	"SkColor.h"
+	"SkColorTable.h"
+	"SkImageInfo.h"
+	"SkPoint.h"
+	"SkRefCnt.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkColor.h
+	"SkScalar.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkScalar.h
+	"SkFixed.h"
+	"SkFloatingPoint.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkFixed.h
+	"SkTypes.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkFloatingPoint.h
+	"SkTypes.h"
+	<math.h>
+	<float.h>
+	<unistd.h>
+	"SkFloatBits.h"
+	<xmmintrin.h>
+	<arm_neon.h>
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkFloatBits.h
+	"SkTypes.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkColorTable.h
+	"SkColor.h"
+	"SkFlattenable.h"
+	"SkImageInfo.h"
+	"SkLazyPtr.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkFlattenable.h
+	"SkRefCnt.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkRefCnt.h
+	"SkAtomics.h"
+	"SkInstCnt.h"
+	"SkTemplates.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkAtomics.h
+	"SkTypes.h"
+	"../ports/SkAtomics_std.h"
+	"../ports/SkAtomics_atomic.h"
+	"../ports/SkAtomics_sync.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/ports/SkAtomics_std.h
+	<atomic>
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/ports/SkAtomics_atomic.h
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/ports/SkAtomics_sync.h
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkInstCnt.h
+	"SkTypes.h"
+	"SkThread.h"
+	<stdlib.h>
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkThread.h
+	"SkAtomics.h"
+	"SkMutex.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkMutex.h
+	"SkTypes.h"
+	"../ports/SkMutex_win.h"
+	"../ports/SkMutex_pthread.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/ports/SkMutex_win.h
+	<windows.h>
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/ports/SkMutex_pthread.h
+	<errno.h>
+	<pthread.h>
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkTemplates.h
+	"SkMath.h"
+	"SkTypes.h"
+	<limits.h>
+	<new>
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkMath.h
+	"SkTypes.h"
+	<intrin.h>
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkImageInfo.h
+	"SkMath.h"
+	"SkRect.h"
+	"SkSize.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkRect.h
+	"SkPoint.h"
+	"SkSize.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkPoint.h
+	"SkMath.h"
+	"SkScalar.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkSize.h
+	"SkScalar.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkLazyPtr.h
+	"SkAtomics.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkDeque.h
+	"SkTypes.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkClipStack.h
+	"SkDeque.h"
+	"SkPath.h"
+	"SkRect.h"
+	"SkRRect.h"
+	"SkRegion.h"
+	"SkTDArray.h"
+	"SkTLazy.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkPath.h
+	"SkInstCnt.h"
+	"SkMatrix.h"
+	"SkPathRef.h"
+	"SkTDArray.h"
+	"SkRefCnt.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkMatrix.h
+	"SkRect.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkPathRef.h
+	"SkMatrix.h"
+	"SkPoint.h"
+	"SkRect.h"
+	"SkRefCnt.h"
+	"SkTDArray.h"
+	<stddef.h>
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkTDArray.h
+	"SkTypes.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkRRect.h
+	"SkRect.h"
+	"SkPoint.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkRegion.h
+	"SkRect.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkTLazy.h
+	"SkTypes.h"
+	<new>
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkPaint.h
+	"SkColor.h"
+	"SkDrawLooper.h"
+	"SkFilterQuality.h"
+	"SkMatrix.h"
+	"SkXfermode.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkDrawLooper.h
+	"SkBlurTypes.h"
+	"SkFlattenable.h"
+	"SkPoint.h"
+	"SkColor.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkBlurTypes.h
+	"SkTypes.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkFilterQuality.h
+	"SkTypes.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkXfermode.h
+	"SkFlattenable.h"
+	"SkColor.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkSurfaceProps.h
+	"SkTypes.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkData.h
+	"SkRefCnt.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkGraphics.h
+	"SkTypes.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkSurface.h
+	"SkRefCnt.h"
+	"SkImage.h"
+	"SkSurfaceProps.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkImage.h
+	"SkFilterQuality.h"
+	"SkImageInfo.h"
+	"SkImageEncoder.h"
+	"SkRefCnt.h"
+	"SkScalar.h"
+	"SkShader.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkImageEncoder.h
+	"SkImageInfo.h"
+	"SkTRegistry.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkTRegistry.h
+	"SkTypes.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkShader.h
+	"SkBitmap.h"
+	"SkFlattenable.h"
+	"SkMask.h"
+	"SkMatrix.h"
+	"SkPaint.h"
+	"../gpu/GrColor.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkMask.h
+	"SkRect.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/gpu/GrColor.h
+	"GrTypes.h"
+	"SkColor.h"
+	"SkColorPriv.h"
+	"SkUnPreMultiply.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/gpu/GrTypes.h
+	"SkTypes.h"
+	"GrConfig.h"
+	"SkMath.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/gpu/GrConfig.h
+	"SkTypes.h"
+	<TargetConditionals.h>
+	<stdint.h>
+	"GrUserConfig.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/gpu/GrUserConfig.h
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkColorPriv.h
+	"SkColor.h"
+	"SkMath.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkUnPreMultiply.h
+	"SkColor.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkImageDecoder.h
+	"SkBitmap.h"
+	"SkImage.h"
+	"SkRect.h"
+	"SkRefCnt.h"
+	"SkTRegistry.h"
+	"SkTypes.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkStream.h
+	"SkRefCnt.h"
+	"SkScalar.h"
+	"SkString.h"
+	<stdio.h>
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkString.h
+	"SkScalar.h"
+	"SkTArray.h"
+	<stdarg.h>
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkTArray.h
+	<new>
+	"SkTypes.h"
+	"SkTemplates.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/utils/SkTextBox.h
+	"SkCanvas.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkTypeface.h
+	"SkAdvancedTypefaceMetrics.h"
+	"SkFontStyle.h"
+	"SkLazyPtr.h"
+	"SkWeakRefCnt.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkAdvancedTypefaceMetrics.h
+	"SkRect.h"
+	"SkRefCnt.h"
+	"SkString.h"
+	"SkTDArray.h"
+	"SkTemplates.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkFontStyle.h
+	"SkTypes.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkWeakRefCnt.h
+	"SkRefCnt.h"
+	"SkThread.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkDevice.h
+	"SkRefCnt.h"
+	"SkBitmap.h"
+	"SkCanvas.h"
+	"SkColor.h"
+	"SkImageFilter.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkImageFilter.h
+	"SkFlattenable.h"
+	"SkMatrix.h"
+	"SkRect.h"
+	"SkTemplates.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/effects/SkBlurMaskFilter.h
+	"SkMaskFilter.h"
+	"SkScalar.h"
+	"SkBlurTypes.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkMaskFilter.h
+	"SkBlurTypes.h"
+	"SkFlattenable.h"
+	"SkMask.h"
+	"SkPaint.h"
+
+1424239557 /media/F/BaiduDisk/Code/C++/Vanilla/Include.h
+	"VDefine.h"
+	"VStruct.h"
+	"VKernel.h"
+	"VPort.h"
+	"VHashTable.h"
+	"VGlobalFunction.h"
+	"VDrawing.h"
+	"VSkinDB.h"
+	"VanillaWindow.h"
+	"VControl.h"
+	"VControlBase.h"
+	"VTaskQueue.h"
+	"VanillaLabel.h"
+	"VanillaButton.h"
+
+1425608272 /media/F/BaiduDisk/Code/C++/Vanilla/VDefine.h
+
+1425609074 /media/F/BaiduDisk/Code/C++/Vanilla/VStruct.h
+
+1423819180 /media/F/BaiduDisk/Code/C++/Vanilla/VKernel.h
+
+1425608922 /media/F/BaiduDisk/Code/C++/Vanilla/VPort.h
+
+1424077581 /media/F/BaiduDisk/Code/C++/Vanilla/VHashTable.h
+	"Include.h"
+
+1425606826 /media/F/BaiduDisk/Code/C++/Vanilla/VGlobalFunction.h
+
+1425606680 /media/F/BaiduDisk/Code/C++/Vanilla/VDrawing.h
+
+1424077711 /media/F/BaiduDisk/Code/C++/Vanilla/VSkinDB.h
+
+1425258559 /media/F/BaiduDisk/Code/C++/Vanilla/VanillaWindow.h
+
+1425608439 /media/F/BaiduDisk/Code/C++/Vanilla/VControl.h
+
+1425607316 /media/F/BaiduDisk/Code/C++/Vanilla/VControlBase.h
+
+1424097107 /media/F/BaiduDisk/Code/C++/Vanilla/VTaskQueue.h
+
+1424336233 /media/F/BaiduDisk/Code/C++/Vanilla/VanillaLabel.h
+
+1424337922 /media/F/BaiduDisk/Code/C++/Vanilla/VanillaButton.h
+
+1424336539 source:/media/F/BaiduDisk/Code/C++/Vanilla/VanillaLabel.cpp
+	"stdafx.h"
+	"Include.h"
+
+1425438277 source:/media/F/BaiduDisk/Code/C++/Vanilla/VanillaUI.cpp
+	"stdafx.h"
+	"Include.h"
+
+1425445186 source:/media/F/BaiduDisk/Code/C++/Vanilla/VanillaWindow.cpp
+	"stdafx.h"
+	"Include.h"
+
+1425608973 source:/media/F/BaiduDisk/Code/C++/Vanilla/VControl.cpp
+	"stdafx.h"
+	"VDefine.h"
+	"VStruct.h"
+	"VWindow.h"
+	"VControl.h"
+	"VDrawing.h"
+	"VGlobalFunction.h"
+
+1425609017 source:/media/F/BaiduDisk/Code/C++/Vanilla/VControlBase.cpp
+	"stdafx.h"
+	"VDefine.h"
+	"VStruct.h"
+	"VWindow.h"
+	"VControl.h"
+	"VControlBase.h"
+
+1425609420 source:/media/F/BaiduDisk/Code/C++/Vanilla/VGlobalFunction.cpp
+	"stdafx.h"
+	"VDefine.h"
+	"VStruct.h"
+	"VWindow.h"
+	"VControl.h"
+	"VPort.h"
+	"VGlobalFunction.h"
+	"Controls/VControlRegister.h"
+
+1424078125 source:/media/F/BaiduDisk/Code/C++/Vanilla/VHashTable.cpp
+	"stdafx.h"
+	"Include.h"
+
+1425263108 source:/media/F/BaiduDisk/Code/C++/Vanilla/VKernel.cpp
+	"stdafx.h"
+	"Include.h"
+
+1425609608 source:/media/F/BaiduDisk/Code/C++/Vanilla/VPort.cpp
+	"stdafx.h"
+	"VDefine.h"
+	"VStruct.h"
+	"VWindow.h"
+	"VControl.h"
+	"VDrawing.h"
+	"VGlobalFunction.h"
+	<tchar.h>
+	<windows.h>
+	<xcb/xcb.h>
+	<xcb/xcb_image.h>
+	<cairo/cairo-xcb.h>
+
+1424668284 source:/media/F/BaiduDisk/Code/C++/Vanilla/VSkinDB.cpp
+	"stdafx.h"
+	"Include.h"
+
+1424097335 source:/media/F/BaiduDisk/Code/C++/Vanilla/VTaskQueue.cpp
+	"stdafx.h"
+	"Include.h"
+
+1425609035 source:/media/F/BaiduDisk/Code/C++/Vanilla/VDrawing.cpp
+	"stdafx.h"
+	"VDefine.h"
+	"VStruct.h"
+	"VPort.h"
+	"VDrawing.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/images/SkForceLinking.h
+
+1425607425 source:/media/F/BaiduDisk/Code/C++/Vanilla/Controls/VanillaButton.cpp
+	"Include.h"
+
+1425608439 /media/F/BaiduDisk/Code/C++/Vanilla/Controls/Include.h
+	"../stdafx.h"
+	"../VDefine.h"
+	"../VStruct.h"
+	"../VWindow.h"
+	"../VControl.h"
+	"../VControlBase.h"
+	"../VGlobalFunction.h"
+	"../VDrawing.h"
+	"VanillaLabel.h"
+	"VanillaButton.h"
+
+1425258559 /media/F/BaiduDisk/Code/C++/Vanilla/VWindow.h
+
+1425609718 /media/F/BaiduDisk/Code/C++/Vanilla/Controls/VanillaLabel.h
+
+1424337922 /media/F/BaiduDisk/Code/C++/Vanilla/Controls/VanillaButton.h
+
+1425607435 source:/media/F/BaiduDisk/Code/C++/Vanilla/Controls/VanillaLabel.cpp
+	"Include.h"
+
+1425609841 source:/media/F/BaiduDisk/Code/C++/Vanilla/DebugCode.cpp
+	"stdafx.h"
+	"VDefine.h"
+	"VStruct.h"
+	"VWindow.h"
+	"VControl.h"
+	"VDrawing.h"
+	"VGlobalFunction.h"
+	"Controls/Include.h"
+	"Utils/VSkinDB.h"
+
+1425608597 /media/F/BaiduDisk/Code/C++/Vanilla/Utils/VSkinDB.h
+
+1425608612 source:/media/F/BaiduDisk/Code/C++/Vanilla/Utils/VHashTable.cpp
+	"../stdafx.h"
+	"../VDefine.h"
+	"VHashTable.h"
+
+1425609062 /media/F/BaiduDisk/Code/C++/Vanilla/Utils/VHashTable.h
+
+1425608620 source:/media/F/BaiduDisk/Code/C++/Vanilla/Utils/VSkinDB.cpp
+	"../stdafx.h"
+	"../VDefine.h"
+	"../VStruct.h"
+	"VHashTable.h"
+	"VSkinDB.h"
+
+1425608949 source:/media/F/BaiduDisk/Code/C++/Vanilla/Utils/VTaskQueue.cpp
+	"../stdafx.h"
+	"../VDefine.h"
+	"../VStruct.h"
+	"../VWindow.h"
+	"../VPort.h"
+	"VHashTable.h"
+	"VTaskQueue.h"
+
+1425608955 /media/F/BaiduDisk/Code/C++/Vanilla/Utils/VTaskQueue.h
+
+1425609379 source:/media/F/BaiduDisk/Code/C++/Vanilla/Controls/VControlRegister.cpp
+	"Include.h"
+
+1425609357 /media/F/BaiduDisk/Code/C++/Vanilla/Controls/VControlRegister.h
+
+1425609757 source:/media/F/BaiduDisk/Code/C++/Vanilla/VWindow.cpp
+	"stdafx.h"
+	"VDefine.h"
+	"VStruct.h"
+	"VWindow.h"
+	"VControl.h"
+	"VControlBase.h"
+	"VDrawing.h"
+	"VPort.h"
+	"VGlobalFunction.h"
+	"Utils/VTaskQueue.h"
+	"Controls/VanillaLabel.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/core/SkUserConfig.h
+	"SkPreConfig.h"
+	"SkUserConfig.h"
+	"SkPostConfig.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/x//SkUserConfig.h
+	"SkPreConfig.h"
+	"SkUserConfig.h"
+	"SkPostConfig.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/x//SkPreConfig.h
+	"config.h"
+	"TargetConditionals.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/x//SkPostConfig.h
+	<windows.h>
+	<string.h>
+	<stdlib.h>
+	"cmnintrin.h"
+	<crtdbg.h>
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/x//SkTypes.h
+	"SkPreConfig.h"
+	"SkUserConfig.h"
+	"SkPostConfig.h"
+	<stdint.h>
+	<sys/types.h>
+	<new>
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/x//SkMath.h
+	"SkTypes.h"
+	<intrin.h>
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/x//SkColor.h
+	"SkScalar.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/x//SkScalar.h
+	"SkFixed.h"
+	"SkFloatingPoint.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/x//SkFixed.h
+	"SkTypes.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/x//SkFloatingPoint.h
+	"SkTypes.h"
+	<math.h>
+	<float.h>
+	<unistd.h>
+	"SkFloatBits.h"
+	<xmmintrin.h>
+	<arm_neon.h>
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/x//SkFloatBits.h
+	"SkTypes.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/x//SkColorPriv.h
+	"SkColor.h"
+	"SkMath.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/x//SkUnPreMultiply.h
+	"SkColor.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/x//SkCanvas.h
+	"SkTypes.h"
+	"SkBitmap.h"
+	"SkDeque.h"
+	"SkClipStack.h"
+	"SkPaint.h"
+	"SkRefCnt.h"
+	"SkPath.h"
+	"SkRegion.h"
+	"SkSurfaceProps.h"
+	"SkXfermode.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/x//SkBitmap.h
+	"SkColor.h"
+	"SkColorTable.h"
+	"SkImageInfo.h"
+	"SkPoint.h"
+	"SkRefCnt.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/x//SkColorTable.h
+	"SkColor.h"
+	"SkFlattenable.h"
+	"SkImageInfo.h"
+	"SkLazyPtr.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/x//SkFlattenable.h
+	"SkRefCnt.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/x//SkRefCnt.h
+	"SkAtomics.h"
+	"SkInstCnt.h"
+	"SkTemplates.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/x//SkAtomics.h
+	"SkTypes.h"
+	"../ports/SkAtomics_std.h"
+	"../ports/SkAtomics_atomic.h"
+	"../ports/SkAtomics_sync.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/x//SkInstCnt.h
+	"SkTypes.h"
+	"SkThread.h"
+	<stdlib.h>
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/x//SkThread.h
+	"SkAtomics.h"
+	"SkMutex.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/x//SkMutex.h
+	"SkTypes.h"
+	"../ports/SkMutex_win.h"
+	"../ports/SkMutex_pthread.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/x//SkTemplates.h
+	"SkMath.h"
+	"SkTypes.h"
+	<limits.h>
+	<new>
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/x//SkImageInfo.h
+	"SkMath.h"
+	"SkRect.h"
+	"SkSize.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/x//SkRect.h
+	"SkPoint.h"
+	"SkSize.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/x//SkPoint.h
+	"SkMath.h"
+	"SkScalar.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/x//SkSize.h
+	"SkScalar.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/x//SkLazyPtr.h
+	"SkAtomics.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/x//SkDeque.h
+	"SkTypes.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/x//SkClipStack.h
+	"SkDeque.h"
+	"SkPath.h"
+	"SkRect.h"
+	"SkRRect.h"
+	"SkRegion.h"
+	"SkTDArray.h"
+	"SkTLazy.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/x//SkPath.h
+	"SkInstCnt.h"
+	"SkMatrix.h"
+	"SkPathRef.h"
+	"SkTDArray.h"
+	"SkRefCnt.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/x//SkMatrix.h
+	"SkRect.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/x//SkPathRef.h
+	"SkMatrix.h"
+	"SkPoint.h"
+	"SkRect.h"
+	"SkRefCnt.h"
+	"SkTDArray.h"
+	<stddef.h>
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/x//SkTDArray.h
+	"SkTypes.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/x//SkRRect.h
+	"SkRect.h"
+	"SkPoint.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/x//SkRegion.h
+	"SkRect.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/x//SkTLazy.h
+	"SkTypes.h"
+	<new>
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/x//SkPaint.h
+	"SkColor.h"
+	"SkDrawLooper.h"
+	"SkFilterQuality.h"
+	"SkMatrix.h"
+	"SkXfermode.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/x//SkDrawLooper.h
+	"SkBlurTypes.h"
+	"SkFlattenable.h"
+	"SkPoint.h"
+	"SkColor.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/x//SkBlurTypes.h
+	"SkTypes.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/x//SkFilterQuality.h
+	"SkTypes.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/x//SkXfermode.h
+	"SkFlattenable.h"
+	"SkColor.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/x//SkSurfaceProps.h
+	"SkTypes.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/x//SkMaskFilter.h
+	"SkBlurTypes.h"
+	"SkFlattenable.h"
+	"SkMask.h"
+	"SkPaint.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/x//SkMask.h
+	"SkRect.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkCanvas.h
+	"SkTypes.h"
+	"SkBitmap.h"
+	"SkDeque.h"
+	"SkClipStack.h"
+	"SkPaint.h"
+	"SkRefCnt.h"
+	"SkPath.h"
+	"SkRegion.h"
+	"SkSurfaceProps.h"
+	"SkXfermode.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkTypes.h
+	"SkPreConfig.h"
+	"SkUserConfig.h"
+	"SkPostConfig.h"
+	<stdint.h>
+	<sys/types.h>
+	<new>
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkPreConfig.h
+	"config.h"
+	"TargetConditionals.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkUserConfig.h
+	"SkPreConfig.h"
+	"SkUserConfig.h"
+	"SkPostConfig.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkPostConfig.h
+	<windows.h>
+	<string.h>
+	<stdlib.h>
+	"cmnintrin.h"
+	<crtdbg.h>
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkBitmap.h
+	"SkColor.h"
+	"SkColorTable.h"
+	"SkImageInfo.h"
+	"SkPoint.h"
+	"SkRefCnt.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkColor.h
+	"SkScalar.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkScalar.h
+	"SkFixed.h"
+	"SkFloatingPoint.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkFixed.h
+	"SkTypes.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkFloatingPoint.h
+	"SkTypes.h"
+	<math.h>
+	<float.h>
+	<unistd.h>
+	"SkFloatBits.h"
+	<xmmintrin.h>
+	<arm_neon.h>
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkFloatBits.h
+	"SkTypes.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkColorTable.h
+	"SkColor.h"
+	"SkFlattenable.h"
+	"SkImageInfo.h"
+	"SkLazyPtr.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkFlattenable.h
+	"SkRefCnt.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkRefCnt.h
+	"SkAtomics.h"
+	"SkInstCnt.h"
+	"SkTemplates.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkAtomics.h
+	"SkTypes.h"
+	"../ports/SkAtomics_std.h"
+	"../ports/SkAtomics_atomic.h"
+	"../ports/SkAtomics_sync.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkInstCnt.h
+	"SkTypes.h"
+	"SkThread.h"
+	<stdlib.h>
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkThread.h
+	"SkAtomics.h"
+	"SkMutex.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkMutex.h
+	"SkTypes.h"
+	"../ports/SkMutex_win.h"
+	"../ports/SkMutex_pthread.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkTemplates.h
+	"SkMath.h"
+	"SkTypes.h"
+	<limits.h>
+	<new>
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkMath.h
+	"SkTypes.h"
+	<intrin.h>
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkImageInfo.h
+	"SkMath.h"
+	"SkRect.h"
+	"SkSize.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkRect.h
+	"SkPoint.h"
+	"SkSize.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkPoint.h
+	"SkMath.h"
+	"SkScalar.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkSize.h
+	"SkScalar.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkLazyPtr.h
+	"SkAtomics.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkDeque.h
+	"SkTypes.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkClipStack.h
+	"SkDeque.h"
+	"SkPath.h"
+	"SkRect.h"
+	"SkRRect.h"
+	"SkRegion.h"
+	"SkTDArray.h"
+	"SkTLazy.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkPath.h
+	"SkInstCnt.h"
+	"SkMatrix.h"
+	"SkPathRef.h"
+	"SkTDArray.h"
+	"SkRefCnt.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkMatrix.h
+	"SkRect.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkPathRef.h
+	"SkMatrix.h"
+	"SkPoint.h"
+	"SkRect.h"
+	"SkRefCnt.h"
+	"SkTDArray.h"
+	<stddef.h>
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkTDArray.h
+	"SkTypes.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkRRect.h
+	"SkRect.h"
+	"SkPoint.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkRegion.h
+	"SkRect.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkTLazy.h
+	"SkTypes.h"
+	<new>
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkPaint.h
+	"SkColor.h"
+	"SkDrawLooper.h"
+	"SkFilterQuality.h"
+	"SkMatrix.h"
+	"SkXfermode.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkDrawLooper.h
+	"SkBlurTypes.h"
+	"SkFlattenable.h"
+	"SkPoint.h"
+	"SkColor.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkBlurTypes.h
+	"SkTypes.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkFilterQuality.h
+	"SkTypes.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkXfermode.h
+	"SkFlattenable.h"
+	"SkColor.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkSurfaceProps.h
+	"SkTypes.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkData.h
+	"SkRefCnt.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkGraphics.h
+	"SkTypes.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkSurface.h
+	"SkRefCnt.h"
+	"SkImage.h"
+	"SkSurfaceProps.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkImage.h
+	"SkFilterQuality.h"
+	"SkImageInfo.h"
+	"SkImageEncoder.h"
+	"SkRefCnt.h"
+	"SkScalar.h"
+	"SkShader.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkImageEncoder.h
+	"SkImageInfo.h"
+	"SkTRegistry.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkTRegistry.h
+	"SkTypes.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkShader.h
+	"SkBitmap.h"
+	"SkFlattenable.h"
+	"SkMask.h"
+	"SkMatrix.h"
+	"SkPaint.h"
+	"../gpu/GrColor.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkMask.h
+	"SkRect.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkDevice.h
+	"SkRefCnt.h"
+	"SkBitmap.h"
+	"SkCanvas.h"
+	"SkColor.h"
+	"SkImageFilter.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkImageFilter.h
+	"SkFlattenable.h"
+	"SkMatrix.h"
+	"SkRect.h"
+	"SkTemplates.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkString.h
+	"SkScalar.h"
+	"SkTArray.h"
+	<stdarg.h>
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkTArray.h
+	<new>
+	"SkTypes.h"
+	"SkTemplates.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkImageDecoder.h
+	"SkBitmap.h"
+	"SkImage.h"
+	"SkRect.h"
+	"SkRefCnt.h"
+	"SkTRegistry.h"
+	"SkTypes.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkStream.h
+	"SkRefCnt.h"
+	"SkScalar.h"
+	"SkString.h"
+	<stdio.h>
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkTypeface.h
+	"SkAdvancedTypefaceMetrics.h"
+	"SkFontStyle.h"
+	"SkLazyPtr.h"
+	"SkWeakRefCnt.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkAdvancedTypefaceMetrics.h
+	"SkRect.h"
+	"SkRefCnt.h"
+	"SkString.h"
+	"SkTDArray.h"
+	"SkTemplates.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkFontStyle.h
+	"SkTypes.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkWeakRefCnt.h
+	"SkRefCnt.h"
+	"SkThread.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkTextBox.h
+	"SkCanvas.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkForceLinking.h
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkBlurMaskFilter.h
+	"SkMaskFilter.h"
+	"SkScalar.h"
+	"SkBlurTypes.h"
+
+1425001975 /media/F/BaiduDisk/Code/C++/Vanilla/Skia/SkMaskFilter.h
+	"SkBlurTypes.h"
+	"SkFlattenable.h"
+	"SkMask.h"
+	"SkPaint.h"
+
