@@ -33,7 +33,7 @@
 
 
 
-typedef char* VanillaText;
+typedef const char* VanillaText;
 
 typedef std::string VanillaString;
 

@@ -29,7 +29,7 @@ VanillaVoid WriteFileText(FILE* File, VanillaText String) {
 VanillaText ReadFileText(FILE* File) {
 	int Length = 0;
 	fread(&Length, 1, 4, File);
-	VanillaText Buffer = new char[Length + 1];
+	char* Buffer = new char[Length + 1];
 	fread(Buffer, 1, Length, File);
 	Buffer [Length] = 0;
 	return Buffer;

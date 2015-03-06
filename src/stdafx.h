@@ -15,7 +15,7 @@
 //#pragma clang diagnostic ignored "-Wundefined-bool-conversion"
 //#pragma clang diagnostic ignored "-Wpedantic"
 //#pragma clang diagnostic ignored "-Wnull-conversion"
-#pragma clang diagnostic ignored "-Wwritable-strings"
+//#pragma clang diagnostic ignored "-Wwritable-strings"
 //#define __debugbreak DebugBreak
 #endif
 
@@ -27,4 +27,4 @@
 #include <vector>
 #include <map>
 #include <time.h>
-#include "Skia.h"
+#include "../include/Skia.h"

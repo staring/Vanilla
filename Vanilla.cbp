@@ -20,24 +20,25 @@
 					<Add option="-g" />
 					<Add option="-DLINUX" />
 					<Add option="-DCLANG" />
-					<Add directory="Skia/animator" />
-					<Add directory="Skia/config" />
-					<Add directory="Skia/core" />
-					<Add directory="Skia/device" />
-					<Add directory="Skia/device/xps" />
-					<Add directory="Skia/effects" />
-					<Add directory="Skia/gpu" />
-					<Add directory="Skia/gpu/effects" />
-					<Add directory="Skia/gpu/gl" />
-					<Add directory="Skia/gpu/gl/angle" />
-					<Add directory="Skia/images" />
-					<Add directory="Skia/pipe" />
-					<Add directory="Skia/ports" />
-					<Add directory="Skia/svg" />
-					<Add directory="Skia/svg/parser" />
-					<Add directory="Skia/views" />
-					<Add directory="Skia/views/animated" />
-					<Add directory="Skia/xml" />
+					<Add directory="include/Skia/animator" />
+					<Add directory="include/Skia/config" />
+					<Add directory="include/Skia/core" />
+					<Add directory="include/Skia/device" />
+					<Add directory="include/Skia/device/xps" />
+					<Add directory="include/Skia/effects" />
+					<Add directory="include/Skia/gpu" />
+					<Add directory="include/Skia/gpu/effects" />
+					<Add directory="include/Skia/gpu/gl" />
+					<Add directory="include/Skia/gpu/gl/angle" />
+					<Add directory="include/Skia/images" />
+					<Add directory="include/Skia/pipe" />
+					<Add directory="include/Skia/ports" />
+					<Add directory="include/Skia/svg" />
+					<Add directory="include/Skia/svg/parser" />
+					<Add directory="include/Skia/views" />
+					<Add directory="include/Skia/views/animated" />
+					<Add directory="include/Skia/xml" />
+					<Add directory="include/Skia/utils" />
 				</Compiler>
 				<Linker>
 					<Add option="-Wl,--start-group /home/Menci/Projects/Skia_Compiled/Debug/libSkia.a /home/Menci/Projects/Skia_Compiled/Debug/obj/gyp/*.a -Wl,--end-group -lpng -lz -lgif -lpthread -lfontconfig -ldl -lfreetype -lGL -lGLU -lX11 -lxcb -lxcb-image -lxcb-composite -lcairo" />
@@ -60,38 +61,36 @@
 				</Linker>
 			</Target>
 		</Build>
-		<Unit filename="Controls/Include.h" />
-		<Unit filename="Controls/VControlRegister.cpp" />
-		<Unit filename="Controls/VControlRegister.h" />
-		<Unit filename="Controls/VanillaButton.cpp" />
-		<Unit filename="Controls/VanillaButton.h" />
-		<Unit filename="Controls/VanillaLabel.cpp" />
-		<Unit filename="Controls/VanillaLabel.h" />
-		<Unit filename="DebugCode.cpp">
-			<Option target="Debug" />
-		</Unit>
-		<Unit filename="Skia.h" />
-		<Unit filename="Utils/VHashTable.cpp" />
-		<Unit filename="Utils/VHashTable.h" />
-		<Unit filename="Utils/VSkinDB.cpp" />
-		<Unit filename="Utils/VSkinDB.h" />
-		<Unit filename="Utils/VTaskQueue.cpp" />
-		<Unit filename="Utils/VTaskQueue.h" />
-		<Unit filename="VControl.cpp" />
-		<Unit filename="VControl.h" />
-		<Unit filename="VControlBase.cpp" />
-		<Unit filename="VControlBase.h" />
-		<Unit filename="VDefine.h" />
-		<Unit filename="VDrawing.cpp" />
-		<Unit filename="VDrawing.h" />
-		<Unit filename="VGlobalFunction.cpp" />
-		<Unit filename="VGlobalFunction.h" />
-		<Unit filename="VPort.cpp" />
-		<Unit filename="VPort.h" />
-		<Unit filename="VStruct.h" />
-		<Unit filename="VWindow.cpp" />
-		<Unit filename="VWindow.h" />
-		<Unit filename="stdafx.h" />
+		<Unit filename="src/Controls/Include.h" />
+		<Unit filename="src/Controls/VControlRegister.cpp" />
+		<Unit filename="src/Controls/VControlRegister.h" />
+		<Unit filename="src/Controls/VanillaButton.cpp" />
+		<Unit filename="src/Controls/VanillaButton.h" />
+		<Unit filename="src/Controls/VanillaLabel.cpp" />
+		<Unit filename="src/Controls/VanillaLabel.h" />
+		<Unit filename="src/DebugCode.cpp" />
+		<Unit filename="src/Skia.h" />
+		<Unit filename="src/Utils/VHashTable.cpp" />
+		<Unit filename="src/Utils/VHashTable.h" />
+		<Unit filename="src/Utils/VSkinDB.cpp" />
+		<Unit filename="src/Utils/VSkinDB.h" />
+		<Unit filename="src/Utils/VTaskQueue.cpp" />
+		<Unit filename="src/Utils/VTaskQueue.h" />
+		<Unit filename="src/VControl.cpp" />
+		<Unit filename="src/VControl.h" />
+		<Unit filename="src/VControlBase.cpp" />
+		<Unit filename="src/VControlBase.h" />
+		<Unit filename="src/VDefine.h" />
+		<Unit filename="src/VDrawing.cpp" />
+		<Unit filename="src/VDrawing.h" />
+		<Unit filename="src/VGlobalFunction.cpp" />
+		<Unit filename="src/VGlobalFunction.h" />
+		<Unit filename="src/VPort.cpp" />
+		<Unit filename="src/VPort.h" />
+		<Unit filename="src/VStruct.h" />
+		<Unit filename="src/VWindow.cpp" />
+		<Unit filename="src/VWindow.h" />
+		<Unit filename="src/stdafx.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
