@@ -69,7 +69,6 @@
 		<Unit filename="src/Controls/VanillaLabel.cpp" />
 		<Unit filename="src/Controls/VanillaLabel.h" />
 		<Unit filename="src/DebugCode.cpp" />
-		<Unit filename="src/Skia.h" />
 		<Unit filename="src/Utils/VHashTable.cpp" />
 		<Unit filename="src/Utils/VHashTable.h" />
 		<Unit filename="src/Utils/VSkinDB.cpp" />
