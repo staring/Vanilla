@@ -119,7 +119,7 @@ typedef struct VStringFormat
 	VanillaColor Color;
 	VanillaColor Shadow;
 	VanillaInt Style;
-	SkScalar  Size;
+	SkScalar Size;
 	static SkMaskFilter* BlurMaskFilter;
 }*VanillaStringFormat, _VStringFromat;
 

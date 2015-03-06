@@ -26,10 +26,10 @@ VAPI(void) DLLDebug() {
 	//VanillaSetWindowUserProc(Window, &TestWindowUserProc);
 	//ARGB();
 	// Load a SkinDB
-	//VanillaBin Bin = VanillaReadFileToBin("./Bkg.png");
-	//VanillaSkinDB SkinDB = VanillaSkinDBCreate("Vanilla Default Skin");
+	//VanillaBin Bin = VanillaReadFileToBin("DebugResource/LogoBkg.png");
+	//VanillaSkinDB SkinDB = VanillaSkinDBCreate("Vanilla Debug SkinDB");
 	//VanillaSkinDBSet(SkinDB, "Bkg", Bin);
-	//VanillaSkinDBSave(SkinDB, "skindb.vsk");
+	//VanillaSkinDBSave(SkinDB, "DebugResource/skindb.vsk");
 
 
 	// Get the image
@@ -40,7 +40,7 @@ VAPI(void) DLLDebug() {
 	BkgImage = VanillaLoadImageFromBinary(Bin2);
 	VanillaSkinDBDestroy(SkinDB2);
 
-	Window = VanillaCreateWindow(RECT(100, 100, 600, 460), VWS_TITLE | VWS_POSMIDDLE | VWS_CTLBTN_MIN, "VanillaUI Project On Linux", VanillaCreateStringFormat("文泉驿微米黑", 12, ARGB(255, 0, 0, 0), ARGB(255, 255, 255, 255), VTS_VALIGN_TOP), NULL, ARGB(255, 128, 128, 128), NULL, VWFS_RECT);
+	Window = VanillaCreateWindow(RECT(100, 100, 600, 500), VWS_TITLE | VWS_POSMIDDLE | VWS_CTLBTN_MIN, "VanillaUI Project On Linux", VanillaCreateStringFormat("文泉驿微米黑", 12, ARGB(255, 0, 0, 0), ARGB(255, 255, 255, 255), VTS_VALIGN_TOP), NULL, ARGB(255, 128, 128, 128), NULL, VWFS_RECT);
 
 
 	VanillaSetWindowBkg(Window, BkgImage, 0, VBT_TENSILE | VBT_NOCOLORFILL);
@@ -54,16 +54,16 @@ VAPI(void) DLLDebug() {
 	//VanillaControl Control1 = VanillaControlCreate(Window, NULL, L"TestControlClass");
 	//VanillaControlInitialize(Control1, &VRect(50, 50, 100, 100), NULL, (int)Control1, (LPVOID)30103);
 
-	Label1 = VanillaLabelCreate(VanillaGetWindowRootControl(Window), RECT(50, 50, 100, 100), "Label", VanillaCreateStringFormat("文泉驿微米黑", 12, ARGB(255, 0, 0, 0), ARGB(255, 255, 255, 255), VTS_ALIGN_CENTER | VTS_VALIGN_MIDDLE | VTS_SHADOW), true, true);
-	Label2 = VanillaLabelCreate(Label1, RECT(0, 0, 80, 50), "\r\n\r\nSubLabel", VanillaCreateStringFormat("文泉驿微米黑", 12, ARGB(255, 0, 0, 0), ARGB(255, 255, 255, 255), VTS_ALIGN_CENTER | VTS_VALIGN_MIDDLE | VTS_SHADOW), true, true);
+	Label1 = VanillaLabelCreate(VanillaGetWindowRootControl(Window), RECT(470, 40, 80, 35), "Text With Shadow", VanillaCreateStringFormat("文泉驿微米黑", 12, ARGB(255, 0, 0, 0), ARGB(255, 255, 255, 255), VTS_ALIGN_CENTER | VTS_VALIGN_MIDDLE | VTS_SHADOW), true, true);
+	Label2 = VanillaLabelCreate(VanillaGetWindowRootControl(Window), RECT(470, 90, 80, 35), "Text Without Shadow", VanillaCreateStringFormat("文泉驿微米黑", 12, ARGB(255, 0, 0, 0), ARGB(255, 255, 255, 255), VTS_ALIGN_CENTER | VTS_VALIGN_MIDDLE), true, true);
 
-	VanillaColor ButtonColor[] = { ARGB(196, 0, 102, 178), ARGB(196, 0, 153, 153), ARGB(196, 0, 178, 102), ARGB(196, 123, 123, 123), ARGB(196, 255, 255, 255) };
-	Button1 = VanillaButtonCreate(VanillaGetWindowRootControl(Window), RECT(50, 210, 90, 35), " I am a Button.\r\n=_=哦哦", VanillaCreateStringFormat("文泉驿微米黑", 12, ARGB(255, 0, 0, 0), ARGB(255, 255, 255, 255), VTS_ALIGN_CENTER | VTS_VALIGN_MIDDLE | VTS_SHADOW), true, true);
-	Button2 = VanillaButtonCreate(VanillaGetWindowRootControl(Window), RECT(50, 250, 90, 35), " I am a Button, too.\r\n=_=", VanillaCreateStringFormat("文泉驿微米黑", 12, ARGB(255, 0, 0, 0), ARGB(255, 255, 255, 255), VTS_ALIGN_CENTER | VTS_VALIGN_MIDDLE | VTS_SHADOW), true, true);
-	Button3 = VanillaButtonCreate(VanillaGetWindowRootControl(Window), RECT(50, 400, 90, 35), "Close Window", VanillaCreateStringFormat("文泉驿微米黑", 12, ARGB(255, 0, 0, 0), ARGB(255, 255, 255, 255), VTS_ALIGN_CENTER | VTS_VALIGN_MIDDLE | VTS_SHADOW), true, true);
-	VanillaButtonSetStyle_Metro(Button1, ButtonColor);
-	VanillaButtonSetStyle_Metro(Button2, ButtonColor);
-	VanillaButtonSetStyle_Metro(Button3, ButtonColor);
+	VanillaColor ButtonColor1[] = { ARGB(196, 0, 102, 178), ARGB(196, 0, 153, 153), ARGB(196, 0, 178, 102), ARGB(196, 123, 123, 123), ARGB(196, 255, 255, 255) };
+	VanillaColor ButtonColor2[] = { ARGB(196, 80, 102, 178), ARGB(196, 80, 153, 153), ARGB(196, 80, 178, 102), ARGB(196, 200, 123, 123), ARGB(196, 255, 200, 200) };
+	Button1 = VanillaButtonCreate(VanillaGetWindowRootControl(Window), RECT(340, 40, 90, 35), "I'm a Button", VanillaCreateStringFormat("文泉驿微米黑", 12, ARGB(255, 0, 0, 0), ARGB(255, 255, 255, 255), VTS_ALIGN_CENTER | VTS_VALIGN_MIDDLE | VTS_SHADOW), true, true);
+	Button2 = VanillaButtonCreate(VanillaGetWindowRootControl(Window), RECT(340, 90, 90, 35), "I'm a Button, too", VanillaCreateStringFormat("文泉驿微米黑", 12, ARGB(255, 0, 0, 0), ARGB(255, 255, 255, 255), VTS_ALIGN_CENTER | VTS_VALIGN_MIDDLE | VTS_SHADOW), true, true);
+	VanillaButtonSetStyle_Metro(Button1, ButtonColor1);
+	VanillaButtonSetStyle_Metro(Button2, ButtonColor2);
+	//VanillaButtonSetStyle_Metro(Button3, ButtonColor);
 
 
 	VanillaControlSetDefaultEventProc(&TestEventProc);

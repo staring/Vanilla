@@ -64,9 +64,11 @@ VAPI(VanillaVoid) VanillaDrawString(VanillaGraphics Graphics, VanillaStringForma
 	Graphics->Paint.setTextAlign(StringFormat->Align);
 	SkTextBox* TextBox = VanillaCreateTextBox(Graphics, StringFormat, String, &RectD);
 	TextBox->draw(&Graphics->Canvas);
-	Graphics->Paint.setMaskFilter(StringFormat->BlurMaskFilter);
-	Graphics->Paint.setColor(StringFormat->Shadow);
-	TextBox->draw(&Graphics->Canvas);
+	if (StringFormat->Style & VTS_SHADOW) {
+        Graphics->Paint.setMaskFilter(StringFormat->BlurMaskFilter);
+        Graphics->Paint.setColor(StringFormat->Shadow);
+        TextBox->draw(&Graphics->Canvas);
+	}
 	delete TextBox;
 }
 
