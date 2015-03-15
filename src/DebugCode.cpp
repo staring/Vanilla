@@ -39,13 +39,17 @@ VAPI(void) DLLDebug() {
 	//BkgImage = VanillaLoadImageFromFile(L"./Bkg.png", 0, 0);
 	BkgImage = VanillaLoadImageFromBinary(Bin2);
 	VanillaSkinDBDestroy(SkinDB2);
-
-	Window = VanillaCreateWindow(RECT(100, 100, 600, 500), VWS_TITLE | VWS_POSMIDDLE | VWS_CTLBTN_MIN, "VanillaUI Project On Linux", VanillaCreateStringFormat("文泉驿微米黑", 12, ARGB(255, 0, 0, 0), ARGB(255, 255, 255, 255), VTS_VALIGN_TOP), NULL, ARGB(255, 128, 128, 128), NULL, VWFS_RECT);
+#ifdef WIN32
+	VanillaText Title = "Vanilla Project On Windows";
+#elif defined LINUX
+	VanillaText Title = "Vanilla Project On Linux";
+#endif
+	Window = VanillaCreateWindow(RECT(100, 100, 600, 500), VWS_TITLE | VWS_POSMIDDLE | VWS_CTLBTN_MIN, Title, VanillaCreateStringFormat("文泉驿微米黑", 12, ARGB(255, 0, 0, 0), ARGB(255, 255, 255, 255), VTS_VALIGN_TOP), NULL, ARGB(255, 128, 128, 128), NULL, VWFS_RECT);
 
 
 	VanillaSetWindowBkg(Window, BkgImage, 0, VBT_TENSILE | VBT_NOCOLORFILL);
 	VanillaSetWindowShadowColor(Window, RGB(0, 0, 0));
-	VanillaSetWindowComposite(Window, false);
+	VanillaSetWindowComposite(Window, true);
 	VanillaSetWindowAlpha(Window, 216);
 
 

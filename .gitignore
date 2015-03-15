@@ -26,3 +26,8 @@ obj
 out
 bin
 LinuxDebug
+Debug
+
+*.suo
+*.sdf
+*.opensdf

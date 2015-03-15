@@ -5,6 +5,7 @@
 #include "VControl.h"
 #include "VDrawing.h"
 #include "VGlobalFunction.h"
+#include "VPort.h"
 
 
 #ifdef WIN32
@@ -434,7 +435,7 @@ VanillaString VanillaPortGetWindowTitle(VanillaPortWindow PortWindow) {
 		int Length = GetWindowTextLengthW(PortWindow->hWnd);
 		wchar_t* Buffers = new wchar_t [Length + 1];
 		GetWindowTextW(PortWindow->hWnd, Buffers, Length);
-		VanillaString Result = VanillaPort_W2U((wstring)Buffers);
+		VanillaString Result = VanillaPort_W2U((std::wstring)Buffers);
 		delete []Buffers;
 		return Result;
 #elif defined LINUX
@@ -528,15 +529,16 @@ VanillaVoid VanillaPortDragWindow(VanillaPortWindow PortWindow) {
 VanillaVoid VanillaPortDestroyGraphicsOfWindowCachedInMemoey(VanillaGraphics Graphics) {
 	if (Graphics) {
 #ifdef WIN32
-		Graphics->Bitmap.reset();
-		DeleteObject((HBITMAP)SelectObject(Graphics->MemoryDC, (HGDIOBJ)Graphics->OldBitmap));
-		DeleteDC(Graphics->MemoryDC);
+	Graphics->Bitmap.reset();
+	DeleteObject((HBITMAP)SelectObject(Graphics->PortGraphics->MemoryDC, (HGDIOBJ)Graphics->PortGraphics->OldBitmap));
+	DeleteDC(Graphics->PortGraphics->MemoryDC);
+	delete Graphics->PortGraphics;
         VanillaDestroyGraphics(Graphics);
 #elif defined LINUX
         cairo_surface_destroy(Graphics->PortGraphics->cairo_surface);
         delete Graphics->PortGraphics;
         VanillaDestroyGraphics(Graphics);
-		//xcb_free_pixmap(connection, Graphics->bitmap);
+	//xcb_free_pixmap(connection, Graphics->bitmap);
 #endif
 	}
 	return;
@@ -564,16 +566,18 @@ VanillaGraphics VanillaPortCreateGraphicsOfWindowCachedInMemoey(VanillaWindow Wi
 		}
 
 		HBITMAP OldBitmap = (HBITMAP)SelectObject(MemoryDC, (HGDIOBJ)HBitmap);
-		SkBitmap Bitmap;
-		Bitmap.installPixels(SkImageInfo::MakeN32Premul(Window->Rect.Width, Window->Rect.Height), Bits, ((Window->Rect.Width * 32 + 15) / 16) * 2);
+		
 		//Bitmap.setConfig(SkBitmap::kARGB_8888_Config, Window->Rect.Width, Window->Rect.Height, ((Window->Rect.Width * 32 + 15) / 16) * 2);
 		//Bitmap.setPixels(Bits);
-		VanillaGraphics Graphics = new VGraphics(Bitmap);
-		Graphics->MemoryDC = MemoryDC;
-		Graphics->CurrentBitmap = HBitmap;
+		VanillaGraphics Graphics = new VGraphics;
+		Graphics->Bitmap.installPixels(SkImageInfo::MakeN32Premul(Window->Rect.Width, Window->Rect.Height), Bits, ((Window->Rect.Width * 32 + 15) / 16) * 2);
+		new (&Graphics->Canvas) SkCanvas(Graphics->Bitmap);
+		Graphics->PortGraphics = new VPortGraphics;
+		Graphics->PortGraphics->MemoryDC = MemoryDC;
+		Graphics->PortGraphics->CurrentBitmap = HBitmap;
 		Graphics->Width = Window->Rect.Width;
 		Graphics->Height = Window->Rect.Height;
-		Graphics->OldBitmap = OldBitmap;
+		Graphics->PortGraphics->OldBitmap = OldBitmap;
 		return Graphics;
 #elif defined LINUX
        	//SkBitmap Bitmap;
@@ -603,7 +607,7 @@ VanillaVoid VanillaPortUpdateWindow(VanillaWindow Window, VanillaRect UpdateRect
 			POINT pt1 = { Window->Rect.Left, Window->Rect.Top };
 			POINT pt2 = { 0, 0 };
 			SIZE sz = { Window->Rect.Width, Window->Rect.Height };
-			HDC SrcDC = Window->GraphicsWindow->MemoryDC;
+			HDC SrcDC = Window->GraphicsWindow->PortGraphics->MemoryDC;
 			UpdateLayeredWindow(Window->PortWindow->hWnd,
 				Window->PortWindow->hDC,
 				&pt1,
@@ -622,7 +626,7 @@ VanillaVoid VanillaPortUpdateWindow(VanillaWindow Window, VanillaRect UpdateRect
 				_UpdateRect.Top = 0;
 				UpdateRect = &_UpdateRect;
 			}
-			BitBlt(Window->PortWindow->hDC, UpdateRect->Left, UpdateRect->Top, UpdateRect->Width, UpdateRect->Height, Window->GraphicsWindow->MemoryDC, UpdateRect->Left, UpdateRect->Top, SRCCOPY);
+			BitBlt(Window->PortWindow->hDC, UpdateRect->Left, UpdateRect->Top, UpdateRect->Width, UpdateRect->Height, Window->GraphicsWindow->PortGraphics->MemoryDC, UpdateRect->Left, UpdateRect->Top, SRCCOPY);
 		}
 #elif defined LINUX
         VRect _UpdateRect;
@@ -747,7 +751,7 @@ LRESULT CALLBACK VanillaPortWin32WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam,
 	case WM_PAINT: {
 		PAINTSTRUCT ps;
 		BeginPaint(hWnd, &ps);
-		BitBlt(ps.hdc, 0, 0, Window->Rect.Width, Window->Rect.Height, Window->GraphicsWindow->MemoryDC, 0, 0, SRCCOPY);
+		BitBlt(ps.hdc, 0, 0, Window->Rect.Width, Window->Rect.Height, Window->GraphicsWindow->PortGraphics->MemoryDC, 0, 0, SRCCOPY);
 		EndPaint(hWnd, &ps);
 		return 0;
 		break;
@@ -840,7 +844,7 @@ LRESULT CALLBACK VanillaPortWin32WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam,
 }
 
 VanillaControl VanillaPortWin32DispatchMessage_Mouse(VanillaWindow Window, LPARAM lParam, VanillaInt Action, VanillaInt Code) {
-	return VanillaPortDispatchMouseMessage(Window, Action, Code, VPoint(LOWORD(lParam), HIWORD(lParam)))
+	return VanillaPortDispatchMouseMessage(Window, Action, Code, VPoint(LOWORD(lParam), HIWORD(lParam)));
 }
 
 #elif defined LINUX
