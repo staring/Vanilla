@@ -1,3 +1,5 @@
+#ifndef __VCONTROLBASE_H__
+#define __VCONTROLBASE_H__
 // Vanilla Control Base Class
 
 #ifdef SendMessage
@@ -93,3 +95,4 @@ private:
 };
 
 VanillaInt VanillaBasedControlProc(VanillaInt ID, VanillaInt Message, VanillaInt Param1, VanillaInt Param2);
+#endif	//__VCONTROLBASE_H__

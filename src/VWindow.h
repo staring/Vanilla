@@ -1,4 +1,5 @@
-#pragma once
+#ifndef __VWINDOW_H__
+#define __VWINDOW_H__
 
 #define VWS_POSMIDDLE		1   //居中
 #define VWS_CTLBTN_LEFT		256
@@ -105,3 +106,4 @@ VanillaVoid VanillaWindowUpdate(VanillaWindow Window, VanillaRect UpdateRect);
 VanillaVoid VanillaWindowUpdateGraphicsRect(VanillaWindow Window, VanillaRect UpdateRect, VanillaBool ForceRedraw, VanillaBool Flash);
 
 VanillaInt VanillaWindowDefaultControlsProc(VanillaInt ID, VanillaInt Message, VanillaInt Param1, VanillaInt Param2);
+#endif	//__VWINDOW_H__

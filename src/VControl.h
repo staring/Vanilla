@@ -1,7 +1,7 @@
+#ifndef __VCONTROL_H__
+#define __VCONTROL_H__
+
 // Vanilla控件处理
-#pragma once
-
-
 
 #define VM_CREATE	1
 #define VM_DESTROY	2
@@ -153,3 +153,4 @@ VAPI(VanillaControl) VanillaFindControlInControl(VanillaControl ParentControl, V
 VanillaInt VanillaDefaultControlProc(VanillaControl Control, VanillaInt Message, VanillaInt Param1, VanillaInt Param2);
 
 extern std::map<VanillaString, VanillaControlClass> ControlClasses;
+#endif	//__VCONTROL_H__

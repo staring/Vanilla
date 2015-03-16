@@ -1,3 +1,6 @@
+#ifndef __VPORT_H__
+#define __VPORT_H__
+
 #define VanillaPort_ICONV std::string _VanillaPort_lpu;char* _VanillaPort_lpu_;int _VanillaPort_lpu_len;std::wstring _VanillaPort_lpw;wchar_t* _VanillaPort_lpw_;int _VanillaPort_lpw_len;
 
 #define VanillaPort_U2W(VanillaPort_lpu) ((_VanillaPort_lpu = (VanillaPort_lpu),_VanillaPort_lpu_=(char*)(_VanillaPort_lpu.c_str()),_VanillaPort_lpu_len = strlen(_VanillaPort_lpu_),_VanillaPort_lpw_len = VanillaPortUTF8ToUTF16(NULL, NULL, _VanillaPort_lpu_, _VanillaPort_lpu_len) + 1,_VanillaPort_lpw_ = (wchar_t*)malloc(_VanillaPort_lpw_len * 2),VanillaPortUTF8ToUTF16(_VanillaPort_lpw_, _VanillaPort_lpw_len, _VanillaPort_lpu_, _VanillaPort_lpu_len),_VanillaPort_lpw=_VanillaPort_lpw_,free(_VanillaPort_lpw_),_VanillaPort_lpw))
@@ -24,3 +27,4 @@ VanillaInt VanillaPortMessageLoop();
 VanillaInt VanillaPortGetTickCount();
 
 VanillaControl VanillaPortDispatchMouseMessage(VanillaWindow Window, VanillaInt Action, VanillaInt Button, VPoint pt);
+#endif	//__VPORT_H__

@@ -1,3 +1,5 @@
+#ifndef __VDEFINE_H__
+#define __VDEFINE_H__
 // Vanilla Defines
 
 #define DEBUG_BORDER 0
@@ -98,3 +100,4 @@ typedef struct VTaskQueue *VanillaTaskQueue, _VTaskQueue;
 typedef int(*VCtlProc)(VanillaInt ID, VanillaInt Message, VanillaInt Param1, VanillaInt Param2);
 
 typedef int(*VCtlEventProc)(VanillaWindow Window, VanillaControl Control, VanillaInt Event, VanillaInt Param1, VanillaInt Param2, VanillaInt Param3);
+#endif	//__VDEFINE_H__

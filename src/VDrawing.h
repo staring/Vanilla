@@ -1,5 +1,6 @@
+#ifndef __VDRAWING_H__
+#define __VDRAWING_H__
 // Vanilla Drawing Functions
-#pragma once
 
 #define VTS_BOLD 1
 #define VTS_ITALIC 2
@@ -33,3 +34,4 @@ VAPI(VanillaVoid) VanillaDestroyGraphics(VanillaGraphics Graphics);
 VAPI(VanillaImage) VanillaLoadImageFromFile(VanillaText FileName);
 VAPI(VanillaImage) VanillaLoadImageFromBinary(VanillaBin Binary);
 VAPI(VanillaVoid) VanillaDestroyImage(VanillaImage Image);
+#endif	//__VDRAWING_H__

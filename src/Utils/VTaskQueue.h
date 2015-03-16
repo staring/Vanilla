@@ -1,5 +1,6 @@
+#ifndef __VTSAKQUEUE_H__
+#define __VTSAKQUEUE_H__
 // Vanilla Task Queue (not used yet)
-#pragma once
 
 // 任务优先级
 #define VTL_NORMAL	0	// 普通
@@ -33,3 +34,4 @@ typedef struct VTaskQueue
 	VanillaInt DoWork();
 	VanillaInt IsDone();
 } *VanillaTaskQueue, _VTaskQueue;
+#endif	//__VTSAKQUEUE_H__

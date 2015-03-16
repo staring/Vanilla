@@ -1,5 +1,6 @@
+#ifndef __VANILLALBEL_H__
+#define __VANILLALBEL_H__
 // Vanilla按钮(控件)
-#pragma once
 
 #define VBS_METRO 1
 #define VBS_IMAGE 2
@@ -48,3 +49,4 @@ VAPI(VanillaInt) VanillaButtonGetStyle(VanillaControl Control);
 VAPI(VanillaVoid) VanillaButtonSetTitle(VanillaControl Control, VanillaText Title);
 VAPI(VanillaVoid) VanillaButtonSetStringFormat(VanillaControl Control, VanillaStringFormat StringFormat);
 VAPI(VanillaText) VanillaButtonGetTitle(VanillaControl Control);
+#endif	//__VANILLALBEL_H__
