@@ -1,4 +1,4 @@
-// Vanilla Window
+﻿// Vanilla Window
 #include "stdafx.h"
 #include "VDefine.h"
 #include "VStruct.h"
@@ -225,6 +225,7 @@ VanillaVoid VanillaWindowDrawBackgroundImage(VanillaWindow Window, VanillaGraphi
 		VanillaDrawRect(Graphics, ARGB(102, 255, 255, 255), 6, 6, Window->Rect.Width - 12, Window->Rect.Height - 12, 1);
 
 		if (ShadowColor != -1) {
+			/*绘制阴影*/
 			VanillaDrawRoundRect(Graphics, RGB2ARGB(ShadowColor, 45), 5, 5, Window->Rect.Width - 10, Window->Rect.Height - 10, 1, 0);
 			VanillaDrawRoundRect(Graphics, RGB2ARGB(ShadowColor, 25), 4, 4, Window->Rect.Width - 8, Window->Rect.Height - 8, 1, 0);
 			VanillaDrawRoundRect(Graphics, RGB2ARGB(ShadowColor, 10), 3, 3, Window->Rect.Width - 6, Window->Rect.Height - 6, 1, 0);

@@ -46,7 +46,7 @@ typedef struct VWindow
 	VanillaByte Alpha;						//透明度
 	VanillaTaskQueue TaskQueue;				//任务列队
 	VanillaInt Shape;						//形状
-	VanillaInt ShadowColor;					//
+	VanillaInt ShadowColor;					//阴影颜色
 	VanillaInt DragType;					//
 
 	VanillaGraphics GraphicsBackground;		//背景图形
@@ -67,7 +67,7 @@ typedef struct VWindow
 
 	VanillaBool FirstShow;					//可视
 } *VanillaWindow, _VWindow;
-/*
+/**
 * 此函数用作创建VanillaWindow对象.
 * @param WndStyle 窗口风格
 * @param Title 窗口标题
@@ -87,34 +87,34 @@ VAPI(VanillaWindow) VanillaCreateWindow(VanillaRect Rect,
 	VanillaInt BackgroundType,
 	VanillaInt Shape
 	);
-/*
+/**
 * 此函数用作销毁VanillaWindow对象.
 * @param Window VanillaWindow对象
 * @此函数没有返回值.
 */
 VAPI(VanillaVoid) VanillaDestroyWindow(VanillaWindow Window);
-/*
+/**
 * 此函数用作设置用户回调.
 * @param Window VanillaWindow对象
 * @param UserProc 用户回调函数
 * @此函数没有返回值.
 */
 VAPI(VanillaVoid) VanillaSetWindowUserProc(VanillaWindow Window, VCtlEventProc UserProc);
-/*
-* 此函数用作设置窗口可视状态.
+/**
+& 此函数用作设置窗口可视状态.
 * @param Window VanillaWindow对象
 * @param Visible 是否可视
 * @此函数没有返回值.
 */
 VAPI(VanillaVoid) VanillaSetWindowVisible(VanillaWindow Window, VanillaBool Visible);
-/*
+/**
 * 此函数用作获取窗口当前的可视状态.
 * @param Window VanillaWindow对象
 * @param Returns 当前的可视状态.
 */
 VAPI(VanillaBool) VanillaGetWindowVisible(VanillaWindow Window);
 VAPI(VanillaControl) VanillaGetWindowRootControl(VanillaWindow Window);
-/*
+/** 
 * 此函数用作设置窗口背景.
 * @param Window VanillaWindow对象
 * @param BackkgroundImage 背景图片
@@ -123,7 +123,7 @@ VAPI(VanillaControl) VanillaGetWindowRootControl(VanillaWindow Window);
 * @此函数没有返回值.
 */
 VAPI(VanillaVoid) VanillaSetWindowBkg(VanillaWindow Window, VanillaImage BackkgroundImage, VanillaColor BackkgroundColor, VanillaInt BackkgroundType);
-/*
+/** 
 * 此函数用作设置窗口形状.
 * @param Window VanillaWindow对象
 * @param Shape 形状 VWFS_开头的常量
@@ -136,14 +136,52 @@ VAPI(VanillaVoid) VanillaSetWindowShape(VanillaWindow Window, VanillaInt Shape);
 * @param Returns 返回当前形状.
 */
 VAPI(VanillaInt) VanillaGetWindowShape(VanillaWindow Window);
+/**
+* 此函数用作设置窗口阴影颜色.
+* @param Window VanillaWindow对象
+* @param ShadowColor  阴影颜色
+* @此函数没有返回值.
+*/
 VAPI(VanillaVoid) VanillaSetWindowShadowColor(VanillaWindow Window, VanillaInt ShadowColor);
+/**
+* 此函数用作获取窗口阴影颜色.
+* @param Window VanillaWindow对象
+* @param Returns 阴影颜色
+*/
 VAPI(VanillaInt) VanillaGetWindowShadowColor(VanillaWindow Window);
 VAPI(VanillaVoid) VanillaRedrawWindowMDC(VanillaWindow Window);
 VAPI(VanillaVoid) VanillaRedrawWindow(VanillaWindow Window);
+/**
+* 此函数用作刷新窗口.
+* @param Window VanillaWindow对象
+* @此函数没有返回值.
+*/
 VAPI(VanillaVoid) VanillaFlashWindow(VanillaWindow Window);
+/**
+* 此函数用作设置窗口分层.
+* @param Window VanillaWindow对象
+* @param Composite 是否分层窗口
+* @此函数没有返回值.
+*/
 VAPI(VanillaVoid) VanillaSetWindowComposite(VanillaWindow Window, VanillaBool Composite);
+/**
+* 此函数用作获取当前窗口分层状态.
+* @param Window VanillaWindow对象
+* @param Returns 当前分层状态
+*/
 VAPI(VanillaBool) VanillaGetWindowComposite(VanillaWindow Window);
+/**
+* 此函数用作设置窗口透明度.
+* @param Window VanillaWindow对象
+* @param Alpha 透明度 0-255
+* @此函数没有返回值.
+*/
 VAPI(VanillaVoid) VanillaSetWindowAlpha(VanillaWindow Window, VanillaByte Alpha);
+/**
+* 此函数用作获取窗口当前透明度.
+* @param Window VanillaWindow对象
+* @param Returns 返回当前透明度.
+*/
 VAPI(VanillaByte) VanillaGetWindowAlpha(VanillaWindow Window);
 
 

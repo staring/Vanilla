@@ -744,10 +744,12 @@ VanillaControl VanillaPortDispatchMouseMessage(VanillaWindow Window, VanillaInt 
 	}
 	return Control;
 }
-
+/**
+* 移植层的消息回调 来自操作系统的消息通知由此函数分发处理
+*/
 #ifdef WIN32
 LRESULT CALLBACK VanillaPortWin32WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
-	VanillaWindow Window = (VanillaWindow)GetPropW(hWnd, PROP_ID);
+	VanillaWindow Window = (VanillaWindow)GetPropW(hWnd, PROP_ID);//取出窗口对应的VanillaWindow对象
 	if (Window == NULL) {
 		return DefWindowProcW(hWnd, uMsg, wParam, lParam);
 	}
