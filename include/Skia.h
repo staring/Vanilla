@@ -28,7 +28,7 @@
 #pragma comment(lib, "libwebp_dsp.lib")
 #pragma comment(lib, "libwebp_enc.lib")
 #pragma comment(lib, "libwebp_utils.lib")
-#pragma comment(lib, "lua.lib")
+//#pragma comment(lib, "lua.lib")
 #pragma comment(lib, "picture_utils.lib")
 #pragma comment(lib, "proc_stats.lib")
 #pragma comment(lib, "resources.lib")

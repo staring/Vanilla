@@ -1,4 +1,4 @@
-// Vanilla SkinDB
+﻿// Vanilla SkinDB
 #include "../stdafx.h"
 #include "../VDefine.h"
 #include "../VStruct.h"
@@ -14,8 +14,11 @@ VanillaVoid WriteFileBin(FILE* File, VanillaBin Bin) {
 
 VanillaBin ReadFileBin(FILE* File) {
 	int Length = 0;
+	/*前4字节数据长度*/
 	fread(&Length, 1, 4, File);
+	/*分配内存空间*/
 	VanillaByte* Buffer = new VanillaByte[Length];
+	/*读取数据到内存*/
 	fread(Buffer, 1, Length, File);
 	return new VBin(Buffer, Length);
 }
@@ -28,8 +31,11 @@ VanillaVoid WriteFileText(FILE* File, VanillaText String) {
 
 VanillaText ReadFileText(FILE* File) {
 	int Length = 0;
+	/*前4字节文本长度*/
 	fread(&Length, 1, 4, File);
+	/*分配内存空间*/
 	char* Buffer = new char[Length + 1];
+	/*读取文本到内存*/
 	fread(Buffer, 1, Length, File);
 	Buffer [Length] = 0;
 	return Buffer;
@@ -97,15 +103,19 @@ VAPI(VanillaSkinDB) VanillaSkinDBLoad(VanillaText FileName) {
 	}
 	char FileHead [9];
 	FileHead [8] = 0;
+	/*验证文件前8字节Vanilla!标志*/
 	fread(&FileHead, 1, 8, File);
 	if (strcmp(FileHead, "Vanilla!") != 0) {
 		return NULL;
 	}
 	VanillaSkinDB SkinDB = new VSkinDB;
+	/*读取资源包名称*/
 	SkinDB->Name = ReadFileText(File);
+	/*读取资源包资源数量*/
 	int Count = ReadFileInt(File);
 	for (int i = 0;i < Count;i++)
 	{
+		/*读出资源*/
 		VanillaText Name = ReadFileText(File);
 		VanillaBin Data = ReadFileBin(File);
 		VanillaHashTableSet(SkinDB->HashTable, Name, Data);

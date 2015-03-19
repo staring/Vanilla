@@ -1,4 +1,4 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 #include "VDefine.h"
 #include "VStruct.h"
 #include "VWindow.h"
@@ -253,9 +253,10 @@ VanillaBool VanillaPortInitializeX() {
 
 VanillaPortWindow VanillaPortCreateWindow(VanillaRect Rect, VanillaString Title, VanillaBool ShowInTaskbar, VanillaBool PosMiddle, VanillaWindow Window) {
 #ifdef WIN32
-	static VanillaBool ClassRegistered;
+	static VanillaBool ClassRegistered;//是否注册WNDCLASS
 	VanillaPort_ICONV;
 	if (!ClassRegistered) {
+		/*第一次调用该函数向系统注册VanillaUI.Window类*/
 		WNDCLASSEXW WindowClass;
 		memset(&WindowClass, 0, sizeof(WindowClass));
 		WindowClass.cbSize = sizeof(WindowClass);
@@ -266,6 +267,7 @@ VanillaPortWindow VanillaPortCreateWindow(VanillaRect Rect, VanillaString Title,
 		ClassRegistered = true;
 	}
 	if (PosMiddle) {
+		/*窗口居中*/
 		Rect->Left = (GetSystemMetrics(SM_CXSCREEN) - Rect->Width) / 2;
 		Rect->Top = (GetSystemMetrics(SM_CYSCREEN) - Rect->Height) / 2;
 	}
@@ -285,6 +287,7 @@ VanillaPortWindow VanillaPortCreateWindow(VanillaRect Rect, VanillaString Title,
 	if (!IsWindow(hWnd)) {
 		return NULL;
 	}
+	/*保存相关参数到VPortWindow*/
 	VanillaPortWindow PortWindow = new VPortWindow;
 	PortWindow->hWnd = hWnd;
 	PortWindow->hDC = GetDC(hWnd);
@@ -400,7 +403,9 @@ VanillaPortWindow VanillaPortCreateWindow(VanillaRect Rect, VanillaString Title,
 VanillaVoid VanillaPortDestroyWindow(VanillaPortWindow PortWindow) {
 	if (PortWindow) {
 #ifdef WIN32
+		/*释放由GetDc得到的窗口DC*/
 		ReleaseDC(PortWindow->hWnd, PortWindow->hDC);
+		/*释放窗口*/
 		DestroyWindow(PortWindow->hWnd);
 		delete PortWindow;
 #elif defined LINUX
@@ -448,7 +453,6 @@ VanillaString VanillaPortGetWindowTitle(VanillaPortWindow PortWindow) {
 	}
 	return NULL;
 }
-
 VanillaVoid VanillaPortSetWindowVisible(VanillaPortWindow PortWindow, VanillaBool Visible) {
 	if (PortWindow) {
 #ifdef WIN32

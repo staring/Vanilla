@@ -126,7 +126,6 @@ typedef struct VControlClass
 	VanillaBool Virtual;
 } *VanillaControlClass, _VControlClass;
 
-
 VAPI(VanillaControlClass) VanillaRegisterControlClass(VanillaText ClassName, VCtlProc CtlProc, VanillaBool Focusable, VanillaBool Virtual);
 VAPI(VanillaControl) VanillaControlCreate(VanillaControl ParentControl, VanillaText ClassName, VanillaRect Rect, VanillaAny ControlData, VanillaInt CustomID, VanillaBool Visible, VanillaBool Enabled, VanillaAny CreateStruct);
 VAPI(VanillaInt) VanillaControlDestroy(VanillaControl Control);
