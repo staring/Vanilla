@@ -65,8 +65,11 @@ VAPI(VanillaWindow) VanillaCreateWindow(VanillaRect Rect,
 }
 
 VAPI(VanillaVoid) VanillaDestroyWindow(VanillaWindow Window) {
+	/*释放根控件 与其相关的子空间都会被释放*/
 	VanillaControlDestroy(Window->RootControl.Control);
+	/*释放背景图形*/
 	VanillaDestroyGraphics(Window->GraphicsBackground);
+	/*释放窗口图形*/
 	VanillaDestroyGraphics(Window->GraphicsWindow);
 	free(Window);
 }
@@ -173,9 +176,9 @@ VanillaVoid VanillaWindowInitGraphics(VanillaWindow Window, VanillaBool ForceRec
 	if (ForceRecreate) {
 		/*强制重建*/
 		VanillaDestroyGraphicsOfWindow(Window->GraphicsBackground);
-		VanillaDestroyGraphicsOfWindow(Window->GraphicsWindow);
+		VanillaDestroyGraphicsOfWindow(Window->GraphicsWindow);//释放掉老的对象
 		Window->GraphicsBackground = VanillaCreateGraphicsOfWindow(Window);
-		Window->GraphicsWindow = VanillaCreateGraphicsOfWindow(Window);
+		Window->GraphicsWindow = VanillaCreateGraphicsOfWindow(Window);//创建新的对象
 	} else {
 		VanillaGraphicsClear(Window->GraphicsBackground, 0);
 		VanillaGraphicsClear(Window->GraphicsWindow, 0);
