@@ -32,7 +32,7 @@ VAPI(VanillaVoid) VanillaFillRect(VanillaGraphics Graphics, VanillaColor Color, 
 * @param Top 顶边
 * @param Width 宽度
 * @param Height 高度
-* @param LineWidth 
+* @param LineWidth 线宽
 * @此函数没有返回值.
 */
 VAPI(VanillaVoid) VanillaDrawFilledRect(VanillaGraphics Graphics, VanillaColor Color, VanillaColor BorderColor, VanillaInt Left, VanillaInt Top, VanillaInt Width, VanillaInt Height, VanillaInt LineWidth);
@@ -44,7 +44,7 @@ VAPI(VanillaVoid) VanillaDrawFilledRect(VanillaGraphics Graphics, VanillaColor C
 * @param Top 顶边
 * @param Width 宽度
 * @param Height 高度
-* @param LineWidth
+* @param LineWidth 线宽
 * @此函数没有返回值.
 */
 VAPI(VanillaVoid) VanillaDrawRect(VanillaGraphics Graphics, VanillaColor Color, VanillaInt Left, VanillaInt Top, VanillaInt Width, VanillaInt Height, VanillaInt LineWidth);

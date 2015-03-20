@@ -602,6 +602,7 @@ VanillaVoid VanillaPortUpdateWindow(VanillaWindow Window, VanillaRect UpdateRect
 	if (Window) {
 #ifdef WIN32
 		if (GetWindowLongW(Window->PortWindow->hWnd, GWL_EXSTYLE) & WS_EX_LAYERED) {
+			/*分层窗口*/
 			BLENDFUNCTION Blend;
 			Blend.AlphaFormat = AC_SRC_ALPHA;
 			Blend.BlendFlags = NULL;
@@ -623,7 +624,8 @@ VanillaVoid VanillaPortUpdateWindow(VanillaWindow Window, VanillaRect UpdateRect
 				ULW_ALPHA);
 		}
 		else {
-            VRect _UpdateRect;
+			/*普通窗口*/
+			VRect _UpdateRect;
 			if (NULL == UpdateRect) {
 			    _UpdateRect = Window->Rect;
 				_UpdateRect.Left = 0;

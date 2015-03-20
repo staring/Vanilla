@@ -127,19 +127,74 @@ typedef struct VControlClass
 } *VanillaControlClass, _VControlClass;
 
 VAPI(VanillaControlClass) VanillaRegisterControlClass(VanillaText ClassName, VCtlProc CtlProc, VanillaBool Focusable, VanillaBool Virtual);
+/**
+* 此函数用作创建VanillaControl(控件)对象.
+* @param ParentControl 上级控件
+* @param ClassName 类名
+* @param Rect 控件矩形
+* @param ControlData
+* @param CustomID
+* @param VanillaBool
+* @param Enabled
+* @param CreateStruct
+* @param Returns 成功返回VanillaControl对象,不成功返回NULL.
+*/
 VAPI(VanillaControl) VanillaControlCreate(VanillaControl ParentControl, VanillaText ClassName, VanillaRect Rect, VanillaAny ControlData, VanillaInt CustomID, VanillaBool Visible, VanillaBool Enabled, VanillaAny CreateStruct);
+/**
+* 此函数用作销毁VanillaControl(控件)对象.
+* @param Control VanillaControl对象
+* @param Returns 返回释放的控件总数.
+*/
 VAPI(VanillaInt) VanillaControlDestroy(VanillaControl Control);
+
 VAPI(VanillaInt) VanillaControlRedraw(VanillaControl Control, VanillaBool Update);
+
 VAPI(VanillaVoid) VanillaControlSetEnable(VanillaControl Control, VanillaBool Enabled);
 VAPI(VanillaBool) VanillaControlIsEnable(VanillaControl Control);
 VAPI(VanillaVoid) VanillaControlSetVisible(VanillaControl Control, VanillaBool Visible);
 VAPI(VanillaBool) VanillaControlIsVisible(VanillaControl Control);
+/**
+* 此函数用作设置Control透明度.
+* @param Control VanillaControl对象
+* @param Alpha 透明度
+* @此函数没有返回值.
+*/
 VAPI(VanillaVoid) VanillaControlSetAlpha(VanillaControl Control, VanillaByte Alpha);
+/**
+* 此函数用作获取Control透明度.
+* @param Control VanillaControl对象
+* @param Returns 返回Control透明度.
+*/
 VAPI(VanillaByte) VanillaControlGetAlpha(VanillaControl Control);
+/**
+* 此函数用作移动Control.
+* @param Control VanillaControl对象
+* @param Left 左边
+* @param Top 顶边
+* @param Width 宽度
+* @param Height 高度
+* @此函数没有返回值.
+*/
 VAPI(VanillaVoid) VanillaControlMove(VanillaControl Control, VanillaInt Left, VanillaInt Top, VanillaInt Width, VanillaInt Height);
 VAPI(VanillaRect) VanillaControlGetRectOfWindow(VanillaControl Control, VanillaRect Rect);
+/**
+* 此函数用作获取Control矩形区域.
+* @param Control VanillaControl对象
+* @param Returns 返回Control矩形
+*/
 VAPI(VanillaRect) VanillaControlGetRect(VanillaControl Control);
+/**
+* 此函数用作设置Control事件回调函数.
+* @param Control VanillaControl对象
+* @param EventProc 回调函数
+* @此函数没有返回值.
+*/
 VAPI(VanillaVoid) VanillaControlSetEventProc(VanillaControl Control, VCtlEventProc EventProc);
+/**
+* 此函数用作获取Control事件回调函数指针.
+* @param Control VanillaControl对象
+* @param Returns 返回回调指针
+*/
 VAPI(VCtlEventProc) VanillaControlGetEventProc(VanillaControl Control);
 VAPI(VanillaVoid) VanillaControlSetDefaultEventProc(VCtlEventProc EventProc);
 VAPI(VanillaInt) VanillaControlTriggerEvent(VanillaControl Control, VanillaInt Event, VanillaInt Param1, VanillaInt Param2, VanillaInt Param3);

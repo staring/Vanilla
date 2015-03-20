@@ -56,8 +56,8 @@ typedef struct VWindow
 	VanillaColor BackgroundColor;			//背景颜色
 	VanillaInt BackgroundType;				//背景类型
 
-	VWindowDefaultControl RootControl;
-	VWindowDefaultControl Title;			//标题控件
+	VWindowDefaultControl RootControl;		//根控件 整个窗口都为跟控件
+	VWindowDefaultControl Title;			//标题栏控件
 
 	VanillaControl ButtonDownControl [3];	//
 	VanillaControl MouseInControl;			//
