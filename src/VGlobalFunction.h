@@ -18,6 +18,11 @@ VAPI(VanillaInt) VanillaMsgLoop();
 * @param Returns 返回true初始化成功.
 */
 VAPI(VanillaBool) VanillaInit();
+/**
+* 此函数用作读取一个二进制文件的数据到VanillaBin结构中.
+* @param FileName 文件名
+* @param Returns 成功返回VanillaBin对象.
+*/
 VAPI(VanillaBin) VanillaReadFileToBin(VanillaText FileName);
 /**
 * 此函数用作检测某点是否存在与一个矩形之内.

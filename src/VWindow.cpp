@@ -143,12 +143,12 @@ VAPI(VanillaInt) VanillaGetWindowShadowColor(VanillaWindow Window) {
 	return Window->ShadowColor;
 }
 
-VAPI(VanillaVoid) VanillaRedrawWindowMDC(VanillaWindow Window) {
+VAPI(VanillaVoid) VanillaRedrawWindowGraphics(VanillaWindow Window) {
 	VanillaWindowInitGraphics(Window, false);
 }
 
 VAPI(VanillaVoid) VanillaRedrawWindow(VanillaWindow Window) {
-	VanillaRedrawWindowMDC(Window);
+	VanillaRedrawWindowGraphics(Window);
 	VanillaFlashWindow(Window);
 }
 
