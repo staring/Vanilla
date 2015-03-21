@@ -1,5 +1,5 @@
-﻿#ifndef __VPORT_H__
-#define __VPORT_H__
+﻿#ifndef __VANILLA_CORE_PORT_H__
+#define __VANILLA_CORE_PORT_H__
 
 #define VanillaPort_ICONV std::string _VanillaPort_lpu;char* _VanillaPort_lpu_;int _VanillaPort_lpu_len;std::wstring _VanillaPort_lpw;wchar_t* _VanillaPort_lpw_;int _VanillaPort_lpw_len;
 
@@ -9,7 +9,7 @@
 VAPI(int) VanillaPortUTF16ToUTF8(char* Output, int OutputSize, wchar_t* Input, int InputLength);
 VAPI(int) VanillaPortUTF8ToUTF16(wchar_t* Output, int OutputSize, char* Input, int Inputsize);
 /**
-* 此函数用作初始化移植层.
+* 此函数用作初始化X-Client连接.
 * @param Returns 成功返回true.
 */
 VanillaBool VanillaPortInitializeX();
@@ -56,16 +56,16 @@ VanillaVoid VanillaPortSetWindowVisible(VanillaPortWindow PortWindow, VanillaBoo
 */
 VanillaBool VanillaPortGetWindowVisible(VanillaPortWindow PortWindow);
 /**
-* 此函数用作设置分层窗口.
+* 此函数用作设置是否开启混合效果.
 * @param PortWindow VanillaPortWindow对象
 * @param Composite true or false
 * @此函数没有返回值.
 */
 VanillaVoid VanillaPortSetWindowComposite(VanillaPortWindow PortWindow, VanillaBool Composite);
 /**
-* 此函数用作获取是否开启分层窗口.
+* 此函数用作获取是否开启混合效果.
 * @param PortWindow VanillaPortWindow对象
-* @param Returns 当前分层窗口开启状态.
+* @param Returns 当前混合状态.
 */
 VanillaBool VanillaPortGetWindowComposite(VanillaPortWindow PortWindow);
 VanillaVoid VanillaPortDragWindow(VanillaPortWindow PortWindow);
@@ -86,4 +86,4 @@ VanillaInt VanillaPortMessageLoop();
 VanillaInt VanillaPortGetTickCount();
 
 VanillaControl VanillaPortDispatchMouseMessage(VanillaWindow Window, VanillaInt Action, VanillaInt Button, VPoint pt);
-#endif	//__VPORT_H__
+#endif	//__VANILLA_CORE_PORT_H__

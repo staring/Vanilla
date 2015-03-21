@@ -1,5 +1,5 @@
-﻿#ifndef __VGLOBALFUNCTION_H__
-#define __VGLOBALFUNCTION_H__
+﻿#ifndef __VANILLA_CORE_GLOBALFUNCTION_H__
+#define __VANILLA_CORE_GLOBALFUNCTION_H__
 // Normal Global Functions
 
 VanillaBool VInit ();
@@ -18,6 +18,11 @@ VAPI(VanillaInt) VanillaMsgLoop();
 * @param Returns 返回true初始化成功.
 */
 VAPI(VanillaBool) VanillaInit();
+/**
+* 此函数用作读取一个二进制文件的数据到VanillaBin结构中.
+* @param FileName 文件名
+* @param Returns 成功返回VanillaBin对象.
+*/
 VAPI(VanillaBin) VanillaReadFileToBin(VanillaText FileName);
 /**
 * 此函数用作检测某点是否存在与一个矩形之内.
@@ -34,4 +39,4 @@ VAPI(VanillaBool) VanillaIsPointInRect(VanillaPoint pt, VanillaRect Rect);
 * @param Returns 如果交不为空，则返回true；否则，如果交为空则返回false.
 */
 VAPI(VanillaBool) VanillaIntersectRect(VanillaRect Rect1, VanillaRect Rect2, VanillaRect RectResult);
-#endif	//__VGLOBALFUNCTION_H__
+#endif	//__VANILLA_CORE_GLOBALFUNCTION_H__

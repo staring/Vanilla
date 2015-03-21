@@ -1,5 +1,5 @@
-﻿#ifndef __VCONTROLREGISTER_H__
-#define __VCONTROLREGISTER_H__
+﻿#ifndef __VANILLA_CONTROLS_CONTROLREGISTER_H__
+#define __VANILLA_CONTROLS_CONTROLREGISTER_H__
 // Vanilla Control Register
 
 /*
@@ -8,4 +8,4 @@
 */
 
 VanillaVoid VanillaRegisterControls();
-#endif	//__VCONTROLREGISTER_H__
+#endif	//__VANILLA_CONTROLS_CONTROLREGISTER_H__

@@ -1,5 +1,5 @@
-#ifndef __VCONTROL_H__
-#define __VCONTROL_H__
+#ifndef __VANILLA_CORE_CONTROL_H__
+#define __VANILLA_CORE_CONTROL_H__
 
 // Vanilla控件处理
 
@@ -146,10 +146,25 @@ VAPI(VanillaControl) VanillaControlCreate(VanillaControl ParentControl, VanillaT
 * @param Returns 返回释放的控件总数.
 */
 VAPI(VanillaInt) VanillaControlDestroy(VanillaControl Control);
-
+/**
+* 此函数用作重画VanillaControl(控件)对象.
+* @param Control VanillaControl对象
+* @param Update 是否刷新
+* @param Returns 返回控件处理重绘事件后的返回值(一般为0).
+*/
 VAPI(VanillaInt) VanillaControlRedraw(VanillaControl Control, VanillaBool Update);
-
+/**
+* 此函数用作设置Control可用状态.
+* @param Control VanillaControl对象
+* @param Visible 是否可用
+* @此函数没有返回值.
+*/
 VAPI(VanillaVoid) VanillaControlSetEnable(VanillaControl Control, VanillaBool Enabled);
+/**
+* 此函数用作获取Control可用状态.
+* @param Control VanillaControl对象
+* @param Returns 返回Control可用状态.
+*/
 VAPI(VanillaBool) VanillaControlIsEnable(VanillaControl Control);
 VAPI(VanillaVoid) VanillaControlSetVisible(VanillaControl Control, VanillaBool Visible);
 VAPI(VanillaBool) VanillaControlIsVisible(VanillaControl Control);
@@ -176,6 +191,12 @@ VAPI(VanillaByte) VanillaControlGetAlpha(VanillaControl Control);
 * @此函数没有返回值.
 */
 VAPI(VanillaVoid) VanillaControlMove(VanillaControl Control, VanillaInt Left, VanillaInt Top, VanillaInt Width, VanillaInt Height);
+/**
+* 此函数用作获取Control相对于窗口根控件(RootControl)的区域.
+* @param Control VanillaControl对象
+* @param Rect 用来存放结果的Rect对象
+* @param Returns 返回&Rect
+*/
 VAPI(VanillaRect) VanillaControlGetRectOfWindow(VanillaControl Control, VanillaRect Rect);
 /**
 * 此函数用作获取Control矩形区域.
@@ -193,10 +214,21 @@ VAPI(VanillaVoid) VanillaControlSetEventProc(VanillaControl Control, VCtlEventPr
 /**
 * 此函数用作获取Control事件回调函数指针.
 * @param Control VanillaControl对象
-* @param Returns 返回回调指针
+* @param Returns 返回回调函数指针
 */
 VAPI(VCtlEventProc) VanillaControlGetEventProc(VanillaControl Control);
+/**
+* 此函数用作设置全局默认事件回调函数.
+* @param EventProc 全局默认事件回调函数
+* @此函数没有返回值.
+*/
 VAPI(VanillaVoid) VanillaControlSetDefaultEventProc(VCtlEventProc EventProc);
+/**
+* 此函数用作触发Control的事件.
+* @param Control VanillaControl对象
+* @param Event 事件类型
+* @param Returns 返回用户处理事件后的返回值
+*/
 VAPI(VanillaInt) VanillaControlTriggerEvent(VanillaControl Control, VanillaInt Event, VanillaInt Param1, VanillaInt Param2, VanillaInt Param3);
 VAPI(VanillaInt) VanillaControlSendMessage(VanillaControl Control, VanillaInt Message, VanillaInt Param1, VanillaInt Param2);
 VAPI(VanillaVoid) VanillaControlSendMessageToChild(VanillaControl ParentControl, VanillaInt Message, VanillaInt Param1, VanillaInt Param2);
@@ -207,4 +239,4 @@ VAPI(VanillaControl) VanillaFindControlInControl(VanillaControl ParentControl, V
 VanillaInt VanillaDefaultControlProc(VanillaControl Control, VanillaInt Message, VanillaInt Param1, VanillaInt Param2);
 
 extern std::map<VanillaString, VanillaControlClass> ControlClasses;
-#endif	//__VCONTROL_H__
+#endif	//__VANILLA_CORE_CONTROL_H__

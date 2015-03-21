@@ -1,5 +1,5 @@
-﻿#ifndef __VWINDOW_H__
-#define __VWINDOW_H__
+﻿#ifndef __VANILLA_CORE_WINDOW_H__
+#define __VANILLA_CORE_WINDOW_H__
 
 #define VWS_POSMIDDLE		1   //居中
 #define VWS_CTLBTN_LEFT		256	//
@@ -56,13 +56,13 @@ typedef struct VWindow
 	VanillaColor BackgroundColor;			//背景颜色
 	VanillaInt BackgroundType;				//背景类型
 
-	VWindowDefaultControl RootControl;		//根控件 整个窗口都为跟控件
+	VWindowDefaultControl RootControl;		//根控件 整个窗口都为根控件
 	VWindowDefaultControl Title;			//标题栏控件
 
 	VanillaControl ButtonDownControl [3];	//
 	VanillaControl MouseInControl;			//
 	VanillaControl FocusControl;			//焦点控件
-	VanillaControl CaptureControl;			
+	VanillaControl CaptureControl;
 
 
 	VanillaBool FirstShow;					//可视
@@ -94,13 +94,6 @@ VAPI(VanillaWindow) VanillaCreateWindow(VanillaRect Rect,
 */
 VAPI(VanillaVoid) VanillaDestroyWindow(VanillaWindow Window);
 /**
-* 此函数用作设置用户回调.
-* @param Window VanillaWindow对象
-* @param UserProc 用户回调函数
-* @此函数没有返回值.
-*/
-VAPI(VanillaVoid) VanillaSetWindowUserProc(VanillaWindow Window, VCtlEventProc UserProc);
-/**
 & 此函数用作设置窗口可视状态.
 * @param Window VanillaWindow对象
 * @param Visible 是否可视
@@ -113,8 +106,13 @@ VAPI(VanillaVoid) VanillaSetWindowVisible(VanillaWindow Window, VanillaBool Visi
 * @param Returns 当前的可视状态.
 */
 VAPI(VanillaBool) VanillaGetWindowVisible(VanillaWindow Window);
+/**
+* 此函数用作获取窗口的根控件.
+* @param Window VanillaWindow对象
+* @param Returns 该窗口的根控件.
+*/
 VAPI(VanillaControl) VanillaGetWindowRootControl(VanillaWindow Window);
-/** 
+/**
 * 此函数用作设置窗口背景.
 * @param Window VanillaWindow对象
 * @param BackkgroundImage 背景图片
@@ -123,14 +121,14 @@ VAPI(VanillaControl) VanillaGetWindowRootControl(VanillaWindow Window);
 * @此函数没有返回值.
 */
 VAPI(VanillaVoid) VanillaSetWindowBkg(VanillaWindow Window, VanillaImage BackkgroundImage, VanillaColor BackkgroundColor, VanillaInt BackkgroundType);
-/** 
+/**
 * 此函数用作设置窗口形状.
 * @param Window VanillaWindow对象
 * @param Shape 形状 VWFS_开头的常量
 * @此函数没有返回值.
 */
 VAPI(VanillaVoid) VanillaSetWindowShape(VanillaWindow Window, VanillaInt Shape);
-/*
+/**
 * 此函数用作获取窗口当前形状.
 * @param Window VanillaWindow对象
 * @param Returns 返回当前形状.
@@ -149,7 +147,17 @@ VAPI(VanillaVoid) VanillaSetWindowShadowColor(VanillaWindow Window, VanillaInt S
 * @param Returns 阴影颜色
 */
 VAPI(VanillaInt) VanillaGetWindowShadowColor(VanillaWindow Window);
-VAPI(VanillaVoid) VanillaRedrawWindowMDC(VanillaWindow Window);
+/**
+* 此函数用作重画并刷新窗口缓存图形.
+* @param Window VanillaWindow对象
+* @此函数没有返回值.
+*/
+VAPI(VanillaVoid) VanillaRedrawWindowGraphics(VanillaWindow Window);
+/**
+* 此函数用作重画并刷新窗口.
+* @param Window VanillaWindow对象
+* @此函数没有返回值.
+*/
 VAPI(VanillaVoid) VanillaRedrawWindow(VanillaWindow Window);
 /**
 * 此函数用作刷新窗口.
@@ -158,16 +166,18 @@ VAPI(VanillaVoid) VanillaRedrawWindow(VanillaWindow Window);
 */
 VAPI(VanillaVoid) VanillaFlashWindow(VanillaWindow Window);
 /**
-* 此函数用作设置窗口分层.
+* 此函数用作设置窗口开启混合(半透明)效果.
+* 此函数在Linux下无效,因为Linux的窗口总是自动开启混合效果
 * @param Window VanillaWindow对象
-* @param Composite 是否分层窗口
+* @param Composite 是否开启混合
 * @此函数没有返回值.
 */
 VAPI(VanillaVoid) VanillaSetWindowComposite(VanillaWindow Window, VanillaBool Composite);
 /**
-* 此函数用作获取当前窗口分层状态.
+* 此函数用作活取窗口是否开启混合(半透明)效果.
+* 此函数在Linux下无效,返回值将总为true,因为Linux的窗口总是自动开启混合效果
 * @param Window VanillaWindow对象
-* @param Returns 当前分层状态
+* @param Returns 当前混合状态
 */
 VAPI(VanillaBool) VanillaGetWindowComposite(VanillaWindow Window);
 /**
@@ -195,4 +205,4 @@ VanillaVoid VanillaWindowUpdate(VanillaWindow Window, VanillaRect UpdateRect);
 VanillaVoid VanillaWindowUpdateGraphicsRect(VanillaWindow Window, VanillaRect UpdateRect, VanillaBool ForceRedraw, VanillaBool Flash);
 
 VanillaInt VanillaWindowDefaultControlsProc(VanillaInt ID, VanillaInt Message, VanillaInt Param1, VanillaInt Param2);
-#endif	//__VWINDOW_H__
+#endif	//__VANILLA_CORE_WINDOW_H__

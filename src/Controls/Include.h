@@ -1,5 +1,5 @@
-#ifndef __INCLUDE_H__
-#define __INCLUDE_H__
+#ifndef __VANILLA_CONTROLS_INCLUDE_H__
+#define __VANILLA_CONTROLS_INCLUDE_H__
 
 #include "../stdafx.h"
 #include "../VDefine.h"
@@ -13,4 +13,4 @@
 
 #include "VanillaLabel.h"
 #include "VanillaButton.h"
-#endif	//__INCLUDE_H__
+#endif	//__VANILLA_CONTROLS_INCLUDE_H__

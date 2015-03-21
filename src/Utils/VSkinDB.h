@@ -1,7 +1,7 @@
-#ifndef __SKINDB_H__
-#define __SKINDB_H__
-// Vanilla SkinDB
 
+#ifndef __VANILLA_UTILS_SKINDB_H__
+#define __VANILLA_UTILS_SKINDB_H__
+// Vanilla SkinDB
 typedef struct VSkinDB
 {
 	VSkinDB();
@@ -25,5 +25,6 @@ VAPI(VanillaVoid) VanillaSkinDBSet(VanillaSkinDB SkinDB, VanillaText Name, Vanil
 VAPI(VanillaBin) VanillaSkinDBGet(VanillaSkinDB SkinDB, VanillaText Name);
 VAPI(VanillaVoid) VanillaSkinDBDelete(VanillaSkinDB SkinDB, VanillaText Name);
 VAPI(VanillaBool) VanillaSkinDBSave(VanillaSkinDB SkinDB, VanillaText FileName);
+
 VAPI(VanillaSkinDB) VanillaSkinDBLoad(VanillaText FileName);
-#endif	//__SKINDB_H__
+#endif	//__VANILLA_UTILS_SKINDB_H__
