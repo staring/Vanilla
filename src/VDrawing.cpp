@@ -1,4 +1,4 @@
-// Vanilla Drawing Functions
+﻿// Vanilla Drawing Functions
 #include "stdafx.h"
 #include "VDefine.h"
 #include "VStruct.h"

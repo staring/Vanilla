@@ -48,7 +48,7 @@ VAPI(void) DLLDebug() {
 
 
 	VanillaSetWindowBkg(Window, BkgImage, 0, VBT_TENSILE | VBT_NOCOLORFILL);
-	VanillaSetWindowShadowColor(Window, RGB(0, 0, 0));
+	VanillaSetWindowShadowColor(Window, RGB(0, 50, 120));
 	VanillaSetWindowComposite(Window, true);
 	VanillaSetWindowAlpha(Window, 216);
 

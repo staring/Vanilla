@@ -1,3 +1,5 @@
+#ifndef __VDEFINE_H__
+#define __VDEFINE_H__
 // Vanilla Defines
 
 #define DEBUG_BORDER 0
@@ -19,7 +21,7 @@
 
 #define String2Text(String) (VanillaText)String->c_str()
 
-#define ARGB(A,R,G,B) SkColorSetARGB(A,R,G,B)
+#define ARGB(A,R,G,B) ((uint32_t)((((A)&0xff)<<24)|(((R)&0xff)<<16)|(((G)&0xff)<<8)|((B)&0xff)))
 #define RGBA(R,G,B,A) ARGB(A,R,G,B)
 #define RGB2ARGB(COLOR,A) RGBA(((COLOR) >> 16 & 0xFF), ((COLOR) >> 8 & 0xFF), ((COLOR) & 0xFF), (A))
 #ifdef LINUX
@@ -98,3 +100,4 @@ typedef struct VTaskQueue *VanillaTaskQueue, _VTaskQueue;
 typedef int(*VCtlProc)(VanillaInt ID, VanillaInt Message, VanillaInt Param1, VanillaInt Param2);
 
 typedef int(*VCtlEventProc)(VanillaWindow Window, VanillaControl Control, VanillaInt Event, VanillaInt Param1, VanillaInt Param2, VanillaInt Param3);
+#endif	//__VDEFINE_H__

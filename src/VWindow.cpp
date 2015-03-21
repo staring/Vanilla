@@ -1,4 +1,4 @@
-// Vanilla Window
+﻿// Vanilla Window
 #include "stdafx.h"
 #include "VDefine.h"
 #include "VStruct.h"
@@ -29,15 +29,15 @@ VAPI(VanillaWindow) VanillaCreateWindow(VanillaRect Rect,
 					VanillaInt BackgroundType,
 					VanillaInt Shape
 					) {
-	VanillaWindow Window = new VWindow;
+	VanillaWindow Window = (VanillaWindow)malloc(sizeof(VWindow));
 	memset(Window, 0, sizeof(VWindow));
 
 	VanillaPortWindow PortWindow = VanillaPortCreateWindow(Rect, Title, !(WindowStyle & VWS_NOTASKBAR), (WindowStyle & VWS_POSMIDDLE), Window);
 	if (NULL == PortWindow) {
-		delete Window;
+		free(Window);
 		return NULL;
 	}
-	Window->PortWindow = PortWindow;
+	Window->PortWindow = PortWindow;	//保存移植层的window对象
 	Window->Rect = *Rect;
 
 
@@ -45,29 +45,33 @@ VAPI(VanillaWindow) VanillaCreateWindow(VanillaRect Rect,
 	Window->BackgroundImage = BackgroundImage;
 	Window->BackgroundType = BackgroundType;
 
-	Window->DragType = WindowStyle & (VWS_DRAG_ANY | VWS_DRAG_NO | VWS_DRAG_TITLE);
+	Window->DragType = WindowStyle & (VWS_DRAG_ANY | VWS_DRAG_NO | VWS_DRAG_TITLE);//任意拖动
 
-	Window->ShadowColor = NULL;
+	Window->ShadowColor = NULL;//阴影颜色
 
-	VanillaSetWindowShape(Window, Shape);
+	VanillaSetWindowShape(Window, Shape);//窗口形状
 
-	Window->TaskQueue = new VTaskQueue(Window);
-
+	Window->TaskQueue = new VTaskQueue(Window);//创建任务列队
+	/*创建根控件*/
 	VanillaCreateDefaultControl(VanillaControlCreate((VanillaControl)(- (VanillaInt)Window), "VanillaUI.WindowRootControl", RECT(0, 0, Window->Rect.Width, Window->Rect.Height), NULL, NULL, true, true, NULL), Window->RootControl, Window, VWDC_ROOT);
 
 	if (WindowStyle & VWS_TITLE) {
+		/*创建标题栏 作为跟控件的子控件*/
 		VanillaCreateDefaultControl(VanillaLabelCreate(VanillaGetWindowRootControl(Window), RECT(13, 11, Window->Rect.Width - 20, 30), Title, StringFormat, true, true), Window->Title, Window, VWDC_TITLE);
 	}
-
+	/*创建窗口相关Graphics对象*/
 	VanillaWindowInitGraphics(Window, true);
 	return Window;
 }
 
 VAPI(VanillaVoid) VanillaDestroyWindow(VanillaWindow Window) {
+	/*释放根控件 与其相关的子空间都会被释放*/
 	VanillaControlDestroy(Window->RootControl.Control);
+	/*释放背景图形*/
 	VanillaDestroyGraphics(Window->GraphicsBackground);
+	/*释放窗口图形*/
 	VanillaDestroyGraphics(Window->GraphicsWindow);
-	delete Window;
+	free(Window);
 }
 
 VAPI(VanillaVoid) VanillaSetWindowEventProc(VanillaWindow Window, VCtlEventProc EventProc) {
@@ -170,15 +174,18 @@ VAPI(VanillaByte) VanillaGetWindowAlpha(VanillaWindow Window) {
 
 VanillaVoid VanillaWindowInitGraphics(VanillaWindow Window, VanillaBool ForceRecreate) {
 	if (ForceRecreate) {
+		/*强制重建*/
 		VanillaDestroyGraphicsOfWindow(Window->GraphicsBackground);
-		VanillaDestroyGraphicsOfWindow(Window->GraphicsWindow);
+		VanillaDestroyGraphicsOfWindow(Window->GraphicsWindow);//释放掉老的对象
 		Window->GraphicsBackground = VanillaCreateGraphicsOfWindow(Window);
-		Window->GraphicsWindow = VanillaCreateGraphicsOfWindow(Window);
+		Window->GraphicsWindow = VanillaCreateGraphicsOfWindow(Window);//创建新的对象
 	} else {
 		VanillaGraphicsClear(Window->GraphicsBackground, 0);
 		VanillaGraphicsClear(Window->GraphicsWindow, 0);
 	}
+	/*重画背景*/
 	VanillaWindowDrawBackground(Window, Window->GraphicsBackground);
+	/*重画窗口*/
 	VanillaWindowDrawWindow(Window, Window->GraphicsWindow);
 }
 
@@ -212,6 +219,7 @@ VanillaVoid VanillaWindowDrawBackgroundImage(VanillaWindow Window, VanillaGraphi
     //DEBUG_PUTPNG(Window->GraphicsBackground->Bitmap, "CREATE.png");
 
 	if (Window->BackgroundImage) {
+		/*绘制背景图片*/
 		if (Window->BackgroundType & VBT_LEFTTOP) {
 			VanillaDrawImage(Graphics, Window->BackgroundImage, 5, 5);
 		} else {
@@ -225,6 +233,7 @@ VanillaVoid VanillaWindowDrawBackgroundImage(VanillaWindow Window, VanillaGraphi
 		VanillaDrawRect(Graphics, ARGB(102, 255, 255, 255), 6, 6, Window->Rect.Width - 12, Window->Rect.Height - 12, 1);
 
 		if (ShadowColor != -1) {
+			/*绘制阴影*/
 			VanillaDrawRoundRect(Graphics, RGB2ARGB(ShadowColor, 45), 5, 5, Window->Rect.Width - 10, Window->Rect.Height - 10, 1, 0);
 			VanillaDrawRoundRect(Graphics, RGB2ARGB(ShadowColor, 25), 4, 4, Window->Rect.Width - 8, Window->Rect.Height - 8, 1, 0);
 			VanillaDrawRoundRect(Graphics, RGB2ARGB(ShadowColor, 10), 3, 3, Window->Rect.Width - 6, Window->Rect.Height - 6, 1, 0);
@@ -292,14 +301,18 @@ End:
 		VanillaWindowUpdate(Window, UpdateRect);
 	}
 }
-
+/**
+* window类的消息回调
+*/
 VanillaInt VanillaWindowDefaultControlsProc(VanillaInt ID, VanillaInt Message, VanillaInt Param1, VanillaInt Param2) {
 	VanillaWindowDefaultControl ControlInfo = (VanillaWindowDefaultControl)ID;
 	VanillaControl Control = ControlInfo->Control;
 	if (ControlInfo->ID == VWDC_ROOT) {
+		/*窗口消息*/
 		switch (Message) {
 		case VM_LBUTTONDOWN:
 			if (ControlInfo->Window->DragType & VWS_DRAG_ANY) {
+				/*任意移动窗口*/
 				VanillaPortDragWindow(ControlInfo->Window->PortWindow);
 			}
 			break;
@@ -310,9 +323,11 @@ VanillaInt VanillaWindowDefaultControlsProc(VanillaInt ID, VanillaInt Message, V
 		return NULL;
 	}
 	else if (ControlInfo->ID == VWDC_TITLE) {
+		/*标题区消息*/
 		switch (Message) {
 		case VM_LBUTTONDOWN:
 			if (!(ControlInfo->Window->DragType & VWS_DRAG_NO)) {
+				/*任意移动窗口*/
 				VanillaPortDragWindow(ControlInfo->Window->PortWindow);
 			}
 			break;

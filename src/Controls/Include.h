@@ -1,4 +1,5 @@
-#pragma once
+#ifndef __INCLUDE_H__
+#define __INCLUDE_H__
 
 #include "../stdafx.h"
 #include "../VDefine.h"
@@ -12,3 +13,4 @@
 
 #include "VanillaLabel.h"
 #include "VanillaButton.h"
+#endif	//__INCLUDE_H__
