@@ -1,5 +1,5 @@
-﻿#ifndef __VGLOBALFUNCTION_H__
-#define __VGLOBALFUNCTION_H__
+﻿#ifndef __VANILLA_CORE_GLOBALFUNCTION_H__
+#define __VANILLA_CORE_GLOBALFUNCTION_H__
 // Normal Global Functions
 
 VanillaBool VInit ();
@@ -34,4 +34,4 @@ VAPI(VanillaBool) VanillaIsPointInRect(VanillaPoint pt, VanillaRect Rect);
 * @param Returns 如果交不为空，则返回true；否则，如果交为空则返回false.
 */
 VAPI(VanillaBool) VanillaIntersectRect(VanillaRect Rect1, VanillaRect Rect2, VanillaRect RectResult);
-#endif	//__VGLOBALFUNCTION_H__
+#endif	//__VANILLA_CORE_GLOBALFUNCTION_H__

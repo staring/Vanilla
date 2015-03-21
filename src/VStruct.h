@@ -1,5 +1,5 @@
-#ifndef __VSTRUCT_H__
-#define __VSTRUCT_H__
+#ifndef __VANILLA_CORE_STRUCT_H__
+#define __VANILLA_CORE_STRUCT_H__
 // Vanilla Structs' Define
 
 typedef struct VRect
@@ -143,4 +143,4 @@ typedef struct VBin
 	VanillaByte* Address;
 	VanillaInt Length;
 } *VanillaBin, _VBin;
-#endif	//__VSTRUCT_H__
+#endif	//__VANILLA_CORE_STRUCT_H__

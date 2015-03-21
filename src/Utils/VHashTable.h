@@ -1,5 +1,5 @@
-#ifndef __VHASHTABLE_H__
-#define __VHASHTABLE_H__
+#ifndef __VANILLA_UTILS_HASHTABLE_H__
+#define __VANILLA_UTILS_HASHTABLE_H__
 // Vanilla HashTable
 
 typedef struct VHashTableItem
@@ -34,4 +34,4 @@ VAPI(VanillaBin) VanillaHashTableGet(VanillaHashTable HashTable, VanillaText Key
 VAPI(VanillaVoid) VanillaHashTableSet(VanillaHashTable HashTable, VanillaText Key, VanillaBin Value);
 VAPI(VanillaInt) VanillaHashTableCount(VanillaHashTable HashTable);
 VAPI(VanillaHashTableItem) VanillaHashTableTravel(VanillaHashTable HashTable, VanillaHashTableTraveler* x);
-#endif	//__VHASHTABLE_H__
+#endif	//__VANILLA_UTILS_HASHTABLE_H__

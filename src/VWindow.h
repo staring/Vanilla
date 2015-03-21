@@ -1,5 +1,5 @@
-﻿#ifndef __VWINDOW_H__
-#define __VWINDOW_H__
+﻿#ifndef __VANILLA_CORE_WINDOW_H__
+#define __VANILLA_CORE_WINDOW_H__
 
 #define VWS_POSMIDDLE		1   //居中
 #define VWS_CTLBTN_LEFT		256	//
@@ -62,7 +62,7 @@ typedef struct VWindow
 	VanillaControl ButtonDownControl [3];	//
 	VanillaControl MouseInControl;			//
 	VanillaControl FocusControl;			//焦点控件
-	VanillaControl CaptureControl;			
+	VanillaControl CaptureControl;
 
 
 	VanillaBool FirstShow;					//可视
@@ -114,7 +114,7 @@ VAPI(VanillaVoid) VanillaSetWindowVisible(VanillaWindow Window, VanillaBool Visi
 */
 VAPI(VanillaBool) VanillaGetWindowVisible(VanillaWindow Window);
 VAPI(VanillaControl) VanillaGetWindowRootControl(VanillaWindow Window);
-/** 
+/**
 * 此函数用作设置窗口背景.
 * @param Window VanillaWindow对象
 * @param BackkgroundImage 背景图片
@@ -123,7 +123,7 @@ VAPI(VanillaControl) VanillaGetWindowRootControl(VanillaWindow Window);
 * @此函数没有返回值.
 */
 VAPI(VanillaVoid) VanillaSetWindowBkg(VanillaWindow Window, VanillaImage BackkgroundImage, VanillaColor BackkgroundColor, VanillaInt BackkgroundType);
-/** 
+/**
 * 此函数用作设置窗口形状.
 * @param Window VanillaWindow对象
 * @param Shape 形状 VWFS_开头的常量
@@ -195,4 +195,4 @@ VanillaVoid VanillaWindowUpdate(VanillaWindow Window, VanillaRect UpdateRect);
 VanillaVoid VanillaWindowUpdateGraphicsRect(VanillaWindow Window, VanillaRect UpdateRect, VanillaBool ForceRedraw, VanillaBool Flash);
 
 VanillaInt VanillaWindowDefaultControlsProc(VanillaInt ID, VanillaInt Message, VanillaInt Param1, VanillaInt Param2);
-#endif	//__VWINDOW_H__
+#endif	//__VANILLA_CORE_WINDOW_H__

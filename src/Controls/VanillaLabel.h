@@ -1,5 +1,5 @@
-#ifndef __VANILLALABLE_H__
-#define __VANILLALABLE_H__
+#ifndef __VANILLA_CONTROLS_LABEL_H__
+#define __VANILLA_CONTROLS_LABEL_H__
 // Vanilla Label
 
 #define VBS_METRO 1
@@ -36,4 +36,4 @@ VAPI(VanillaControl) VanillaLabelCreate(VanillaControl ParentControl, VanillaRec
 VAPI(VanillaVoid) VanillaLabelSetTitle(VanillaControl Control, VanillaText Title);
 VAPI(VanillaVoid) VanillaLabelSetStringFormat(VanillaControl Control, VanillaStringFormat StringFormat);
 VAPI(VanillaText) VanillaLabelGetTitle(VanillaControl Control);
-#endif	//__VANILLALABLE_H__
+#endif	//__VANILLA_CONTROLS_LABEL_H__

@@ -1,5 +1,5 @@
-﻿#ifndef __VDRAWING_H__
-#define __VDRAWING_H__
+﻿#ifndef __VANILLA_CORE_DRAWING_H__
+#define __VANILLA_CORE_DRAWING_H__
 // Vanilla Drawing Functions
 
 #define VTS_BOLD 1				//粗体
@@ -27,7 +27,7 @@ VAPI(VanillaVoid) VanillaFillRect(VanillaGraphics Graphics, VanillaColor Color, 
 * 此函数用作.
 * @param Graphics VanillaGraphics对象
 * @param Color 用作填充的颜色
-* @param BorderColor 
+* @param BorderColor
 * @param Left 左边
 * @param Top 顶边
 * @param Width 宽度
@@ -62,9 +62,9 @@ VAPI(VanillaVoid) VanillaDrawFilledRoundRect(VanillaGraphics Graphics, VanillaCo
 /**
 * 此函数用作绘制圆角矩形.
 * @param Graphics VanillaGraphics对象
-* @param Color 
-* @param x 
-* @param y 
+* @param Color
+* @param x
+* @param y
 * @param Width
 * @param Height
 * @param LineWidth
@@ -154,4 +154,4 @@ VAPI(VanillaImage) VanillaLoadImageFromBinary(VanillaBin Binary);
 * @此函数没有返回值.
 */
 VAPI(VanillaVoid) VanillaDestroyImage(VanillaImage Image);
-#endif	//__VDRAWING_H__
+#endif	//__VANILLA_CORE_DRAWING_H__

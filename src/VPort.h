@@ -1,5 +1,5 @@
-﻿#ifndef __VPORT_H__
-#define __VPORT_H__
+﻿#ifndef __VANILLA_CORE_PORT_H__
+#define __VANILLA_CORE_PORT_H__
 
 #define VanillaPort_ICONV std::string _VanillaPort_lpu;char* _VanillaPort_lpu_;int _VanillaPort_lpu_len;std::wstring _VanillaPort_lpw;wchar_t* _VanillaPort_lpw_;int _VanillaPort_lpw_len;
 
@@ -86,4 +86,4 @@ VanillaInt VanillaPortMessageLoop();
 VanillaInt VanillaPortGetTickCount();
 
 VanillaControl VanillaPortDispatchMouseMessage(VanillaWindow Window, VanillaInt Action, VanillaInt Button, VPoint pt);
-#endif	//__VPORT_H__
+#endif	//__VANILLA_CORE_PORT_H__
