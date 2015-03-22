@@ -136,6 +136,7 @@ VAPI(VanillaVoid) VanillaSetWindowShape(VanillaWindow Window, VanillaInt Shape);
 VAPI(VanillaInt) VanillaGetWindowShape(VanillaWindow Window);
 /**
 * 此函数用作设置窗口阴影颜色.
+* 使用函数请先设置分层窗口
 * @param Window VanillaWindow对象
 * @param ShadowColor  阴影颜色
 * @此函数没有返回值.

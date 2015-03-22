@@ -47,7 +47,7 @@ VAPI(VanillaWindow) VanillaCreateWindow(VanillaRect Rect,
 
 	Window->DragType = WindowStyle & (VWS_DRAG_ANY | VWS_DRAG_NO | VWS_DRAG_TITLE);//任意拖动
 
-	Window->ShadowColor = NULL;//阴影颜色
+	Window->ShadowColor = -1;//阴影颜色 默认无
 
 	VanillaSetWindowShape(Window, Shape);//窗口形状
 
@@ -210,7 +210,7 @@ VanillaVoid VanillaWindowDrawBackgroundImage(VanillaWindow Window, VanillaGraphi
 	if (!(Window->BackgroundType & VBT_NOCOLORFILL)) {
 		VanillaFillRect(Graphics, Window->BackgroundColor, 0, 0, Window->Rect.Width, Window->Rect.Height);
 	}
-
+	int ShadowColor = Window->ShadowColor;
 
     //if(Window->BackgroundImage) VanillaDrawImageEx(Window->GraphicsBackground, Window->BackgroundImage, 0, 0, 0, 0, 0, 0, 0, 0, 255);
     //DEBUG_PUTPNG(Window->GraphicsBackground->Bitmap, "CREATE.png");
@@ -218,23 +218,28 @@ VanillaVoid VanillaWindowDrawBackgroundImage(VanillaWindow Window, VanillaGraphi
 	if (Window->BackgroundImage) {
 		/*绘制背景图片*/
 		if (Window->BackgroundType & VBT_LEFTTOP) {
-			VanillaDrawImage(Graphics, Window->BackgroundImage, 5, 5);
+			VanillaDrawImage(Graphics, Window->BackgroundImage, (ShadowColor == -1) ? 0 : 5, (ShadowColor == -1) ? 0 : 5);
 		} else {
-		    VanillaDrawImageEx(Window->GraphicsBackground, Window->BackgroundImage, 5, 5, Window->Rect.Width - 10, Window->Rect.Height - 10, 0, 0, 0, 0, 255);
+			VanillaDrawImageEx(Window->GraphicsBackground, Window->BackgroundImage, (ShadowColor == -1) ? 0 : 5, (ShadowColor == -1) ? 0 : 5, Window->Rect.Width - (ShadowColor == -1) ? 0 : 10, Window->Rect.Height - (ShadowColor == -1) ? 0 : 10, 0, 0, 0, 0, 255);
 			//VanillaDrawImageEx(Graphics, Window->BackgroundImage, 5, 5, Window->Rect.Width - 10, Window->Rect.Height - 10, 0, 0, 0, 0, 255);
 		}
 	}
-	int ShadowColor = Window->ShadowColor;
 	if (Window->Shape == VWFS_RECT) {
-		VanillaDrawRect(Graphics, ARGB(204, 96, 96, 96), 5, 5, Window->Rect.Width - 10, Window->Rect.Height - 10, 1);
-		VanillaDrawRect(Graphics, ARGB(102, 255, 255, 255), 6, 6, Window->Rect.Width - 12, Window->Rect.Height - 12, 1);
-
 		if (ShadowColor != -1) {
+			/*双层边框*/
+			VanillaDrawRect(Graphics, ARGB(204, 96, 96, 96), 5, 5, Window->Rect.Width - 10, Window->Rect.Height - 10, 1);
+			VanillaDrawRect(Graphics, ARGB(102, 255, 255, 255), 6, 6, Window->Rect.Width - 12, Window->Rect.Height - 12, 1);
+
 			/*绘制阴影*/
 			VanillaDrawRoundRect(Graphics, RGB2ARGB(ShadowColor, 45), 5, 5, Window->Rect.Width - 10, Window->Rect.Height - 10, 1, 0);
 			VanillaDrawRoundRect(Graphics, RGB2ARGB(ShadowColor, 25), 4, 4, Window->Rect.Width - 8, Window->Rect.Height - 8, 1, 0);
 			VanillaDrawRoundRect(Graphics, RGB2ARGB(ShadowColor, 10), 3, 3, Window->Rect.Width - 6, Window->Rect.Height - 6, 1, 0);
 			VanillaDrawRoundRect(Graphics, RGB2ARGB(ShadowColor, 5), 2, 2, Window->Rect.Width - 4, Window->Rect.Height - 4, 1, 0);
+		}
+		else{
+			/*双层边框*/
+			VanillaDrawRect(Graphics, ARGB(204, 96, 96, 96), 0, 0, Window->Rect.Width - 1, Window->Rect.Height - 1, 1);
+			VanillaDrawRect(Graphics, ARGB(102, 255, 255, 255), 1, 1, Window->Rect.Width - 3, Window->Rect.Height - 3, 1);
 		}
 	}
 }
