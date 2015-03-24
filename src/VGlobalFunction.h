@@ -26,11 +26,12 @@ VAPI(VanillaBool) VanillaInit();
 VAPI(VanillaBin) VanillaReadFileToBin(VanillaText FileName);
 /**
 * 此函数用作检测某点是否存在与一个矩形之内.
-* @param pt	欲检测的点
+* @param x 欲检测的点
+* @param y
 * @param Rect 用作检测的矩形
 * @param Returns 在或不在.
 */
-VAPI(VanillaBool) VanillaIsPointInRect(VanillaPoint pt, VanillaRect Rect);
+VAPI(VanillaBool) VanillaIsPointInRect(VanillaInt x, VanillaInt y, VanillaRect Rect);
 /**
 * 此函数用作计算两个矩形的交.
 * @param Rect1 源矩形

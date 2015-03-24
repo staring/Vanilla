@@ -63,7 +63,6 @@ typedef struct VPortGraphics
 #define PROP_OLDPROC	(LPCWSTR)102
 
 LRESULT CALLBACK VanillaPortWin32WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
-VanillaControl VanillaPortWin32DispatchMessage_Mouse(VanillaWindow Window, LPARAM lParam, VanillaInt Action, VanillaInt Code);
 #elif defined LINUX
 VanillaVoid VanillaPortLinuxWindowProc(xcb_generic_event_t *e);
 #endif
@@ -709,21 +708,32 @@ VanillaInt VanillaPortGetTickCount() {
 #endif
 }
 
-VanillaControl VanillaPortDispatchMouseMessage(VanillaWindow Window, VanillaInt Action, VanillaInt Button, VPoint pt) {
+VanillaControl VanillaPortDispatchMouseMessage(VanillaWindow Window, VanillaInt Action, VanillaInt Button, VanillaInt x, VanillaInt y) {
     VanillaControl Control;
-	VPoint pt2;
-	Control = VanillaFindControlInWindow(Window, &pt, &pt2);
+	VanillaInt x1;
+	VanillaInt y1;
+	/*查找鼠标所在位置的控件*/
+	Control = VanillaFindControlInWindow(Window, x, y, &x1, &y1);
 	if (Action == -1) {
+		/*鼠标移动*/
 		if (Control != Window->MouseInControl) {
+			/*如果得到的控件不是鼠标移动以前所再的控件*/
+			/*得到旧控件*/
 			VanillaControl OldControl = Window->MouseInControl;
+			/*设置新控件*/
 			Window->MouseInControl = Control;
+			/*向旧控件发送鼠标离开的消息*/
 			VanillaControlSendMessage(OldControl, VM_MOUSEOUT, (VanillaInt)Control, NULL);
-			VanillaControlSendMessage(Control, VM_MOUSEIN, (VanillaInt)OldControl, (VanillaInt)&pt2);
+			/*向新控件发送鼠标进入的消息*/
+			//VanillaControlSendMessage(Control, VM_MOUSEIN, (VanillaInt)OldControl, (VanillaInt)&pt2);
+			VanillaControlSendMessage(Control, VM_MOUSEIN, (VanillaInt)OldControl, NULL);
 		}
-		VanillaControlSendMessage(Control, VM_MOUSEMOVE, NULL, (VanillaInt)&pt2);
+		/*向当前控件发送鼠标移动的消息*/
+		VanillaControlSendMessage(Control, VM_MOUSEMOVE, x1, y1);
 	}
 	else {
 		if (Action == 1) {
+			/*鼠标按键被按下*/
 			Window->ButtonDownControl[Button] = Control;
 			if (Control && Control->Class->Focusable && Window->FocusControl != Control) {
 				VanillaControl OldControl = Window->FocusControl;
@@ -735,12 +745,13 @@ VanillaControl VanillaPortDispatchMouseMessage(VanillaWindow Window, VanillaInt 
 		if (Control != NULL) {
             VanillaInt MsgList[2] [3] = { { VM_LBUTTONDOWN, VM_RBUTTONDOWN, VM_MBUTTONDOWN },
                                      { VM_LBUTTONUP, VM_RBUTTONUP, VM_MBUTTONUP } };
-			VanillaControlSendMessage(Control, MsgList [Action - 1] [Button], 0, (VanillaInt)&pt2);
+			VanillaControlSendMessage(Control, MsgList [Action - 1] [Button], x1, y1);
 		}
 		if (Action == 2) {
+			/*鼠标按键被弹起*/
 			if (Window->ButtonDownControl[Button] == Control) {
 				VanillaInt MsgList[] = { VM_LBUTTONCLK, VM_RBUTTONCLK, VM_MBUTTONCLK };
-				VanillaControlSendMessage(Control, MsgList[Button], 0, (VanillaInt)&pt2);
+				VanillaControlSendMessage(Control, MsgList[Button], x1, y1);
 			}
 			Window->ButtonDownControl[Button] = NULL;
 		}
@@ -766,62 +777,68 @@ LRESULT CALLBACK VanillaPortWin32WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam,
 		break;
 	}
 	case WM_SIZE: {
-		RECT rc;
-		GetWindowRect(hWnd, &rc);
-		Window->Rect.Width = rc.right - rc.left;
-		Window->Rect.Height = rc.bottom - rc.top;
+		/*窗口大小被改变*/
+		Window->Rect.Width = (VanillaInt)(short)LOWORD(lParam);
+		Window->Rect.Height = (VanillaInt)(short)HIWORD(lParam);
 		VanillaControlMove(Window->Title.Control, Window->Title.Control->Rect.Left, Window->Title.Control->Rect.Top, Window->Rect.Width - Window->Title.Control->Rect.Left, Window->Title.Control->Rect.Height);
 		VanillaWindowInitGraphics(Window, true);
 		break;
 	}
 	case WM_MOVE: {
-		RECT rc;
-		GetWindowRect(hWnd, &rc);
-		Window->Rect.Left = rc.left;
-		Window->Rect.Top = rc.top;
+		/*窗口移动 更新VanillaWindow对象窗口位置*/
+		Window->Rect.Left = (VanillaInt)(short)LOWORD(lParam);
+		Window->Rect.Top = (VanillaInt)(short)HIWORD(lParam);
 		break;
 	}
 	case WM_MOUSEMOVE: {
-		VanillaPortWin32DispatchMessage_Mouse(Window, lParam, -1, -1);
+		/*鼠标移动*/
+		VanillaPortDispatchMouseMessage(Window, -1, -1, LOWORD(lParam), HIWORD(lParam));
 		break;
 	}
 	case WM_LBUTTONDOWN: {
-		VanillaPortWin32DispatchMessage_Mouse(Window, lParam, 1, 0);
+		/*鼠标左键被按下*/
+		VanillaPortDispatchMouseMessage(Window, 1, 0, LOWORD(lParam), HIWORD(lParam));
 		break;
 	}
 	case WM_LBUTTONUP: {
-		VanillaPortWin32DispatchMessage_Mouse(Window, lParam, 2, 0);
+		/*鼠标左键被弹起*/
+		VanillaPortDispatchMouseMessage(Window, 2, 0, LOWORD(lParam), HIWORD(lParam));
 		break;
 	}
 	case WM_LBUTTONDBLCLK: {
-		VanillaPortWin32DispatchMessage_Mouse(Window, lParam, 3, 0);
+		/*鼠标左键被双击*/
+		VanillaPortDispatchMouseMessage(Window, 3, 0, LOWORD(lParam), HIWORD(lParam));
 		break;
 	}
 	case WM_RBUTTONDOWN: {
-		VanillaPortWin32DispatchMessage_Mouse(Window, lParam, 1, 1);
+		/*鼠标右键被按下*/
+		VanillaPortDispatchMouseMessage(Window, 1, 1, LOWORD(lParam), HIWORD(lParam));
 		break;
 	}
 	case WM_RBUTTONUP: {
-		VanillaPortWin32DispatchMessage_Mouse(Window, lParam, 2, 1);
+		/*鼠标右键被弹起*/
+		VanillaPortDispatchMouseMessage(Window, 2, 1, LOWORD(lParam), HIWORD(lParam));
 		break;
 	}
 	case WM_RBUTTONDBLCLK: {
-		VanillaPortWin32DispatchMessage_Mouse(Window, lParam, 3, 1);
+		/*鼠标右键被双击*/
+		VanillaPortDispatchMouseMessage(Window, 3, 1, LOWORD(lParam), HIWORD(lParam));
 		break;
 	}
 	case WM_MBUTTONDOWN: {
-		VanillaPortWin32DispatchMessage_Mouse(Window, lParam, 1, 2);
+		VanillaPortDispatchMouseMessage(Window, 1, 2, LOWORD(lParam), HIWORD(lParam));
 		break;
 	}
 	case WM_MBUTTONUP: {
-		VanillaPortWin32DispatchMessage_Mouse(Window, lParam, 2, 2);
+		VanillaPortDispatchMouseMessage(Window, 2, 2, LOWORD(lParam), HIWORD(lParam));
 		break;
 	}
 	case WM_MBUTTONDBLCLK: {
-		VanillaPortWin32DispatchMessage_Mouse(Window, lParam, 3, 2);
+		VanillaPortDispatchMouseMessage(Window, 3, 2, LOWORD(lParam), HIWORD(lParam));
 		break;
 	}
 	case WM_MOUSEWHEEL: {
+		/*鼠标滚动消息*/
 		if (Window->FocusControl) {
 			VanillaControlSendMessage(Window->FocusControl, VM_MOUSEWHEEL, (VanillaInt)(HIWORD(wParam) / 120), NULL);
 		}
@@ -850,10 +867,6 @@ LRESULT CALLBACK VanillaPortWin32WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam,
 	}
 	}
 	return DefWindowProcW(hWnd, uMsg, wParam, lParam);
-}
-
-VanillaControl VanillaPortWin32DispatchMessage_Mouse(VanillaWindow Window, LPARAM lParam, VanillaInt Action, VanillaInt Code) {
-	return VanillaPortDispatchMouseMessage(Window, Action, Code, VPoint(LOWORD(lParam), HIWORD(lParam)));
 }
 
 #elif defined LINUX
@@ -886,7 +899,7 @@ VanillaVoid VanillaPortLinuxWindowProc(xcb_generic_event_t *event) {
             case 2:
             case 1:
                 VanillaInt ButtonCode[] = { 0, 2, 1 };
-                VanillaPortDispatchMouseMessage(Window, 1, ButtonCode [bp->detail - 1], VPoint(bp->event_x, bp->event_y));
+                VanillaPortDispatchMouseMessage(Window, 1, ButtonCode [bp->detail - 1], bp->event_x, bp->event_y);
                 break;
             }
             break;
@@ -896,14 +909,14 @@ VanillaVoid VanillaPortLinuxWindowProc(xcb_generic_event_t *event) {
             REAL_WINDOW(br->event);
             if (br->detail >= 1 && br->detail <= 3) {
                 VanillaInt ButtonCode[] = { 0, 2, 1 };
-                VanillaPortDispatchMouseMessage(Window, 2, ButtonCode [br->detail - 1], VPoint(br->event_x, br->event_y));
+                VanillaPortDispatchMouseMessage(Window, 2, ButtonCode [br->detail - 1], br->event_x, br->event_y);
             }
             break;
         }
         case XCB_MOTION_NOTIFY: {
             xcb_motion_notify_event_t *motion = (xcb_motion_notify_event_t *)event;
             REAL_WINDOW(motion->event);
-            VanillaPortDispatchMouseMessage(Window, -1, -1, VPoint(motion->event_x, motion->event_y));
+            VanillaPortDispatchMouseMessage(Window, -1, -1, motion->event_x, motion->event_y);
             break;
         }
         case XCB_ENTER_NOTIFY: {

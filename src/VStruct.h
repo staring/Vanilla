@@ -1,4 +1,4 @@
-#ifndef __VANILLA_CORE_STRUCT_H__
+﻿#ifndef __VANILLA_CORE_STRUCT_H__
 #define __VANILLA_CORE_STRUCT_H__
 // Vanilla Structs' Define
 
@@ -11,10 +11,10 @@ typedef struct VRect
 		this->Height = Height;
 	}
 	VRect(){}
-	VanillaInt Left;
-	VanillaInt Top;
-	VanillaInt Width;
-	VanillaInt Height;
+	VanillaInt Left;//左边
+	VanillaInt Top;//顶边
+	VanillaInt Width;//宽度
+	VanillaInt Height;//高度
 } *VanillaRect, _VRect;
 
 typedef struct VPoint
@@ -35,8 +35,8 @@ typedef struct VSize
 		this->Height = Height;
 	}
 	VSize(){}
-	VanillaInt Width;
-	VanillaInt Height;
+	VanillaInt Width;//宽度
+	VanillaInt Height;//高度
 } *VanillaSize, _VSize;
 
 typedef struct VRectR

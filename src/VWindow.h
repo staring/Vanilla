@@ -39,15 +39,13 @@ typedef struct VWindowDefaultControl
 
 typedef struct VWindow
 {
-	VWindow() {}
-
 	VanillaPortWindow PortWindow;			//移植层窗口
 	VRect Rect;								//窗口矩形
 	VanillaByte Alpha;						//透明度
 	VanillaTaskQueue TaskQueue;				//任务列队
 	VanillaInt Shape;						//形状
 	VanillaInt ShadowColor;					//阴影颜色
-	VanillaInt DragType;					//
+	VanillaInt DragType;					//随意拖动
 
 	VanillaGraphics GraphicsBackground;		//背景图形
 	VanillaGraphics GraphicsWindow;			//窗口图形
@@ -60,7 +58,7 @@ typedef struct VWindow
 	VWindowDefaultControl Title;			//标题栏控件
 
 	VanillaControl ButtonDownControl [3];	//
-	VanillaControl MouseInControl;			//
+	VanillaControl MouseInControl;			//鼠标所在的控件
 	VanillaControl FocusControl;			//焦点控件
 	VanillaControl CaptureControl;
 

@@ -1,4 +1,4 @@
-// Vanilla Control Base Class
+﻿// Vanilla Control Base Class
 #include "stdafx.h"
 #include "VDefine.h"
 #include "VStruct.h"
@@ -226,7 +226,9 @@ VanillaInt VControlBase::CtlProc(VanillaInt Message, VanillaInt Param1, VanillaI
 	}
 	return NULL;
 }
-
+/**
+* 控件基类回调
+*/
 VanillaInt VanillaBasedControlProc(VanillaInt ID, VanillaInt Message, VanillaInt Param1, VanillaInt Param2) {
 	VanillaControl Control = (VanillaControl)ID;
 	VanillaControlBase Object = (VanillaControlBase)Control->ControlData;

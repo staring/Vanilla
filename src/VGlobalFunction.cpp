@@ -44,18 +44,18 @@ VAPI(VanillaBin) VanillaReadFileToBin(VanillaText FileName) {
 	return new VBin(Buffer, Size);
 }
 
-VAPI(VanillaBool) VanillaIsPointInRect(VanillaPoint pt, VanillaRect Rect) {
-	if (pt->x <= Rect->Left) {
+VAPI(VanillaBool) VanillaIsPointInRect(VanillaInt x, VanillaInt y, VanillaRect Rect) {
+	if (x <= Rect->Left) {
 		return false;
 	}
-	if (pt->x >= Rect->Width + Rect->Left) {
+	if (x >= Rect->Width + Rect->Left) {
 		return false;
 	}
 
-	if (pt->y <= Rect->Top) {
+	if (y <= Rect->Top) {
 		return false;
 	}
-	if (pt->y >= Rect->Height + Rect->Top) {
+	if (y >= Rect->Height + Rect->Top) {
 		return false;
 	}
 

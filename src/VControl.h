@@ -62,14 +62,13 @@
 
 typedef struct VControl
 {
-	VControl() {}
 	// 链表 Begin
 	// 同级控件
-	VanillaControl LastControl;
-	VanillaControl NextControl;
+	VanillaControl LastControl;//上一个
+	VanillaControl NextControl;//下一个
 	// 子控件
-	VanillaControl ChildControlFirst;
-	VanillaControl ChildControlEnd;
+	VanillaControl ChildControlFirst;//第一个
+	VanillaControl ChildControlEnd;//最后一个
 	// 上级控件
 	VanillaControl ParentControl;
 	// 链表 End
@@ -244,9 +243,28 @@ VAPI(VanillaInt) VanillaControlTriggerEvent(VanillaControl Control, VanillaInt E
 VAPI(VanillaInt) VanillaControlSendMessage(VanillaControl Control, VanillaInt Message, VanillaInt Param1, VanillaInt Param2);
 VAPI(VanillaVoid) VanillaControlSendMessageToChild(VanillaControl ParentControl, VanillaInt Message, VanillaInt Param1, VanillaInt Param2);
 VAPI(VanillaVoid) VanillaControlSendMessageToChildOfWindow(VanillaWindow Window, VanillaInt Message, VanillaInt Param1, VanillaInt Param2);
-VAPI(VanillaControl) VanillaFindControlInWindow(VanillaWindow Window, VanillaPoint pt, VanillaPoint pt2);
-VAPI(VanillaControl) VanillaFindControlInControl(VanillaControl ParentControl, VanillaPoint pt, VanillaPoint pt2);
-
+/**
+* 此函数用作根据点在一个窗口内寻找另外一个控件.
+* @param Window VanillaWindow对象
+* @param x
+* @param y
+* @param x1 Out 相对坐标
+* @param y1 Out
+* @param Returns 返回寻找到的Control对象
+*/
+VAPI(VanillaControl) VanillaFindControlInWindow(VanillaWindow Window, VanillaInt x, VanillaInt y, VanillaInt *x1, VanillaInt *y1);
+/**
+* 此函数用作根据点在一个控件内寻找另外一个控件.
+* @param ParentControl VanillaControl对象
+* @param x
+* @param y
+* @param x1 Out 相对坐标
+* @param y1 Out
+* @param Returns 返回寻找到的Control对象
+*/
+VAPI(VanillaControl) VanillaFindControlInControl(VanillaControl ParentControl, VanillaInt x, VanillaInt y, VanillaInt *x1, VanillaInt *y1);
+/**控件的默认处理函数
+*/
 VanillaInt VanillaDefaultControlProc(VanillaControl Control, VanillaInt Message, VanillaInt Param1, VanillaInt Param2);
 
 extern std::map<VanillaString, VanillaControlClass> ControlClasses;

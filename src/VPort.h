@@ -68,10 +68,20 @@ VanillaVoid VanillaPortSetWindowComposite(VanillaPortWindow PortWindow, VanillaB
 * @param Returns 当前混合状态.
 */
 VanillaBool VanillaPortGetWindowComposite(VanillaPortWindow PortWindow);
+/**
+* 此函数用作拖动窗口.
+* @param PortWindow VanillaPortWindow对象
+* @此函数没有返回值.
+*/
 VanillaVoid VanillaPortDragWindow(VanillaPortWindow PortWindow);
-
 VanillaVoid VanillaPortDestroyGraphicsOfWindowCachedInMemoey(VanillaGraphics Graphics);
 VanillaGraphics VanillaPortCreateGraphicsOfWindowCachedInMemoey(VanillaWindow Window);
+/**
+* 此函数用作刷新窗口显示.
+* @param PortWindow VanillaPortWindow对象
+* @param UpdateRect 刷新区域
+* @此函数没有返回值.
+*/
 VanillaVoid VanillaPortUpdateWindow(VanillaWindow Window, VanillaRect UpdateRect);
 SkTypeface* VanillaPortCreateSkTypeface(VanillaText FontName, SkTypeface::Style Style);
 /**
@@ -84,6 +94,14 @@ VanillaInt VanillaPortMessageLoop();
 * @param Returns int.
 */
 VanillaInt VanillaPortGetTickCount();
-
-VanillaControl VanillaPortDispatchMouseMessage(VanillaWindow Window, VanillaInt Action, VanillaInt Button, VPoint pt);
+/**
+* 此函数用作处理鼠标消息.
+* @param Window 消息对应的Window
+* @param Action 消息对应的行为
+* @param Button 消息对应的按钮
+* @param x
+* @param y
+* @param Returns int.
+*/
+VanillaControl VanillaPortDispatchMouseMessage(VanillaWindow Window, VanillaInt Action, VanillaInt Button, VanillaInt x, VanillaInt y);
 #endif	//__VANILLA_CORE_PORT_H__

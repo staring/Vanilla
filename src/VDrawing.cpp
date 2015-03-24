@@ -228,9 +228,10 @@ VAPI(VanillaVoid) VanillaDestroyGraphics(VanillaGraphics Graphics) {
 }
 
 VAPI(VanillaImage) VanillaLoadImageFromFile(VanillaText FileName) {
-	VanillaImage Image = new VImage;
+	VanillaImage Image = (VanillaImage)malloc(sizeof(VImage));
+	memset(Image, 0, sizeof(VImage));
 	if (!SkImageDecoder::DecodeFile(FileName, &Image->Bitmap)) {
-		delete Image;
+		free(Image);
 		return NULL;
 	}
 	Image->Width = Image->Bitmap.width();
@@ -242,9 +243,10 @@ VAPI(VanillaImage) VanillaLoadImageFromBinary(VanillaBin Binary) {
 	if (!Binary) {
 		return NULL;
 	}
-	VanillaImage Image = new VImage;
+	VanillaImage Image = (VanillaImage)malloc(sizeof(VImage));
+	memset(Image, 0, sizeof(VImage));
 	if (!SkImageDecoder::DecodeMemory(Binary->Address, Binary->Length, &Image->Bitmap)) {
-		delete Image;
+		free(Image);
 		return NULL;
 	}
 	Image->Width = Image->Bitmap.width();
@@ -254,6 +256,6 @@ VAPI(VanillaImage) VanillaLoadImageFromBinary(VanillaBin Binary) {
 
 VAPI(VanillaVoid) VanillaDestroyImage(VanillaImage Image) {
 	if (Image) {
-		delete Image;
+		free(Image);
 	}
 }

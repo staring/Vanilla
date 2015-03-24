@@ -1,4 +1,4 @@
-#ifndef __VANILLA_CORE_CONTROLBASE_H__
+﻿#ifndef __VANILLA_CORE_CONTROLBASE_H__
 #define __VANILLA_CORE_CONTROLBASE_H__
 // Vanilla Control Base Class
 
@@ -23,6 +23,7 @@ class CLASS_IMPORT VControlBase
 {
 	friend VanillaInt VanillaBasedControlProc(VanillaInt ID, VanillaInt Message, VanillaInt Param1, VanillaInt Param2);
 private:
+	/*回调函数*/
 	VanillaInt CtlProc(VanillaInt Message, VanillaInt Param1, VanillaInt Param2);
 	VanillaBool BaseCreate(VanillaText ClassName, VanillaControl ParentControl, VanillaRect Rect, VanillaBool Visible = true, VanillaBool Enabled = true);
 protected:

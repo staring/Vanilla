@@ -1,4 +1,4 @@
-// Vanilla Controls
+﻿// Vanilla Controls
 #include "stdafx.h"
 #include "VDefine.h"
 #include "VStruct.h"
@@ -229,6 +229,7 @@ VAPI(VanillaVoid) VanillaControlSendMessageToChildOfWindow(VanillaWindow Window,
 }
 
 VAPI(VanillaVoid) VanillaControlMove(VanillaControl Control, VanillaInt Left, VanillaInt Top, VanillaInt Width, VanillaInt Height) {
+	/*是否移动或改变大小*/
 	VanillaBool Moved = false, Sized = false;
 	if (Control->Rect.Left != Left || Control->Rect.Top != Top) {
 		Moved = true;
@@ -236,23 +237,31 @@ VAPI(VanillaVoid) VanillaControlMove(VanillaControl Control, VanillaInt Left, Va
 	if (Control->Rect.Width != Width || Control->Rect.Height != Height) {
 		Sized = true;
 	}
+	/*以前的控件矩形*/
 	VRect OldRect = Control->Rect;
 	VRect OldRectOfWindow;
 	VanillaControlGetRectOfWindow(Control, &OldRectOfWindow);
+	/*更新窗口矩形*/
 	new(&Control->Rect) VRect(Left, Top, Width, Height);
 	if (Moved) {
+		/*通知控件位置被移动*/
 		VanillaControlSendMessage(Control, VM_MOVE, NULL, (VanillaInt)&OldRect.Left);
 	}
 	if (Sized) {
+		/*大小被更改*/
 		if (!Control->Class->Virtual) {
+			/*销毁掉控件当前的图形*/
 			VanillaDestroyGraphics(Control->Graphics);
+			/*重新为控件创建图形*/
 			Control->Graphics = VanillaCreateGraphicsInMemory(Width, Height);
+			/*通知控件重绘*/
 			VanillaControlSendMessage(Control, VM_REDRAW, NULL, NULL);
 			VanillaWindowUpdateGraphicsRect(Control->Window, &OldRectOfWindow, false, false);
 			VRect NewRectOfWindow;
 			VanillaControlGetRectOfWindow(Control, &OldRectOfWindow);
 			VanillaWindowUpdateGraphicsRect(Control->Window, &NewRectOfWindow, false, false);
 		}
+		/*通知控件大小被改变*/
 		VanillaControlSendMessage(Control, VM_SIZE, NULL, (VanillaInt)OldRect.Width);
 	}
 }
@@ -272,32 +281,41 @@ VAPI(VanillaRect) VanillaControlGetRectOfWindow(VanillaControl Control, VanillaR
 	return Rect;
 }
 
-VAPI(VanillaControl) VanillaFindControlInWindow(VanillaWindow Window, VanillaPoint pt, VanillaPoint pt2) {
-	VanillaControl Control = VanillaFindControlInControl(VanillaGetWindowRootControl(Window), pt, pt2);
+VAPI(VanillaControl) VanillaFindControlInWindow(VanillaWindow Window, VanillaInt x, VanillaInt y, VanillaInt *x1, VanillaInt *y1) {
+	VanillaControl Control = VanillaFindControlInControl(VanillaGetWindowRootControl(Window), x, y, x1,y1);
 	if (!Control) {
-		*pt2 = *pt;
+		*x1 = x;
+		*y1 = y;
 		return VanillaGetWindowRootControl(Window);
 	}
 	return Control;
 }
 
-VAPI(VanillaControl) VanillaFindControlInControl(VanillaControl ParentControl, VanillaPoint pt, VanillaPoint pt2) {
+VAPI(VanillaControl) VanillaFindControlInControl(VanillaControl ParentControl, VanillaInt x, VanillaInt y, VanillaInt *x1, VanillaInt *y1) {
+	/*从最后一个子控件开始寻找 倒序*/
 	VanillaControl Control = ParentControl->ChildControlEnd;
 	while (Control != NULL) {
 		if (!Control->Visible || !VanillaControlIsEnable(Control) || Control->MousePenetration) {
+			/*不满足可被鼠标命中的条件 处理上一个子控件*/
 			Control = Control->LastControl;
 			continue;
 		}
-		if (VanillaIsPointInRect(pt, &Control->Rect)) {
-			pt2->x = pt->x - Control->Rect.Left;
-			pt2->y = pt->y - Control->Rect.Top;
-			VanillaControl SubControl = VanillaFindControlInControl(Control, pt2, pt2);
+		if (VanillaIsPointInRect(x, y, &Control->Rect)){
+			/*当前处理的控件被命中*/
+			/*计算客户区坐标*/
+			*x1 = x - Control->Rect.Left;
+			*y1 = y - Control->Rect.Top;
+			/*递归子控件*/
+			VanillaControl SubControl = VanillaFindControlInControl(Control, x, y, x1, y1);
 			if (SubControl == NULL) {
+				/*子控件被未被命中 返回当前控件*/
 				return Control;
 			} else {
+				/*子控件被命中 返回子控件*/
 				return SubControl;
 			}
 		}
+		/*处理上一个子控件*/
 		Control = Control->LastControl;
 	}
 	return NULL;
