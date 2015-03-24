@@ -166,7 +166,18 @@ VAPI(VanillaVoid) VanillaControlSetEnable(VanillaControl Control, VanillaBool En
 * @param Returns 返回Control可用状态.
 */
 VAPI(VanillaBool) VanillaControlIsEnable(VanillaControl Control);
+/**
+* 此函数用作设置Control可视状态.
+* @param Control VanillaControl对象
+* @param Visible 是否可视
+* @此函数没有返回值.
+*/
 VAPI(VanillaVoid) VanillaControlSetVisible(VanillaControl Control, VanillaBool Visible);
+/**
+* 此函数用作获取Control可视状态.
+* @param Control VanillaControl对象
+* @param Returns 返回Control是否可视.
+*/
 VAPI(VanillaBool) VanillaControlIsVisible(VanillaControl Control);
 /**
 * 此函数用作设置Control透明度.

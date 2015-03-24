@@ -65,9 +65,13 @@ VAPI(VanillaWindow) VanillaCreateWindow(VanillaRect Rect,
 }
 
 VAPI(VanillaVoid) VanillaDestroyWindow(VanillaWindow Window) {
+	/*销毁窗口根控件 与其相关的子控件都会*/
 	VanillaControlDestroy(Window->RootControl.Control);
+	/*销毁背景图形*/
 	VanillaDestroyGraphics(Window->GraphicsBackground);
+	/*销毁窗口图形*/
 	VanillaDestroyGraphics(Window->GraphicsWindow);
+	/*释放内存*/
 	free(Window);
 }
 
@@ -220,7 +224,7 @@ VanillaVoid VanillaWindowDrawBackgroundImage(VanillaWindow Window, VanillaGraphi
 		if (Window->BackgroundType & VBT_LEFTTOP) {
 			VanillaDrawImage(Graphics, Window->BackgroundImage, (ShadowColor == -1) ? 0 : 5, (ShadowColor == -1) ? 0 : 5);
 		} else {
-			VanillaDrawImageEx(Window->GraphicsBackground, Window->BackgroundImage, (ShadowColor == -1) ? 0 : 5, (ShadowColor == -1) ? 0 : 5, Window->Rect.Width - (ShadowColor == -1) ? 0 : 10, Window->Rect.Height - (ShadowColor == -1) ? 0 : 10, 0, 0, 0, 0, 255);
+			VanillaDrawImageEx(Window->GraphicsBackground, Window->BackgroundImage, (ShadowColor == -1) ? 0 : 5, (ShadowColor == -1) ? 0 : 5, Window->Rect.Width - ((ShadowColor == -1) ? 0 : 10), Window->Rect.Height - ((ShadowColor == -1) ? 0 : 10), 0, 0, 0, 0, 255);
 			//VanillaDrawImageEx(Graphics, Window->BackgroundImage, 5, 5, Window->Rect.Width - 10, Window->Rect.Height - 10, 0, 0, 0, 0, 255);
 		}
 	}
@@ -254,21 +258,28 @@ VanillaVoid VanillaWindowUpdate(VanillaWindow Window, VanillaRect UpdateRect) {
 
 VanillaVoid VanillaWindowUpdateGraphicsRect(VanillaWindow Window, VanillaRect UpdateRect, VanillaBool ForceRedraw, VanillaBool Flash) {
 	if (!UpdateRect) {
+		/*更新矩形为空的话则更新整个窗口*/
 		UpdateRect = RECT(0, 0, Window->Rect.Width, Window->Rect.Height);
 	}
+	/*复制更新区域的背景到窗口*/
 	VanillaAlphaBlend(Window->GraphicsWindow, UpdateRect->Left, UpdateRect->Top, UpdateRect->Width, UpdateRect->Height, Window->GraphicsBackground, UpdateRect->Left, UpdateRect->Top, 255);
+	
 	VanillaControl Control = Window->RootControl.Control->ChildControlFirst;
 	VPoint OffsetPoint(0, 0);
 	VanillaByte Alpha = 255;
 	while (Control) {
 		VRect Intersect;
 		if (!VanillaControlIsVisible(Control)) {
+			/*控件不可视 更新下一个同级控件*/
 			Control = Control->NextControl;
+			/*到循环尾*/
 			continue;
 		}
 		VRect RectOfClient(Control->Rect.Left + OffsetPoint.x, Control->Rect.Top + OffsetPoint.y, Control->Rect.Width, Control->Rect.Height);
 		if (!VanillaIntersectRect(&RectOfClient, UpdateRect, &Intersect)) {
+			/*控件不在更新范围内 更新下一个同级控件*/
 			Control = Control->NextControl;
+			/*到循环尾*/
 			continue;
 		}
 		if (!Control->Class->Virtual) {
@@ -284,21 +295,26 @@ VanillaVoid VanillaWindowUpdateGraphicsRect(VanillaWindow Window, VanillaRect Up
 			Control = Control->ChildControlFirst;
 			Alpha = Alpha * Control->Alpha / 255;
 		} else if (Control->NextControl != NULL) {
+			/*更新下一个同级控件*/
 			Control = Control->NextControl;
 		} else {
+			/*已经最后一个控件了*/
 			while (Control->NextControl == NULL) {
 				if (Control->ParentControl == NULL) {
-					goto End;
+					if (Flash) {
+						VanillaWindowUpdate(Window, UpdateRect);
+					}
+					return;
 				}
 				OffsetPoint.x = OffsetPoint.x - Control->ParentControl->Rect.Left;
 				OffsetPoint.y = OffsetPoint.y - Control->ParentControl->Rect.Top;
 				Alpha = Alpha / Control->Alpha * 255;
 				Control = Control->ParentControl;
 			}
+			/**/
 			Control = Control->NextControl;
 		}
 	}
-End:
 	if (Flash) {
 		VanillaWindowUpdate(Window, UpdateRect);
 	}

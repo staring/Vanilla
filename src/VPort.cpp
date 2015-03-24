@@ -263,6 +263,7 @@ VanillaPortWindow VanillaPortCreateWindow(VanillaRect Rect, VanillaString Title,
 		WindowClass.lpfnWndProc = (WNDPROC)&VanillaPortWin32WindowProc;
 		WindowClass.style = CS_HREDRAW | CS_VREDRAW | CS_DBLCLKS;
 		WindowClass.lpszClassName = L"VanillaUI.Window";
+		WindowClass.hCursor = LoadCursor(NULL, IDC_ARROW);/*箭头光标*/
 		RegisterClassExW(&WindowClass);
 		ClassRegistered = true;
 	}
