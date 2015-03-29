@@ -6,7 +6,7 @@
 #include "VControl.h"
 #include "VControlBase.h"
 #include "VDrawing.h"
-#include "VPort.h"
+#include "VPWindow.h"
 #include "VGlobalFunction.h"
 #include "Utils/VTaskQueue.h"
 
@@ -32,7 +32,7 @@ VAPI(VanillaWindow) VanillaCreateWindow(VanillaRect Rect,
 	VanillaWindow Window = (VanillaWindow)malloc(sizeof(VWindow));
 	memset(Window, 0, sizeof(VWindow));
 
-	VanillaPortWindow PortWindow = VanillaPortCreateWindow(Rect, Title, !(WindowStyle & VWS_NOTASKBAR), (WindowStyle & VWS_POSMIDDLE), Window);
+	VanillaPWWindow PortWindow = VanillaPWCreateWindow(Rect, Title, !(WindowStyle & VWS_NOTASKBAR), (WindowStyle & VWS_POSMIDDLE), Window);
 	if (NULL == PortWindow) {
 		free(Window);
 		return NULL;
@@ -87,11 +87,11 @@ VAPI(VanillaVoid) VanillaSetWindowVisible(VanillaWindow Window, VanillaBool Visi
 	if (Visible && Window->FirstShow == false) {
 		Window->FirstShow = true;
 	}
-	VanillaPortSetWindowVisible(Window->PortWindow, Visible);
+	VanillaPWSetWindowVisible(Window->PortWindow, Visible);
 }
 
 VAPI(VanillaBool) VanillaGetWindowVisible(VanillaWindow Window) {
-	return VanillaPortGetWindowVisible(Window->PortWindow);
+	return VanillaPWGetWindowVisible(Window->PortWindow);
 }
 
 VAPI(VanillaControl) VanillaGetWindowRootControl(VanillaWindow Window) {
@@ -158,11 +158,11 @@ VAPI(VanillaVoid) VanillaFlashWindow(VanillaWindow Window) {
 }
 
 VAPI(VanillaVoid) VanillaSetWindowComposite(VanillaWindow Window, VanillaBool Composite) {
-	VanillaPortSetWindowComposite(Window->PortWindow, Composite);
+	VanillaPWSetWindowComposite(Window->PortWindow, Composite);
 }
 
 VAPI(VanillaBool) VanillaGetWindowComposite(VanillaWindow Window) {
-	return VanillaPortGetWindowComposite(Window->PortWindow);
+	return VanillaPWGetWindowComposite(Window->PortWindow);
 }
 
 VAPI(VanillaVoid) VanillaSetWindowAlpha(VanillaWindow Window, VanillaByte Alpha) {
@@ -173,13 +173,64 @@ VAPI(VanillaByte) VanillaGetWindowAlpha(VanillaWindow Window) {
 	return Window->Alpha;
 }
 
+VanillaControl VanillaDispatchMouseMessage(VanillaWindow Window, VanillaInt Action, VanillaInt Button, VanillaInt x, VanillaInt y) {
+    VanillaControl Control;
+	VanillaInt x1;
+	VanillaInt y1;
+	/*查找鼠标所在位置的控件*/
+	Control = VanillaFindControlInWindow(Window, x, y, &x1, &y1);
+	if (Action == -1) {
+		/*鼠标移动*/
+		if (Control != Window->MouseInControl) {
+			/*如果得到的控件不是鼠标移动以前所再的控件*/
+			/*得到旧控件*/
+			VanillaControl OldControl = Window->MouseInControl;
+			/*设置新控件*/
+			Window->MouseInControl = Control;
+			/*向旧控件发送鼠标离开的消息*/
+			VanillaControlSendMessage(OldControl, VM_MOUSEOUT, (VanillaInt)Control, NULL);
+			/*向新控件发送鼠标进入的消息*/
+			//VanillaControlSendMessage(Control, VM_MOUSEIN, (VanillaInt)OldControl, (VanillaInt)&pt2);
+			VanillaControlSendMessage(Control, VM_MOUSEIN, (VanillaInt)OldControl, NULL);
+		}
+		/*向当前控件发送鼠标移动的消息*/
+		VanillaControlSendMessage(Control, VM_MOUSEMOVE, x1, y1);
+	}
+	else {
+		if (Action == 1) {
+			/*鼠标按键被按下*/
+			Window->ButtonDownControl[Button] = Control;
+			if (Control && Control->Class->Focusable && Window->FocusControl != Control) {
+				VanillaControl OldControl = Window->FocusControl;
+				Window->FocusControl = Control;
+				VanillaControlSendMessage(OldControl, VM_KILLFOCUS, NULL, (VanillaInt)Control);
+				VanillaControlSendMessage(Control, VM_SETFOCUS, NULL, (VanillaInt)OldControl);
+			}
+		}
+		if (Control != NULL) {
+            VanillaInt MsgList[2] [3] = { { VM_LBUTTONDOWN, VM_RBUTTONDOWN, VM_MBUTTONDOWN },
+                                     { VM_LBUTTONUP, VM_RBUTTONUP, VM_MBUTTONUP } };
+			VanillaControlSendMessage(Control, MsgList [Action - 1] [Button], x1, y1);
+		}
+		if (Action == 2) {
+			/*鼠标按键被弹起*/
+			if (Window->ButtonDownControl[Button] == Control) {
+				VanillaInt MsgList[] = { VM_LBUTTONCLK, VM_RBUTTONCLK, VM_MBUTTONCLK };
+				VanillaControlSendMessage(Control, MsgList[Button], x1, y1);
+			}
+			Window->ButtonDownControl[Button] = NULL;
+		}
+	}
+	return Control;
+}
+
 VanillaVoid VanillaWindowInitGraphics(VanillaWindow Window, VanillaBool ForceRecreate) {
 	if (ForceRecreate) {
 		/*强制重建*/
-		VanillaDestroyGraphicsOfWindow(Window->GraphicsBackground);
-		VanillaDestroyGraphicsOfWindow(Window->GraphicsWindow);
-		Window->GraphicsBackground = VanillaCreateGraphicsOfWindow(Window);
-		Window->GraphicsWindow = VanillaCreateGraphicsOfWindow(Window);
+		VanillaPWDestroyGraphicsOfWindowCachedInMemoey(Window->GraphicsBackground);
+		VanillaPWDestroyGraphicsOfWindowCachedInMemoey(Window->GraphicsWindow);
+		Window->GraphicsBackground = VanillaPWCreateGraphicsOfWindowCachedInMemoey(Window);
+		Window->GraphicsWindow = VanillaPWCreateGraphicsOfWindowCachedInMemoey(Window);
 	} else {
 		VanillaGraphicsClear(Window->GraphicsBackground, 0);
 		VanillaGraphicsClear(Window->GraphicsWindow, 0);
@@ -253,7 +304,7 @@ VanillaVoid VanillaWindowDrawControl(VanillaWindow Window) {
 }
 
 VanillaVoid VanillaWindowUpdate(VanillaWindow Window, VanillaRect UpdateRect) {
-	VanillaPortUpdateWindow(Window, UpdateRect);
+	VanillaPWUpdateWindow(Window, UpdateRect);
 }
 
 VanillaVoid VanillaWindowUpdateGraphicsRect(VanillaWindow Window, VanillaRect UpdateRect, VanillaBool ForceRedraw, VanillaBool Flash) {
@@ -263,7 +314,7 @@ VanillaVoid VanillaWindowUpdateGraphicsRect(VanillaWindow Window, VanillaRect Up
 	}
 	/*复制更新区域的背景到窗口*/
 	VanillaAlphaBlend(Window->GraphicsWindow, UpdateRect->Left, UpdateRect->Top, UpdateRect->Width, UpdateRect->Height, Window->GraphicsBackground, UpdateRect->Left, UpdateRect->Top, 255);
-	
+
 	VanillaControl Control = Window->RootControl.Control->ChildControlFirst;
 	VPoint OffsetPoint(0, 0);
 	VanillaByte Alpha = 255;
@@ -331,7 +382,7 @@ VanillaInt VanillaWindowDefaultControlsProc(VanillaInt ID, VanillaInt Message, V
 		case VM_LBUTTONDOWN:
 			if (ControlInfo->Window->DragType & VWS_DRAG_ANY) {
 				/*任意移动窗口*/
-				VanillaPortDragWindow(ControlInfo->Window->PortWindow);
+				VanillaPWDragWindow(ControlInfo->Window->PortWindow);
 			}
 			break;
 		case VM_SIZE:
@@ -346,7 +397,7 @@ VanillaInt VanillaWindowDefaultControlsProc(VanillaInt ID, VanillaInt Message, V
 		case VM_LBUTTONDOWN:
 			if (!(ControlInfo->Window->DragType & VWS_DRAG_NO)) {
 				/*任意移动窗口*/
-				VanillaPortDragWindow(ControlInfo->Window->PortWindow);
+				VanillaPWDragWindow(ControlInfo->Window->PortWindow);
 			}
 			break;
 		}

@@ -1,9 +1,11 @@
 // Vanilla Task Queue (not used yet)
-#include "../stdafx.h"
-#include "../VDefine.h"
-#include "../VStruct.h"
-#include "../VWindow.h"
-#include "../VPort.h"
+#include "stdafx.h"
+#include "VDefine.h"
+#include "VStruct.h"
+#include "VWindow.h"
+#include "VPWindow.h"
+#include "VPSysCall.h"
+
 #include "VHashTable.h"
 #include "VTaskQueue.h"
 
@@ -39,10 +41,10 @@ VanillaInt VTaskQueue::DoWork() {
 	if (this->Processing) {
 		return NULL;
 	}
-	int StartTime = VanillaPortGetTickCount();
+	int StartTime = VanillaPSGetTickCount();
 	this->Processing = true;
 	VanillaTask Task;
-	VanillaBool UpdateType = !VanillaPortGetWindowComposite(this->Window->PortWindow);
+	VanillaBool UpdateType = !VanillaPWGetWindowComposite(this->Window->PortWindow);
 	while (this->TaskQueue.size() != 0) {
 		Task = *this->TaskQueue.begin();
 		VanillaWindowUpdateGraphicsRect(this->Window, &Task->UpdateRect, false, UpdateType);
@@ -51,7 +53,7 @@ VanillaInt VTaskQueue::DoWork() {
 	if (!UpdateType) {
 		VanillaWindowUpdate(Window, NULL);
 	}
-	return VanillaPortGetTickCount() - StartTime;
+	return VanillaPSGetTickCount() - StartTime;
 }
 
 VanillaInt VTaskQueue::IsDone() {
