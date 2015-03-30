@@ -2,9 +2,64 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="src/VDrawing.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src/Backend/Skia/VImage.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2592" topLine="48" />
+			<Cursor1 position="99" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/PortLayer/Linux/VPWindow.cpp" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="7431" topLine="229" />
+		</Cursor>
+	</File>
+	<File name="include/VStruct.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="125" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include/stdafx.h" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="856" topLine="4" />
+		</Cursor>
+	</File>
+	<File name="src/Utils/VSkinDB.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="817" topLine="19" />
+		</Cursor>
+	</File>
+	<File name="include/VDrawing.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="169" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/VGlobalFunction.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="645" topLine="15" />
+		</Cursor>
+	</File>
+	<File name="src/DebugCode.cpp" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1432" topLine="33" />
+		</Cursor>
+	</File>
+	<File name="include/VDefine.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1149" topLine="22" />
+		</Cursor>
+	</File>
+	<File name="src/Backend/Skia/VGraphics.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1080" topLine="20" />
+		</Cursor>
+	</File>
+	<File name="src/PortLayer/Win32/VPWindow.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="9886" topLine="302" />
+		</Cursor>
+	</File>
+	<File name="src/PortLayer/Win32/VPSysCall.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="63" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="src/VControlBase.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -12,50 +67,50 @@
 			<Cursor1 position="701" topLine="102" />
 		</Cursor>
 	</File>
-	<File name="src/Utils/VSkinDB.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="include/Backend/VImage.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="817" topLine="19" />
+			<Cursor1 position="74" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="src/PortLayer/Xcb/VPWindow.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src/Backend/Skia/VStringFormat.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2888" topLine="85" />
+			<Cursor1 position="600" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="src/PortLayer/Win32/VPWindow.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="include/Backend/VStringFormat.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="8885" topLine="270" />
+			<Cursor1 position="1176" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="src/PortLayer/Win32/VPSysCall.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="include/PortLayer/VPWindow.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="19" topLine="0" />
+			<Cursor1 position="2923" topLine="68" />
 		</Cursor>
 	</File>
-	<File name="src/DebugCode.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1925" topLine="51" />
-		</Cursor>
-	</File>
-	<File name="include/stdafx.h" open="1" top="1" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="931" topLine="5" />
-		</Cursor>
-	</File>
-	<File name="src/VGlobalFunction.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1884" topLine="20" />
-		</Cursor>
-	</File>
-	<File name="src/VWindow.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="7613" topLine="177" />
-		</Cursor>
-	</File>
-	<File name="src/Controls/VanillaButton.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src/Controls/VanillaButton.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="337" topLine="0" />
 		</Cursor>
 	</File>
-	<EditorTabsLayout layout="0b18ab405517e0330048b7a100000002=0;Vanilla:src/DebugCode.cpp,1;Vanilla:src/Utils/VSkinDB.cpp,2;Vanilla:src/VDrawing.cpp,3;Vanilla:src/VWindow.cpp,4;Vanilla:src/PortLayer/Win32/VPWindow.cpp,5;Vanilla:src/Controls/VanillaButton.cpp,*6;Vanilla:include/stdafx.h@layout2|name=dummy;caption=;state=2098174;dir=3;layer=0;row=0;pos=0;prop=100000;bestw=615;besth=257;minw=615;minh=257;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=0b18ab405517e0330048b7a100000002;caption=;state=2098172;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=200;besth=200;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|dock_size(5,0,0)=202|" />
+	<File name="include/Backend/VGraphics.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="492" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/VWindow.cpp" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="8173" topLine="216" />
+		</Cursor>
+	</File>
+	<File name="src/Utils/VTaskQueue.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="164" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include/VWindow.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1355" topLine="28" />
+		</Cursor>
+	</File>
+	<EditorTabsLayout layout="0b7f5f505517f8d60eceddac00000002=*0;,1;,2;Vanilla:include/VStruct.h,3;,4;Vanilla:include/VDrawing.h,5;Vanilla:include/VDefine.h,6;,7;,8;Vanilla:src/DebugCode.cpp,9;Vanilla:src/PortLayer/Linux/VPWindow.cpp,10;Vanilla:include/stdafx.h,11;Vanilla:src/VWindow.cpp@layout2|name=dummy;caption=;state=2098174;dir=3;layer=0;row=0;pos=0;prop=100000;bestw=615;besth=257;minw=615;minh=257;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=0b7f5f505517f8d60eceddac00000002;caption=;state=2098172;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=200;besth=200;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|dock_size(5,0,0)=202|" />
 </CodeBlocks_layout_file>
