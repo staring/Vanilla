@@ -25,6 +25,27 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="头文件\PortLayer">
+      <UniqueIdentifier>{24b19ff4-55c2-405a-ab6e-86d92365eff9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Backend">
+      <UniqueIdentifier>{cf448490-c231-435f-a913-1984a79d0bdc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Backend">
+      <UniqueIdentifier>{629bf237-0c2f-4af9-9216-208f0807a6e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Backend\Skia">
+      <UniqueIdentifier>{0d1f728e-d71a-4e78-ab4a-75db56f43514}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\PortLayer">
+      <UniqueIdentifier>{305bdb90-102b-4940-9f5c-b7cc6719921b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\PortLayer\Linux">
+      <UniqueIdentifier>{3478c888-35c5-4a6e-bfd4-c11c6a0c7a3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\PortLayer\Win32">
+      <UniqueIdentifier>{7a54e55f-d727-48cc-9819-05d53fd3fca9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\DebugCode.cpp">
@@ -34,9 +55,6 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="src\VControlBase.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="src\VDrawing.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="src\VGlobalFunction.cpp">
@@ -66,58 +84,88 @@
     <ClCompile Include="src\Utils\VTaskQueue.cpp">
       <Filter>源文件\Utils</Filter>
     </ClCompile>
+    <ClCompile Include="src\Backend\Skia\VGraphics.cpp">
+      <Filter>源文件\Backend\Skia</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Backend\Skia\VImage.cpp">
+      <Filter>源文件\Backend\Skia</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Backend\Skia\VStringFormat.cpp">
+      <Filter>源文件\Backend\Skia</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PortLayer\Linux\VPSysCall.cpp">
+      <Filter>源文件\PortLayer\Linux</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PortLayer\Linux\VPWindow.cpp">
+      <Filter>源文件\PortLayer\Linux</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PortLayer\Win32\VPSysCall.cpp">
+      <Filter>源文件\PortLayer\Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PortLayer\Win32\VPWindow.cpp">
+      <Filter>源文件\PortLayer\Win32</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\stdafx.h">
+    <ClInclude Include="include\stdafx.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\VControl.h">
+    <ClInclude Include="include\VControl.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\VControlBase.h">
+    <ClInclude Include="include\VControlBase.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\VDefine.h">
+    <ClInclude Include="include\VDefine.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\VDrawing.h">
+    <ClInclude Include="include\VDrawing.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\VGlobalFunction.h">
+    <ClInclude Include="include\VGlobalFunction.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\VPort.h">
+    <ClInclude Include="include\VStruct.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\VStruct.h">
+    <ClInclude Include="include\VWindow.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\VWindow.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Controls\Include.h">
-      <Filter>头文件\Controls</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Controls\VanillaButton.h">
-      <Filter>头文件\Controls</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Controls\VanillaLabel.h">
-      <Filter>头文件\Controls</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Controls\VControlRegister.h">
-      <Filter>头文件\Controls</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Utils\VHashTable.h">
+    <ClInclude Include="include\Utils\VHashTable.h">
       <Filter>头文件\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="src\Utils\VSkinDB.h">
+    <ClInclude Include="include\Utils\VSkinDB.h">
       <Filter>头文件\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="src\Utils\VTaskQueue.h">
+    <ClInclude Include="include\Utils\VTaskQueue.h">
       <Filter>头文件\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="include\Skia.h">
-      <Filter>头文件</Filter>
+    <ClInclude Include="include\Controls\Include.h">
+      <Filter>头文件\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Controls\VanillaButton.h">
+      <Filter>头文件\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Controls\VanillaLabel.h">
+      <Filter>头文件\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Controls\VControlRegister.h">
+      <Filter>头文件\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PortLayer\VPSysCall.h">
+      <Filter>头文件\PortLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PortLayer\VPWindow.h">
+      <Filter>头文件\PortLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Backend\VGraphics.h">
+      <Filter>头文件\Backend</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Backend\VImage.h">
+      <Filter>头文件\Backend</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Backend\VStringFormat.h">
+      <Filter>头文件\Backend</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -44,6 +44,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -52,7 +53,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;VANILLA_EXPORTS;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>include/Skia/animator;include/Skia/c;include/Skia/config;include/Skia/core;include/Skia/device;include/Skia/effects;include/Skia/gpu;include/Skia/images;include/Skia/pathops;include/Skia/pipe;include/Skia/ports;include/Skia/svg;include/Skia/utils;include/Skia/vi</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>include;include\Utils;include\Backend;include\Controls;include\PortLayer;include/Skia/animator;include/Skia/c;include/Skia/config;include/Skia/core;include/Skia/device;include/Skia/effects;include/Skia/gpu;include/Skia/images;include/Skia/pathops;include/Skia/pipe;include/Skia/ports;include/Skia/svg;include/Skia/utils;include/Skia/vi</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4819</DisableSpecificWarnings>
       <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
@@ -72,6 +73,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;VANILLA_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>include;include\Utils;include\Backend;include\Controls;include\PortLayer;include/Skia/animator;include/Skia/c;include/Skia/config;include/Skia/core;include/Skia/device;include/Skia/effects;include/Skia/gpu;include/Skia/images;include/Skia/pathops;include/Skia/pipe;include/Skia/ports;include/Skia/svg;include/Skia/utils;include/Skia/vi</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -81,38 +83,47 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Backend\Skia\VGraphics.cpp" />
+    <ClCompile Include="src\Backend\Skia\VImage.cpp" />
+    <ClCompile Include="src\Backend\Skia\VStringFormat.cpp" />
     <ClCompile Include="src\Controls\VanillaButton.cpp" />
     <ClCompile Include="src\Controls\VanillaLabel.cpp" />
     <ClCompile Include="src\Controls\VControlRegister.cpp" />
     <ClCompile Include="src\DebugCode.cpp" />
+    <ClCompile Include="src\PortLayer\Linux\VPSysCall.cpp" />
+    <ClCompile Include="src\PortLayer\Linux\VPWindow.cpp" />
+    <ClCompile Include="src\PortLayer\Win32\VPSysCall.cpp" />
+    <ClCompile Include="src\PortLayer\Win32\VPWindow.cpp" />
     <ClCompile Include="src\Utils\VHashTable.cpp" />
     <ClCompile Include="src\Utils\VSkinDB.cpp" />
     <ClCompile Include="src\Utils\VTaskQueue.cpp" />
     <ClCompile Include="src\VControl.cpp" />
     <ClCompile Include="src\VControlBase.cpp" />
-    <ClCompile Include="src\VDrawing.cpp" />
     <ClCompile Include="src\VGlobalFunction.cpp" />
     <ClCompile Include="src\VPort.cpp" />
     <ClCompile Include="src\VWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\Skia.h" />
-    <ClInclude Include="src\Controls\Include.h" />
-    <ClInclude Include="src\Controls\VanillaButton.h" />
-    <ClInclude Include="src\Controls\VanillaLabel.h" />
-    <ClInclude Include="src\Controls\VControlRegister.h" />
-    <ClInclude Include="src\stdafx.h" />
-    <ClInclude Include="src\Utils\VHashTable.h" />
-    <ClInclude Include="src\Utils\VSkinDB.h" />
-    <ClInclude Include="src\Utils\VTaskQueue.h" />
-    <ClInclude Include="src\VControl.h" />
-    <ClInclude Include="src\VControlBase.h" />
-    <ClInclude Include="src\VDefine.h" />
-    <ClInclude Include="src\VDrawing.h" />
-    <ClInclude Include="src\VGlobalFunction.h" />
-    <ClInclude Include="src\VPort.h" />
-    <ClInclude Include="src\VStruct.h" />
-    <ClInclude Include="src\VWindow.h" />
+    <ClInclude Include="include\Backend\VGraphics.h" />
+    <ClInclude Include="include\Backend\VImage.h" />
+    <ClInclude Include="include\Backend\VStringFormat.h" />
+    <ClInclude Include="include\Controls\Include.h" />
+    <ClInclude Include="include\Controls\VanillaButton.h" />
+    <ClInclude Include="include\Controls\VanillaLabel.h" />
+    <ClInclude Include="include\Controls\VControlRegister.h" />
+    <ClInclude Include="include\PortLayer\VPSysCall.h" />
+    <ClInclude Include="include\PortLayer\VPWindow.h" />
+    <ClInclude Include="include\stdafx.h" />
+    <ClInclude Include="include\Utils\VHashTable.h" />
+    <ClInclude Include="include\Utils\VSkinDB.h" />
+    <ClInclude Include="include\Utils\VTaskQueue.h" />
+    <ClInclude Include="include\VControl.h" />
+    <ClInclude Include="include\VControlBase.h" />
+    <ClInclude Include="include\VDefine.h" />
+    <ClInclude Include="include\VDrawing.h" />
+    <ClInclude Include="include\VGlobalFunction.h" />
+    <ClInclude Include="include\VStruct.h" />
+    <ClInclude Include="include\VWindow.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

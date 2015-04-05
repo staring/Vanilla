@@ -2,7 +2,7 @@
 #define __VANILLA_CORE_DEFINE_H__
 // Vanilla Defines
 
-#define DEBUG_BORDER 1
+#define DEBUG_BORDER 0
 #define DEBUG_PUTPNG(BITMAP, FILE) SkASSERT(SkImageEncoder::EncodeFile(FILE, BITMAP, SkImageEncoder::kPNG_Type, 100));
 
 
