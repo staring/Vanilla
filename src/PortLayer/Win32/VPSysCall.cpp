@@ -1,6 +1,10 @@
-﻿#include <stdafx.h>
-#include <VDefine.h>
-#include <VPSysCall.h>
+﻿#include "stdafx.h"
+#include "VDefine.h"
+#include "VPSysCall.h"
+
+#undef RGB
+
+#include <windows.h>
 
 VanillaInt VanillaPSGetTickCount() {
 	return GetTickCount();

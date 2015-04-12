@@ -1,10 +1,11 @@
 // Vanilla Skia Graphics Backend
 #include "stdafx.h"
-#include "Skia.h"
 #include "VDefine.h"
 #include "VStruct.h"
 #include "VGraphics.h"
 #include "VStringFormat.h"
+
+#include "Skia.h"
 
 typedef struct VStringFormat
 {

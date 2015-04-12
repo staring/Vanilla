@@ -1,35 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="源文件">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
     <Filter Include="头文件">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="源文件\Controls">
-      <UniqueIdentifier>{f5843939-3b2f-4665-907e-03dc7bd15a0a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="头文件\Controls">
       <UniqueIdentifier>{c102d53e-1e4b-4baa-a96b-01940b1bd6cf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="源文件\Utils">
-      <UniqueIdentifier>{783860f6-2b2f-4bbc-851d-4f105e2d12da}</UniqueIdentifier>
-    </Filter>
     <Filter Include="头文件\Utils">
       <UniqueIdentifier>{3f47c8a7-8030-43f8-9da8-e117693daf83}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="源文件\资源文件">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
     <Filter Include="头文件\PortLayer">
       <UniqueIdentifier>{24b19ff4-55c2-405a-ab6e-86d92365eff9}</UniqueIdentifier>
     </Filter>
     <Filter Include="头文件\Backend">
       <UniqueIdentifier>{cf448490-c231-435f-a913-1984a79d0bdc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="源文件\Controls">
+      <UniqueIdentifier>{f5843939-3b2f-4665-907e-03dc7bd15a0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Utils">
+      <UniqueIdentifier>{783860f6-2b2f-4bbc-851d-4f105e2d12da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
     <Filter Include="源文件\Backend">
       <UniqueIdentifier>{629bf237-0c2f-4af9-9216-208f0807a6e7}</UniqueIdentifier>
@@ -58,9 +58,6 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="src\VGlobalFunction.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="src\VPort.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="src\VWindow.cpp">
@@ -93,9 +90,6 @@
     <ClCompile Include="src\Backend\Skia\VStringFormat.cpp">
       <Filter>源文件\Backend\Skia</Filter>
     </ClCompile>
-    <ClCompile Include="src\PortLayer\Linux\VPSysCall.cpp">
-      <Filter>源文件\PortLayer\Linux</Filter>
-    </ClCompile>
     <ClCompile Include="src\PortLayer\Linux\VPWindow.cpp">
       <Filter>源文件\PortLayer\Linux</Filter>
     </ClCompile>
@@ -104,6 +98,9 @@
     </ClCompile>
     <ClCompile Include="src\PortLayer\Win32\VPWindow.cpp">
       <Filter>源文件\PortLayer\Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PortLayer\Linux\VPSysCall.cpp">
+      <Filter>源文件\PortLayer\Linux</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

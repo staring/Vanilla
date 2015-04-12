@@ -53,7 +53,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;VANILLA_EXPORTS;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>include;include\Utils;include\Backend;include\Controls;include\PortLayer;include/Skia/animator;include/Skia/c;include/Skia/config;include/Skia/core;include/Skia/device;include/Skia/effects;include/Skia/gpu;include/Skia/images;include/Skia/pathops;include/Skia/pipe;include/Skia/ports;include/Skia/svg;include/Skia/utils;include/Skia/vi</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Skia;include;include\Utils;include\Backend;include\Controls;include\PortLayer</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4819</DisableSpecificWarnings>
       <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
@@ -83,15 +83,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Backend\Skia\VGraphics.cpp" />
-    <ClCompile Include="src\Backend\Skia\VImage.cpp" />
-    <ClCompile Include="src\Backend\Skia\VStringFormat.cpp" />
+    <ClCompile Include="src\Backend\Skia\VGraphics.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">include;include\Utils;include\Backend;include\Controls;include\PortLayer;Skia;Skia/animator;Skia/config;Skia/core;Skia/device;Skia/device/xps;Skia/effects;Skia/gpu;Skia/gpu/effects;Skia/gpu/gl;Skia/gpu/gl/angle;Skia/images;Skia/pipe;Skia/ports;Skia/utils</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="src\Backend\Skia\VImage.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">include;include\Utils;include\Backend;include\Controls;include\PortLayer;Skia;Skia/animator;Skia/config;Skia/core;Skia/device;Skia/device/xps;Skia/effects;Skia/gpu;Skia/gpu/effects;Skia/gpu/gl;Skia/gpu/gl/angle;Skia/images;Skia/pipe;Skia/ports;Skia/utils</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="src\Backend\Skia\VStringFormat.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">include;include\Utils;include\Backend;include\Controls;include\PortLayer;Skia;Skia/animator;Skia/config;Skia/core;Skia/device;Skia/device/xps;Skia/effects;Skia/gpu;Skia/gpu/effects;Skia/gpu/gl;Skia/gpu/gl/angle;Skia/images;Skia/pipe;Skia/ports;Skia/utils</AdditionalIncludeDirectories>
+    </ClCompile>
     <ClCompile Include="src\Controls\VanillaButton.cpp" />
     <ClCompile Include="src\Controls\VanillaLabel.cpp" />
     <ClCompile Include="src\Controls\VControlRegister.cpp" />
     <ClCompile Include="src\DebugCode.cpp" />
-    <ClCompile Include="src\PortLayer\Linux\VPSysCall.cpp" />
-    <ClCompile Include="src\PortLayer\Linux\VPWindow.cpp" />
+    <ClCompile Include="src\PortLayer\Linux\VPSysCall.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\PortLayer\Linux\VPWindow.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="src\PortLayer\Win32\VPSysCall.cpp" />
     <ClCompile Include="src\PortLayer\Win32\VPWindow.cpp" />
     <ClCompile Include="src\Utils\VHashTable.cpp" />
@@ -100,7 +110,6 @@
     <ClCompile Include="src\VControl.cpp" />
     <ClCompile Include="src\VControlBase.cpp" />
     <ClCompile Include="src\VGlobalFunction.cpp" />
-    <ClCompile Include="src\VPort.cpp" />
     <ClCompile Include="src\VWindow.cpp" />
   </ItemGroup>
   <ItemGroup>

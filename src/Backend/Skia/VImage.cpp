@@ -1,9 +1,10 @@
 // Vanilla Skia Image Backend
 #include "stdafx.h"
-#include "Skia.h"
 #include "VDefine.h"
 #include "VStruct.h"
 #include "VGraphics.h"
+
+#include "Skia.h"
 
 typedef struct VImage {
 	SkBitmap Bitmap;

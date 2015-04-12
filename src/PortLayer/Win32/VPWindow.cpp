@@ -7,6 +7,7 @@
 #include "VGlobalFunction.h"
 #include "VPWindow.h"
 
+#undef RGB
 
 #include <tchar.h>
 #include <windows.h>
@@ -20,12 +21,12 @@ typedef struct VPWWindow
 	bool Layered;
 } *VanillaPWWindow, _VPWWindow;
 
-typedef struct VPortGraphics
+typedef struct VPWGraphics
 {
 	HDC MemoryDC;
 	HBITMAP OldBitmap;
 	HBITMAP CurrentBitmap;
-} *VanillaPWGraphics, _VPortGraphics;
+} *VanillaPWGraphics, _VPWGraphics;
 
 #define PROP_ID		(LPCWSTR)101
 #define PROP_OLDPROC	(LPCWSTR)102
@@ -152,10 +153,9 @@ VanillaVoid VanillaPWDragWindow(VanillaPWWindow PortWindow) {
 
 VanillaVoid VanillaPWDestroyGraphicsOfWindowCachedInMemoey(VanillaGraphics Graphics) {
 	if (Graphics) {
-        Graphics->Bitmap.reset();
-        DeleteObject((HBITMAP)SelectObject(Graphics->PortGraphics->MemoryDC, (HGDIOBJ)Graphics->PortGraphics->OldBitmap));
-        DeleteDC(Graphics->PortGraphics->MemoryDC);
-        delete Graphics->PortGraphics;
+		DeleteObject((HBITMAP)SelectObject(VanillaGraphicsGetPWGraphics(Graphics)->MemoryDC, (HGDIOBJ)VanillaGraphicsGetPWGraphics(Graphics)->OldBitmap));
+		DeleteDC(VanillaGraphicsGetPWGraphics(Graphics)->MemoryDC);
+		delete VanillaGraphicsGetPWGraphics(Graphics);
         VanillaDestroyGraphics(Graphics);
 	}
 	return;
@@ -183,17 +183,13 @@ VanillaGraphics VanillaPWCreateGraphicsOfWindowCachedInMemoey(VanillaWindow Wind
 
 		HBITMAP OldBitmap = (HBITMAP)SelectObject(MemoryDC, (HGDIOBJ)HBitmap);
 
-		//Bitmap.setConfig(SkBitmap::kARGB_8888_Config, Window->Rect.Width, Window->Rect.Height, ((Window->Rect.Width * 32 + 15) / 16) * 2);
-		//Bitmap.setPixels(Bits);
-		VanillaGraphics Graphics = new VGraphics;
-		Graphics->Bitmap.installPixels(SkImageInfo::MakeN32Premul(Window->Rect.Width, Window->Rect.Height), Bits, ((Window->Rect.Width * 32 + 15) / 16) * 2);
-		new (&Graphics->Canvas) SkCanvas(Graphics->Bitmap);
-		Graphics->PortGraphics = new VPortGraphics;
-		Graphics->PortGraphics->MemoryDC = MemoryDC;
-		Graphics->PortGraphics->CurrentBitmap = HBitmap;
-		Graphics->Width = Window->Rect.Width;
-		Graphics->Height = Window->Rect.Height;
-		Graphics->PortGraphics->OldBitmap = OldBitmap;
+		VanillaGraphics Graphics = VanillaCreateGraphicsFromPixelAddress(Bits, Window->Rect.Width, Window->Rect.Height);
+
+		VanillaPWGraphics PWGraphics = new VPWGraphics;
+		PWGraphics->MemoryDC = MemoryDC;
+		PWGraphics->CurrentBitmap = HBitmap;
+		PWGraphics->OldBitmap = OldBitmap;
+		VanillaGraphicsSetPWGraphics(Graphics, PWGraphics);
 		return Graphics;
 	}
 	return NULL;
@@ -212,7 +208,7 @@ VanillaVoid VanillaPWUpdateWindow(VanillaWindow Window, VanillaRect UpdateRect) 
 			POINT pt1 = { Window->Rect.Left, Window->Rect.Top };
 			POINT pt2 = { 0, 0 };
 			SIZE sz = { Window->Rect.Width, Window->Rect.Height };
-			HDC SrcDC = Window->GraphicsWindow->PortGraphics->MemoryDC;
+			HDC SrcDC = VanillaGraphicsGetPWGraphics(Window->GraphicsWindow)->MemoryDC;
 			UpdateLayeredWindow(Window->PortWindow->hWnd,
 				Window->PortWindow->hDC,
 				&pt1,
@@ -232,7 +228,7 @@ VanillaVoid VanillaPWUpdateWindow(VanillaWindow Window, VanillaRect UpdateRect) 
 				_UpdateRect.Top = 0;
 				UpdateRect = &_UpdateRect;
 			}
-			BitBlt(Window->PortWindow->hDC, UpdateRect->Left, UpdateRect->Top, UpdateRect->Width, UpdateRect->Height, Window->GraphicsWindow->PortGraphics->MemoryDC, UpdateRect->Left, UpdateRect->Top, SRCCOPY);
+			BitBlt(Window->PortWindow->hDC, UpdateRect->Left, UpdateRect->Top, UpdateRect->Width, UpdateRect->Height, VanillaGraphicsGetPWGraphics(Window->GraphicsWindow)->MemoryDC, UpdateRect->Left, UpdateRect->Top, SRCCOPY);
 		}
 	}
 }
@@ -263,7 +259,7 @@ LRESULT CALLBACK VanillaPWWin32WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, L
 	case WM_PAINT: {
 		PAINTSTRUCT ps;
 		BeginPaint(hWnd, &ps);
-		BitBlt(ps.hdc, 0, 0, Window->Rect.Width, Window->Rect.Height, Window->GraphicsWindow->PortGraphics->MemoryDC, 0, 0, SRCCOPY);
+		BitBlt(ps.hdc, 0, 0, Window->Rect.Width, Window->Rect.Height, VanillaGraphicsGetPWGraphics(Window->GraphicsWindow)->MemoryDC, 0, 0, SRCCOPY);
 		EndPaint(hWnd, &ps);
 		return 0;
 		break;
@@ -351,7 +347,7 @@ LRESULT CALLBACK VanillaPWWin32WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, L
 	case WM_CHAR: {
 		wchar_t Char = (wchar_t)wParam;
 		char Buffers[5];
-		VanillaPWUTF16ToUTF8(Buffers, 5, &Char, 1);
+		VanillaUTF16ToUTF8(Buffers, 5, &Char, 1);
 		if (Window->FocusControl) {
 			VanillaControlSendMessage(Window->FocusControl, VM_CHAR, (VanillaInt)Buffers, NULL);
 		}

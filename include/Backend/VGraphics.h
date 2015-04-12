@@ -1,8 +1,14 @@
 #ifndef __VANILLA_BACKEND_GRAPHICS_H__
 #define __VANILLA_BACKEND_GRAPHICS_H__
 
-VAPI(VanillaVoid) VanillaGraphicsSetPWGraphics(VanillaGraphics Graphics, VanillaPWGraphics PwGraphics);
-VAPI(VanillaPWGraphics) VanillaGraphicsGetPWGraphics(VanillaGraphics Graphics);
+inline VanillaVoid VanillaGraphicsSetPWGraphics(VanillaGraphics Graphics, VanillaPWGraphics PWGraphics) {
+	*(VanillaPWGraphics*)Graphics = PWGraphics;
+}
+
+inline VanillaPWGraphics VanillaGraphicsGetPWGraphics(VanillaGraphics Graphics) {
+	return *(VanillaPWGraphics*)Graphics;
+}
+
 VAPI(VanillaAny) VanillaGraphicsGetPixels(VanillaGraphics Graphics);
 /**
 * 此函数用作填充一个矩形区域.
@@ -129,6 +135,14 @@ VAPI(VanillaVoid) VanillaGraphicsClear(VanillaGraphics Graphics, VanillaColor Co
 * @param Returns 成功返回创建的VanillaGraphics对象.
 */
 VAPI(VanillaGraphics) VanillaCreateGraphicsInMemory(VanillaInt Width, VanillaInt Height);
+/**
+* 此函数用作使用一个已有的像素数据地址来创建VanillaGraphics对象
+* @param Pixels 像素地址
+* @param Width 宽度
+* @param Height 高度
+* @param Returns 成功返回创建的VanillaGraphics对象.
+*/
+VAPI(VanillaGraphics) VanillaCreateGraphicsFromPixelAddress(VanillaAny Pixels, VanillaInt Width, VanillaInt Height);
 /**
 * 此函数用作销毁VanillaGraphics对象.
 * @param Graphics VanillaGraphics对象

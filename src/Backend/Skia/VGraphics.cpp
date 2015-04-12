@@ -1,13 +1,12 @@
 // Vanilla Skia Graphics Backend
 #include "stdafx.h"
-#include "Skia.h"
 #include "VDefine.h"
 #include "VStruct.h"
 #include "VStringFormat.h"
 #include "VImage.h"
 #include "VGraphics.h"
 
-__SK_FORCE_IMAGE_DECODER_LINKING;
+#include "Skia.h"
 
 typedef struct VStringFormat
 {
@@ -23,13 +22,13 @@ typedef struct VStringFormat
 }*VanillaStringFormat, _VStringFromat;
 
 typedef struct VGraphics {
+	VanillaPWGraphics PortGraphics;
 	SkCanvas Canvas;
 	char Buffers[8]; // fixme : Skia's memory-overflow bug.
 	SkBitmap Bitmap;
 	SkPaint Paint;
 	VanillaInt Width;
 	VanillaInt Height;
-	VanillaPWGraphics PortGraphics;
 	~VGraphics() {
         //delete this->Canvas;
         //delete this->Paint;
@@ -45,14 +44,6 @@ typedef struct VImage {
 	VanillaInt Width;
 	VanillaInt Height;
 }*VanillaImage, _VImage;
-
-VAPI(VanillaVoid) VanillaGraphicsSetPWGraphics(VanillaGraphics Graphics, VanillaPWGraphics PWGraphics) {
-    Graphics->PortGraphics = PWGraphics;
-}
-
-VAPI(VanillaPWGraphics) VanillaGraphicsGetPWGraphics(VanillaGraphics Graphics) {
-    return Graphics->PortGraphics;
-}
 
 VAPI(VanillaAny) VanillaGraphicsGetPixels(VanillaGraphics Graphics) {
     return Graphics->Bitmap.getPixels();
@@ -230,6 +221,13 @@ VAPI(VanillaGraphics) VanillaCreateGraphicsInMemory(VanillaInt Width, VanillaInt
     new (&Graphics->Canvas) SkCanvas(Graphics->Bitmap);
 	Graphics->Width = Width;
 	Graphics->Height = Height;
+	return Graphics;
+}
+
+VAPI(VanillaGraphics) VanillaCreateGraphicsFromPixelAddress(VanillaAny Pixels, VanillaInt Width, VanillaInt Height) {
+	VanillaGraphics Graphics = new VGraphics;
+	Graphics->Bitmap.installPixels(SkImageInfo::MakeN32Premul(Width, Height), Pixels, ((Width * 32 + 15) / 16) * 2);
+	new (&Graphics->Canvas) SkCanvas(Graphics->Bitmap);
 	return Graphics;
 }
 

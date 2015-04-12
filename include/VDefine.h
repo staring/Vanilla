@@ -24,9 +24,7 @@
 #define ARGB(A,R,G,B) ((uint32_t)((((A)&0xff)<<24)|(((R)&0xff)<<16)|(((G)&0xff)<<8)|((B)&0xff)))
 #define RGBA(R,G,B,A) ARGB(A,R,G,B)
 #define RGB2ARGB(COLOR,A) RGBA(((COLOR) >> 16 & 0xFF), ((COLOR) >> 8 & 0xFF), ((COLOR) & 0xFF), (A))
-#ifdef LINUX
 #define RGB(r,g,b) ((VanillaInt)(((VanillaByte)(r)|((short)((VanillaByte)(g))<<8))|(((VanillaInt)(VanillaByte)(b))<<16)))
-#endif
 
 #define anew(type) new((type*)alloca(sizeof(type))) type
 
@@ -41,7 +39,7 @@ typedef std::string VanillaString;
 
 typedef float VanillaReal;
 
-typedef int32_t VanillaInt;
+typedef int VanillaInt;
 
 typedef bool VanillaBool;
 
