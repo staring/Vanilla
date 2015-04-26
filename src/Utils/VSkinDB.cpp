@@ -6,13 +6,13 @@
 #include "VSkinDB.h"
 
 
-VanillaVoid WriteFileBin(FILE* File, VanillaBin Bin) {
+VanillaVoid WriteFileBin(FILE* File, VanillaBinary Bin) {
 	int Length = Bin->Length;
 	fwrite(&Length, 1, 4, File);
 	fwrite(Bin->Address, 1, Length, File);
 }
 
-VanillaBin ReadFileBin(FILE* File) {
+VanillaBinary ReadFileBin(FILE* File) {
 	int Length = 0;
 	/*前4字节数据长度*/
 	fread(&Length, 1, 4, File);
@@ -20,7 +20,7 @@ VanillaBin ReadFileBin(FILE* File) {
 	VanillaByte* Buffer = new VanillaByte[Length];
 	/*读取数据到内存*/
 	fread(Buffer, 1, Length, File);
-	return new VBin(Buffer, Length);
+	return new VBinary(Buffer, Length);
 }
 
 VanillaVoid WriteFileText(FILE* File, VanillaText String) {
@@ -59,11 +59,11 @@ VAPI(VanillaVoid) VanillaSkinDBDestroy(VanillaSkinDB SkinDB) {
 	delete SkinDB;
 }
 
-VAPI(VanillaVoid) VanillaSkinDBSet(VanillaSkinDB SkinDB, VanillaText Name, VanillaBin Data) {
+VAPI(VanillaVoid) VanillaSkinDBSet(VanillaSkinDB SkinDB, VanillaText Name, VanillaBinary Data) {
 	VanillaHashTableSet(SkinDB->HashTable, Name, Data);
 }
 
-VAPI(VanillaBin) VanillaSkinDBGet(VanillaSkinDB SkinDB, VanillaText Name) {
+VAPI(VanillaBinary) VanillaSkinDBGet(VanillaSkinDB SkinDB, VanillaText Name) {
 	return VanillaHashTableGet(SkinDB->HashTable, Name);
 }
 
@@ -117,7 +117,7 @@ VAPI(VanillaSkinDB) VanillaSkinDBLoad(VanillaText FileName) {
 	{
 		/*读出资源*/
 		VanillaText Name = ReadFileText(File);
-		VanillaBin Data = ReadFileBin(File);
+		VanillaBinary Data = ReadFileBin(File);
 		VanillaHashTableSet(SkinDB->HashTable, Name, Data);
 		delete Name;
 	}

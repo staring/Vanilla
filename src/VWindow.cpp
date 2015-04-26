@@ -53,11 +53,11 @@ VAPI(VanillaWindow) VanillaCreateWindow(VanillaRect Rect,
 
 	Window->TaskQueue = new VTaskQueue(Window);//创建任务列队
 	/*创建根控件*/
-	VanillaCreateDefaultControl(VanillaControlCreate((VanillaControl)(- (VanillaInt)Window), "VanillaUI.WindowRootControl", RECT(0, 0, Window->Rect.Width, Window->Rect.Height), NULL, NULL, true, true, NULL), Window->RootControl, Window, VWDC_ROOT);
+	VanillaCreateDefaultControl(VanillaControlCreate((VanillaControl)(- (VanillaInt)Window), "VanillaUI.WindowRootControl", RECT(0, 0, Window->Rect.Width, Window->Rect.Height), NULL, NULL, true, true, NULL), Window->RootControl, Window, VanillaWindowDefaultControlID::Root);
 
 	if (WindowStyle & VWS_TITLE) {
 		/*创建标题栏 作为跟控件的子控件*/
-		VanillaCreateDefaultControl(VanillaLabelCreate(VanillaGetWindowRootControl(Window), RECT(13, 11, Window->Rect.Width - 20, 30), Title, StringFormat, true, true), Window->Title, Window, VWDC_TITLE);
+		VanillaCreateDefaultControl(VanillaLabelCreate(VanillaGetWindowRootControl(Window), RECT(13, 11, Window->Rect.Width - 20, 30), Title, StringFormat, true, true), Window->Title, Window, VanillaWindowDefaultControlID::Title);
 	}
 	/*创建窗口相关Graphics对象*/
 	VanillaWindowInitGraphics(Window, true);
@@ -279,17 +279,17 @@ VanillaVoid VanillaWindowDrawBackgroundImage(VanillaWindow Window, VanillaGraphi
 			//VanillaDrawImageEx(Graphics, Window->BackgroundImage, 5, 5, Window->Rect.Width - 10, Window->Rect.Height - 10, 0, 0, 0, 0, 255);
 		}
 	}
-	if (Window->Shape == VWFS_RECT) {
+	if (Window->Shape == VanillaWindowShapeStyle::Rect) {
 		if (ShadowColor != -1) {
 			/*双层边框*/
 			VanillaDrawRect(Graphics, ARGB(204, 96, 96, 96), 5, 5, Window->Rect.Width - 10, Window->Rect.Height - 10, 1);
 			VanillaDrawRect(Graphics, ARGB(102, 255, 255, 255), 6, 6, Window->Rect.Width - 12, Window->Rect.Height - 12, 1);
 
 			/*绘制阴影*/
-			VanillaDrawRoundRect(Graphics, RGB2ARGB(ShadowColor, 45), 5, 5, Window->Rect.Width - 10, Window->Rect.Height - 10, 1, 0);
-			VanillaDrawRoundRect(Graphics, RGB2ARGB(ShadowColor, 25), 4, 4, Window->Rect.Width - 8, Window->Rect.Height - 8, 1, 0);
-			VanillaDrawRoundRect(Graphics, RGB2ARGB(ShadowColor, 10), 3, 3, Window->Rect.Width - 6, Window->Rect.Height - 6, 1, 0);
-			VanillaDrawRoundRect(Graphics, RGB2ARGB(ShadowColor, 5), 2, 2, Window->Rect.Width - 4, Window->Rect.Height - 4, 1, 0);
+			VanillaDrawRect(Graphics, RGB2ARGB(ShadowColor, 45), 5, 5, Window->Rect.Width - 10, Window->Rect.Height - 10, 1);
+			VanillaDrawRect(Graphics, RGB2ARGB(ShadowColor, 25), 4, 4, Window->Rect.Width - 8, Window->Rect.Height - 8, 1);
+			VanillaDrawRect(Graphics, RGB2ARGB(ShadowColor, 10), 3, 3, Window->Rect.Width - 6, Window->Rect.Height - 6, 1);
+			VanillaDrawRect(Graphics, RGB2ARGB(ShadowColor, 5), 2, 2, Window->Rect.Width - 4, Window->Rect.Height - 4, 1);
 		}
 		else{
 			/*双层边框*/
@@ -376,7 +376,7 @@ VanillaVoid VanillaWindowUpdateGraphicsRect(VanillaWindow Window, VanillaRect Up
 VanillaInt VanillaWindowDefaultControlsProc(VanillaInt ID, VanillaInt Message, VanillaInt Param1, VanillaInt Param2) {
 	VanillaWindowDefaultControl ControlInfo = (VanillaWindowDefaultControl)ID;
 	VanillaControl Control = ControlInfo->Control;
-	if (ControlInfo->ID == VWDC_ROOT) {
+	if (ControlInfo->ID == VanillaWindowDefaultControlID::Root) {
 		/*窗口消息*/
 		switch (Message) {
 		case VM_LBUTTONDOWN:
@@ -391,7 +391,7 @@ VanillaInt VanillaWindowDefaultControlsProc(VanillaInt ID, VanillaInt Message, V
 		}
 		return NULL;
 	}
-	else if (ControlInfo->ID == VWDC_TITLE) {
+	else if (ControlInfo->ID == VanillaWindowDefaultControlID::Title) {
 		/*标题区消息*/
 		switch (Message) {
 		case VM_LBUTTONDOWN:

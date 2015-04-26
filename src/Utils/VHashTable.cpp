@@ -15,7 +15,7 @@ VAPI(void) VanillaHashTableDestroy(VanillaHashTable HashTable) {
 	delete HashTable;
 }
 
-VAPI(void) VanillaHashTableInsert(VanillaHashTable HashTable, VanillaText Key, VanillaBin Value) {
+VAPI(void) VanillaHashTableInsert(VanillaHashTable HashTable, VanillaText Key, VanillaBinary Value) {
 	if (!HashTable) {
 		return;
 	}
@@ -31,7 +31,7 @@ VAPI(void) VanillaHashTableDelete(VanillaHashTable HashTable, VanillaText Key) {
 	HashTable->erase(WS);
 }
 
-VAPI(VanillaBin) VanillaHashTableGet(VanillaHashTable HashTable, VanillaText Key) {
+VAPI(VanillaBinary) VanillaHashTableGet(VanillaHashTable HashTable, VanillaText Key) {
 	if (!HashTable) {
 		return NULL;
 	}
@@ -39,7 +39,7 @@ VAPI(VanillaBin) VanillaHashTableGet(VanillaHashTable HashTable, VanillaText Key
 	return (*HashTable) [WS];
 }
 
-VAPI(void) VanillaHashTableSet(VanillaHashTable HashTable, VanillaText Key, VanillaBin Value) {
+VAPI(void) VanillaHashTableSet(VanillaHashTable HashTable, VanillaText Key, VanillaBinary Value) {
 	if (!HashTable) {
 		return;
 	}

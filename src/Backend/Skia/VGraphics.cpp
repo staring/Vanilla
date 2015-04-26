@@ -45,6 +45,10 @@ typedef struct VImage {
 	VanillaInt Height;
 }*VanillaImage, _VImage;
 
+VAPI(VanillaBool) VanillaInitializeBackend() {
+	return true;
+}
+
 VAPI(VanillaAny) VanillaGraphicsGetPixels(VanillaGraphics Graphics) {
     return Graphics->Bitmap.getPixels();
 }

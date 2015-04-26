@@ -1,4 +1,4 @@
-// Vanilla Skia Graphics Backend
+// Vanilla Skia StringFormat Backend
 #include "stdafx.h"
 #include "VDefine.h"
 #include "VStruct.h"

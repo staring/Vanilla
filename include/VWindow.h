@@ -18,24 +18,24 @@
 #define VBT_TENSILE			2	//拉伸
 #define VBT_NOCOLORFILL		4	//无填充颜色
 
-#define VWFS_RECT			0	//矩形
-#define VWFS_ROUNDRECT		1	//圆角矩形
-#define VWFS_CUSTOM			2	//
 
+enum VanillaWindowShapeStyle {
+	ShapeStyleRect,
+	ShapeStyleCuntom
+};
 
-
+enum VanillaWindowDefaultControlID {
+	ControlIDRoot,
+	ControlIDTitle,
+	ControlIDIcon
+};
 
 typedef struct VWindowDefaultControl
 {
 	VanillaControl Control;
 	VanillaWindow Window;
-	VanillaInt ID;
+	VanillaWindowDefaultControlID ID;
 } *VanillaWindowDefaultControl, _VWindowDefaultControl;
-
-#define VWDC_ROOT  0
-#define VWDC_TITLE 1
-#define VWDC_ICON  2
-
 
 typedef struct VWindow
 {

@@ -81,13 +81,13 @@ typedef struct VPWWindow *VanillaPWWindow, _VPWWindow;
 
 typedef struct VPWGraphics *VanillaPWGraphics, _VPWGraphics;
 
-typedef struct VBin *VanillaBin, _VBin;
+typedef struct VBinary *VanillaBinary, _VBinary;
 
 typedef struct VHashTableItem *VanillaHashTableItem, _VHashTableItem;
 
-typedef std::map<VanillaString, VanillaBin> VHashTable;
+typedef std::map<VanillaString, VanillaBinary> VHashTable;
 
-typedef std::map<VanillaString, VanillaBin>* VanillaHashTable;
+typedef std::map<VanillaString, VanillaBinary>* VanillaHashTable;
 
 typedef struct VHashTableTraveler *VanillaHashTableTraveler, _VHashTableTraveler;
 

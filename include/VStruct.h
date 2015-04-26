@@ -76,23 +76,24 @@ typedef struct VSizeR
 	VanillaReal Height;
 } *VanillaSizeR, _VSizeR;
 
-typedef struct VBin
+typedef struct VBinary
 {
-	VBin() {
+	VBinary() {
 		this->Address = NULL;
 		this->Length = 0;
 	}
 
-	VBin(VanillaByte* Address, VanillaInt Length) {
+	VBinary(VanillaByte* Address, VanillaInt Length) {
 		this->Address = Address;
 		this->Length = Length;
 	}
-	~VBin() {
+	~VBinary() {
 		if (this->Length != 0) {
 			delete [] this->Address;
 		}
 	}
 	VanillaByte* Address;
 	VanillaInt Length;
-} *VanillaBin, _VBin;
+} *VanillaBinary, _VBinary;
+
 #endif	//__VANILLA_CORE_STRUCT_H__

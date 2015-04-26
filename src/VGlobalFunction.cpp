@@ -6,13 +6,17 @@
 #include "VPWindow.h"
 #include "VControl.h"
 #include "VGlobalFunction.h"
-#include "Controls/VControlRegister.h"
+#include "VGraphics.h"
+#include "VControlRegister.h"
 
 VanillaBool VInit() {
 	if (!VInit_ControlClass()) {
 		return false;
 	}
 	if (!VanillaPWInitialize()) {
+		return false;
+	}
+	if (!VanillaInitializeBackend()) {
 		return false;
 	}
 	return true;
@@ -33,7 +37,7 @@ VAPI(VanillaBool) VanillaInit() {
 	return VInit();
 }
 
-VAPI(VanillaBin) VanillaReadFileToBin(VanillaText FileName) {
+VAPI(VanillaBinary) VanillaReadFileToBin(VanillaText FileName) {
 	FILE* File = fopen(FileName, "rb");
 	fseek(File, 0, SEEK_END);
 	int Size = ftell(File);
@@ -41,7 +45,7 @@ VAPI(VanillaBin) VanillaReadFileToBin(VanillaText FileName) {
 	VanillaByte* Buffer = new VanillaByte[Size];
 	fread(Buffer, 1, Size, File);
 	fclose(File);
-	return new VBin(Buffer, Size);
+	return new VBinary(Buffer, Size);
 }
 
 VAPI(VanillaBool) VanillaIsPointInRect(VanillaInt x, VanillaInt y, VanillaRect Rect) {

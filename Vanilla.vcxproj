@@ -83,14 +83,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Backend\Gdiplus\VGraphics.cpp" />
+    <ClCompile Include="src\Backend\Gdiplus\VImage.cpp" />
+    <ClCompile Include="src\Backend\Gdiplus\VStringFormat.cpp" />
     <ClCompile Include="src\Backend\Skia\VGraphics.cpp">
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">include;include\Utils;include\Backend;include\Controls;include\PortLayer;Skia;Skia/animator;Skia/config;Skia/core;Skia/device;Skia/device/xps;Skia/effects;Skia/gpu;Skia/gpu/effects;Skia/gpu/gl;Skia/gpu/gl/angle;Skia/images;Skia/pipe;Skia/ports;Skia/utils</AdditionalIncludeDirectories>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="src\Backend\Skia\VImage.cpp">
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">include;include\Utils;include\Backend;include\Controls;include\PortLayer;Skia;Skia/animator;Skia/config;Skia/core;Skia/device;Skia/device/xps;Skia/effects;Skia/gpu;Skia/gpu/effects;Skia/gpu/gl;Skia/gpu/gl/angle;Skia/images;Skia/pipe;Skia/ports;Skia/utils</AdditionalIncludeDirectories>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="src\Backend\Skia\VStringFormat.cpp">
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">include;include\Utils;include\Backend;include\Controls;include\PortLayer;Skia;Skia/animator;Skia/config;Skia/core;Skia/device;Skia/device/xps;Skia/effects;Skia/gpu;Skia/gpu/effects;Skia/gpu/gl;Skia/gpu/gl/angle;Skia/images;Skia/pipe;Skia/ports;Skia/utils</AdditionalIncludeDirectories>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="src\Controls\VanillaButton.cpp" />
     <ClCompile Include="src\Controls\VanillaLabel.cpp" />

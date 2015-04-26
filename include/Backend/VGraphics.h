@@ -8,7 +8,16 @@ inline VanillaVoid VanillaGraphicsSetPWGraphics(VanillaGraphics Graphics, Vanill
 inline VanillaPWGraphics VanillaGraphicsGetPWGraphics(VanillaGraphics Graphics) {
 	return *(VanillaPWGraphics*)Graphics;
 }
-
+/**
+* 此函数用作初始化后端.
+* @param Returns 成功返回true.
+*/
+VAPI(VanillaBool) VanillaInitializeBackend();
+/**
+* 此函数用作.获取VanillaGraphics对象的像素地址.
+* @param Graphics VanillaGraphics对象
+* @param Returns 成功返回VanillaGraphics对象的像素地址.
+*/
 VAPI(VanillaAny) VanillaGraphicsGetPixels(VanillaGraphics Graphics);
 /**
 * 此函数用作填充一个矩形区域.

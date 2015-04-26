@@ -46,6 +46,9 @@
     <Filter Include="源文件\PortLayer\Win32">
       <UniqueIdentifier>{7a54e55f-d727-48cc-9819-05d53fd3fca9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="源文件\Backend\Gdiplus">
+      <UniqueIdentifier>{6b6453d4-c675-4877-878c-d00e6f61a49e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\DebugCode.cpp">
@@ -101,6 +104,15 @@
     </ClCompile>
     <ClCompile Include="src\PortLayer\Linux\VPSysCall.cpp">
       <Filter>源文件\PortLayer\Linux</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Backend\Gdiplus\VGraphics.cpp">
+      <Filter>源文件\Backend\Gdiplus</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Backend\Gdiplus\VImage.cpp">
+      <Filter>源文件\Backend\Gdiplus</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Backend\Gdiplus\VStringFormat.cpp">
+      <Filter>源文件\Backend\Gdiplus</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

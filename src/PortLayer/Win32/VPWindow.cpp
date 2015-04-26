@@ -28,7 +28,7 @@ typedef struct VPWGraphics
 	HBITMAP CurrentBitmap;
 } *VanillaPWGraphics, _VPWGraphics;
 
-#define PROP_ID		(LPCWSTR)101
+#define PROP_ID			(LPCWSTR)101
 #define PROP_OLDPROC	(LPCWSTR)102
 
 LRESULT CALLBACK VanillaPWWin32WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
